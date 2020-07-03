@@ -9,23 +9,23 @@
 import SwiftUI
 
 struct Checkbox: View {
-    let size: CGFloat
+    let size: CGFloat = 30
     let color: Color
     let didSelect: ((Bool) -> Void)?
 
-    init(size: CGFloat = 30, color: Color = .black) {
-        self.size = size
+    init(color: Color = .black, initialValue: Bool = false) {
         self.color = color
         didSelect = nil
+        _isMarked = State(initialValue: initialValue)
     }
 
-    init(size: CGFloat = 30, color: Color = .black, didSelect: @escaping (Bool)-> Void ) {
-        self.size = size
+    init(color: Color = .black, initialValue: Bool = false, didSelect: @escaping (Bool)-> Void ) {
         self.color = color
         self.didSelect = didSelect
+        _isMarked = State(initialValue: initialValue)
     }
 
-    @State public private(set) var isMarked:Bool = false
+    @State public private(set) var isMarked:Bool
 
     var body: some View {
         Button(action:{

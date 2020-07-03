@@ -30,19 +30,25 @@ public struct Menu: View {
     }
 
     private func configMenuView() -> some View {
-        VStack(spacing: 10) {
-            HStack {
-                Text("AppleTV controler enabled")
-                Spacer()
-                Checkbox()
+        VStack(alignment: .trailing, spacing: 10) {
+            VStack(spacing: 10) {
+                HStack {
+                    Text("AppleTV controler enabled")
+                    Spacer()
+                    Checkbox(initialValue: true)
                 }.frame(width: 1000, height: 130, alignment: .center)
-            HStack {
-                Text("Control Style")
-                Spacer()
-                SegmentedControl("Tap", "Click")
-            }.frame(width: 1000, height: 130, alignment: .center)
-        }.padding(.all, 30).background(RoundedRectangle(cornerRadius: 30).foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.5, opacity: 0.5)))
-
+                HStack {
+                    Text("Control Style")
+                    Spacer()
+                    SegmentedControl("Tap", "Click")
+                }.frame(width: 1000, height: 130, alignment: .center)
+            }.padding(.all, 30).background(RoundedRectangle(cornerRadius: 30).foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.5, opacity: 0.5)))
+            Button(action: {
+                self.delegate.setState(to: .StartMenu)
+            }) {
+                Text("Back").foregroundColor(.white)
+            }
+        }
     }
 
     public var body: some View {

@@ -8,24 +8,21 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @State var gameStarted: Bool = false
+struct ContentView: View, StateHolder {
+    func getState() -> GameState {
+        return gameState
+    }
+
+    func setState(to state: GameState) {
+        gameState = state
+    }
+
+    @State var gameState: GameState = .StartMenu
     var body: some View {
         ZStack {
             SceneView().edgesIgnoringSafeArea(.all)
-            if !gameStarted {
-                VStack {
-                    Button(action: {
-                        self.gameStarted = true
-                    }) {
-                        Text("Start")
-                    }.padding(.top, 550)
-                    Button(action: {
-                        print("Config")
-                    }) {
-                        Text("Config")
-                    }
-                }
+            if gameState != GameState.Playing  {
+                Menu(delegate: self)
             }
         }
     }

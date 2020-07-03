@@ -28,11 +28,29 @@ public struct Menu: View {
             }
         }
     }
-    
+
+    private func configMenuView() -> some View {
+        VStack(alignment: .center, spacing: 10) {
+            HStack {
+                Text("AppleTV controler enabled")
+                Spacer()
+                SegmentedControl("Yes", "No")
+            }.frame(width: 1000, height: 130, alignment: .center)
+            HStack {
+                Text("Control Style")
+                Spacer()
+                SegmentedControl("Tap", "Click")
+            }.frame(width: 1000, height: 130, alignment: .center)
+        }.padding(.all, 30).background(RoundedRectangle(cornerRadius: 30).foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.5, opacity: 0.5)))
+
+    }
+
     public var body: some View {
         switch delegate.getState() {
         case .StartMenu:
             return AnyView(startMenuView())
+        case .Config:
+            return AnyView(configMenuView())
         default:
             return AnyView(Text("Not implemented"))
         }
@@ -48,7 +66,7 @@ struct Menu_Previews: PreviewProvider {
 
 struct TestStateHolder: StateHolder {
     func getState() -> GameState {
-        return .StartMenu
+        return .Config
     }
     func setState(to state: GameState) {
     }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026C125124AFC1970069DF07 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C125024AFC1970069DF07 /* SegmentedControl.swift */; };
+		026C125324AFC7FA0069DF07 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C125224AFC7FA0069DF07 /* RoundedCorners.swift */; };
 		028AF00624AFA1BA00411179 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF00524AFA1BA00411179 /* AppDelegate.swift */; };
 		028AF00824AFA1BA00411179 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF00724AFA1BA00411179 /* ContentView.swift */; };
 		028AF00A24AFA1BD00411179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 028AF00924AFA1BD00411179 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		026C125024AFC1970069DF07 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
+		026C125224AFC7FA0069DF07 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		028AF00224AFA1BA00411179 /* Beatbots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatbots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		028AF00524AFA1BA00411179 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		028AF00724AFA1BA00411179 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 			children = (
 				028AF01824AFA47D00411179 /* SceneView.swift */,
 				028AF01D24AFB43C00411179 /* Menu.swift */,
+				026C125024AFC1970069DF07 /* SegmentedControl.swift */,
+				026C125224AFC7FA0069DF07 /* RoundedCorners.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -179,7 +185,9 @@
 				028AF02024AFBC6200411179 /* StateHolder.swift in Sources */,
 				028AF00824AFA1BA00411179 /* ContentView.swift in Sources */,
 				028AF01B24AFAE6900411179 /* GameScene.swift in Sources */,
+				026C125324AFC7FA0069DF07 /* RoundedCorners.swift in Sources */,
 				028AF00624AFA1BA00411179 /* AppDelegate.swift in Sources */,
+				026C125124AFC1970069DF07 /* SegmentedControl.swift in Sources */,
 				028AF01E24AFB43C00411179 /* Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

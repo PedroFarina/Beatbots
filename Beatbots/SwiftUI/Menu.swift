@@ -30,12 +30,12 @@ public struct Menu: View {
     }
 
     private func configMenuView() -> some View {
-        VStack(alignment: .center, spacing: 10) {
+        VStack(spacing: 10) {
             HStack {
                 Text("AppleTV controler enabled")
                 Spacer()
-                SegmentedControl("Yes", "No")
-            }.frame(width: 1000, height: 130, alignment: .center)
+                Checkbox()
+                }.frame(width: 1000, height: 130, alignment: .center)
             HStack {
                 Text("Control Style")
                 Spacer()

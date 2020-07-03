@@ -11,13 +11,14 @@ public struct SegmentedControl: View {
     init(_ options: String..., selectedIndex: Int = 0) {
         self.options = options
         self._selectedIndex = State(initialValue: selectedIndex)
+        didSelect = nil
     }
     init(_ options: String..., selectedIndex: Int = 0, didSelect: @escaping (String) -> Void) {
         self.options = options
         self._selectedIndex = State(initialValue: selectedIndex)
         self.didSelect = didSelect
     }
-    private var didSelect: ((String) -> ())? =  nil
+    private let didSelect: ((String) -> ())?
     private let options: [String]
     @State public private(set) var selectedIndex: Int
     public var selectedOption: String {

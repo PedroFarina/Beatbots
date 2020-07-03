@@ -10,7 +10,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        ZStack {
+            VStack {
+                Button(action: {
+                    print("Xisde")
+                }) {
+                    Text("Start")
+                }.padding(.top, 550)
+                Button(action: {
+                    print("Xisde")
+                }) {
+                    Text("Config")
+                }
+            }
+        }
     }
 }
 

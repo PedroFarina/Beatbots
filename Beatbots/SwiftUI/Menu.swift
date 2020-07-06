@@ -51,12 +51,24 @@ public struct Menu: View {
         }
     }
 
+    private func choosingCharactersView() -> some View {
+        VStack {
+            HStack {
+                Image(CID.imagePath).padding(.all, 40).clipShape(Circle()).overlay(Circle().stroke(lineWidth: 3))
+                Image(CID.imagePath).padding(.all, 40).clipShape(Circle()).overlay(Circle().stroke(lineWidth: 3))
+                Image(CID.imagePath).padding(.all, 40).clipShape(Circle()).overlay(Circle().stroke(lineWidth: 3))
+            }
+        }
+    }
+
     public var body: some View {
         switch delegate.getState() {
         case .StartMenu:
             return AnyView(startMenuView())
         case .Config:
             return AnyView(configMenuView())
+        case .ChoosingCharacters:
+            return AnyView(choosingCharactersView())
         default:
             return AnyView(Text("Not implemented"))
         }
@@ -72,7 +84,7 @@ struct Menu_Previews: PreviewProvider {
 
 struct TestStateHolder: StateHolder {
     func getState() -> GameState {
-        return .Config
+        return .ChoosingCharacters
     }
     func setState(to state: GameState) {
     }

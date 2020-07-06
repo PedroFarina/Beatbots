@@ -26,6 +26,7 @@
 		028AF01E24AFB43C00411179 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF01D24AFB43C00411179 /* Menu.swift */; };
 		028AF02024AFBC6200411179 /* StateHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF01F24AFBC6200411179 /* StateHolder.swift */; };
 		028AF02224AFBC8B00411179 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF02124AFBC8B00411179 /* GameState.swift */; };
+		02BE472524B2D29D00A74008 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE472424B2D29D00A74008 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		028AF01D24AFB43C00411179 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		028AF01F24AFBC6200411179 /* StateHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateHolder.swift; sourceTree = "<group>"; };
 		028AF02124AFBC8B00411179 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		02BE472424B2D29D00A74008 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +114,7 @@
 		028AF00424AFA1BA00411179 /* Beatbots */ = {
 			isa = PBXGroup;
 			children = (
-				0237550E24B2CCB300089A16 /* PlayersManager.swift */,
+				02BE472624B2D31800A74008 /* PlayerManagement */,
 				0237551024B2CCBA00089A16 /* Game Logic */,
 				028AF01C24AFB42900411179 /* SwiftUI */,
 				028AF01724AFA46800411179 /* SpriteKit */,
@@ -152,6 +154,15 @@
 				026C125224AFC7FA0069DF07 /* RoundedCorners.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		02BE472624B2D31800A74008 /* PlayerManagement */ = {
+			isa = PBXGroup;
+			children = (
+				02BE472424B2D29D00A74008 /* Player.swift */,
+				0237550E24B2CCB300089A16 /* PlayersManager.swift */,
+			);
+			path = PlayerManagement;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +251,7 @@
 				026C125124AFC1970069DF07 /* SegmentedControl.swift in Sources */,
 				0237551324B2CCFA00089A16 /* MultipeerHandler.swift in Sources */,
 				028AF01E24AFB43C00411179 /* Menu.swift in Sources */,
+				02BE472524B2D29D00A74008 /* Player.swift in Sources */,
 				0237551724B2CD3A00089A16 /* GlobalProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

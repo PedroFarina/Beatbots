@@ -52,7 +52,7 @@ public struct Menu: View {
     }
 
     private func choosingCharactersView() -> some View {
-        VStack {
+        return VStack {
             HStack {
                 Image(CID.imagePath).padding(.all, 40).clipShape(Circle()).overlay(Circle().stroke(lineWidth: 3))
                 Image(CID.imagePath).padding(.all, 40).clipShape(Circle()).overlay(Circle().stroke(lineWidth: 3))

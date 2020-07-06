@@ -9,11 +9,23 @@
 import SwiftUI
 
 struct ContentView: View, StateHolder {
+
+    init() {
+        PlayersManager.shared().stateHolder = self
+    }
+
     func getState() -> GameState {
         return gameState
     }
 
     func setState(to state: GameState) {
+        if gameState == .StartMenu && state == .ChoosingCharacters {
+            MultipeerController.shared().startService()
+        } else if (gameState == .ChoosingCharacters || gameState == .GameOver) && state == .StartMenu {
+            MultipeerController.shared().stopService()
+            MultipeerController.shared().endSession()
+        }
+
         gameState = state
     }
 

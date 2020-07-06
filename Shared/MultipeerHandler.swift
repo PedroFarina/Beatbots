@@ -15,6 +15,7 @@ public protocol MultipeerHandler {
     func finishedReceivingResource(_ resourceName: String, from peerID: MCPeerID, answer: ResourceAnswer)
     func peerJoined(_ id: MCPeerID)
     func peerLeft(_ id: MCPeerID)
+    func sessionEnded()
 
     #if os(iOS)
     func peerDiscovered(_ id: MCPeerID) -> Bool

@@ -27,11 +27,9 @@ public class MultipeerController: NSObject {
         self.serviceType = GlobalProperties.serviceType
         #if os(iOS)
         browser = MCNearbyServiceBrowser(peer: myPeerID, serviceType: serviceType)
-        browser.startBrowsingForPeers()
         connectionType = .peer
         #elseif os(tvOS)
         advertiser = MCNearbyServiceAdvertiser(peer: myPeerID, discoveryInfo: nil, serviceType: serviceType)
-        advertiser.startAdvertisingPeer()
         connectionType = .host
         #endif
         super.init()
@@ -74,12 +72,14 @@ public class MultipeerController: NSObject {
     }
 
     public func endSession() {
+        #warning("Disconnecting from a session might require to initialize another one")
         if connectionType == .peer {
             session.disconnect()
         } else if connectionType == .host {
             sendToAllPeers(Data("disconnect".utf8), reliably: false)
             session.disconnect()
         }
+        delegate?.sessionEnded()
     }
 
     public func sendToAllPeers(_ data: Data, reliably: Bool) {

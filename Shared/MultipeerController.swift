@@ -29,7 +29,7 @@ public class MultipeerController: NSObject {
         browser = MCNearbyServiceBrowser(peer: myPeerID, serviceType: serviceType)
         browser.startBrowsingForPeers()
         connectionType = .peer
-        #else
+        #elseif os(tvOS)
         advertiser = MCNearbyServiceAdvertiser(peer: myPeerID, discoveryInfo: nil, serviceType: serviceType)
         advertiser.startAdvertisingPeer()
         connectionType = .host
@@ -38,7 +38,7 @@ public class MultipeerController: NSObject {
         session.delegate = self
         #if os(iOS)
         browser.delegate = self
-        #else
+        #elseif os(tvOS)
         advertiser.delegate = self
         #endif
     }
@@ -51,11 +51,36 @@ public class MultipeerController: NSObject {
 
     #if os(iOS)
     private var browser: MCNearbyServiceBrowser
-    #else
+    #elseif os(tvOS)
     private var advertiser: MCNearbyServiceAdvertiser
     #endif
 
     public var delegate: MultipeerHandler?
+
+    public func startService() {
+        #if os(iOS)
+        browser.startBrowsingForPeers()
+        #elseif os(tvOS)
+        advertiser.startAdvertisingPeer()
+        #endif
+    }
+
+    public func stopService() {
+        #if os(iOS)
+        browser.stopBrowsingForPeers()
+        #elseif os(tvOS)
+        advertiser.stopAdvertisingPeer()
+        #endif
+    }
+
+    public func endSession() {
+        if connectionType == .peer {
+            session.disconnect()
+        } else if connectionType == .host {
+            sendToAllPeers(Data("disconnect".utf8), reliably: false)
+            session.disconnect()
+        }
+    }
 
     public func sendToAllPeers(_ data: Data, reliably: Bool) {
         sendToPeers(data, reliably: reliably, peers: connectedPeers)
@@ -85,6 +110,11 @@ extension MultipeerController: MCSessionDelegate {
     }
 
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+        if let message = String(bytes: data, encoding: .utf8),
+            message == "disconnect",
+            connectionType == .peer {
+            endSession()
+        }
         delegate?.receivedData(data, from: peerID)
     }
 
@@ -119,7 +149,7 @@ extension MultipeerController: MCNearbyServiceBrowserDelegate {
         delegate?.peerLost(peerID)
     }
 }
-#else
+#elseif os(tvOS)
 extension MultipeerController: MCNearbyServiceAdvertiserDelegate {
     public func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         if delegate?.peerReceivedInvitation(peerID) ?? false {

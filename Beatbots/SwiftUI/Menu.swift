@@ -51,11 +51,12 @@ public struct Menu: View {
         }
     }
 
-    fileprivate func createImageOf(_ type: Character.Type) -> some View {
-        let image = Image(type.imagePath).modifier(CharacterFrameModifier())
+    @State private var cid = CID()
+    fileprivate func createImageOf(_ character: Character) -> some View {
+        let image = Image(type(of: character).imagePath).modifier(CharacterFrameModifier(character: character))
         if GlobalProperties.tvControllerEnabled {
             return AnyView(Button(action: {
-
+                PlayersManager.shared().characterSelected(character: character, by: GlobalProperties.tvControllerPlayerID)
             }) {
                 image
             })
@@ -66,9 +67,9 @@ public struct Menu: View {
     private func choosingCharactersView() -> some View {
         return VStack(alignment: .trailing) {
             HStack() {
-                createImageOf(CID.self)
-                createImageOf(CID.self)
-                createImageOf(CID.self)
+                createImageOf(cid)
+                createImageOf(CID())
+                createImageOf(CID())
             }
             Button(action: {
                 self.delegate.setState(to: .Playing)
@@ -109,7 +110,8 @@ struct TestStateHolder: StateHolder {
 #endif
 
 struct CharacterFrameModifier: ViewModifier {
+    var character: Character
     func body(content: Content) -> some View {
-        content.padding(.all, 40).clipShape(Circle()).overlay(Circle().stroke(lineWidth: 3))
+        content.padding(.all, 40).clipShape(Circle()).overlay(Circle().stroke(lineWidth: 3)).overlay(Circle().fill(Color.red).frame(width: 80, height: 80).padding([.top, .leading], 230).overlay(Text("\(PlayersManager.shared().numberOfPlayer(character.player))").frame(width: 80, height: 80, alignment: .center), alignment: .bottomTrailing))
     }
 }

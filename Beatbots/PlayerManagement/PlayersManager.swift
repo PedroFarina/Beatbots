@@ -23,6 +23,17 @@ public class PlayersManager: MultipeerHandler {
 
     public private(set) var players: [Player] = []
 
+    public func numberOfPlayer(_ player: Player?) -> String {
+        if let index = players.firstIndex(where: {$0.id == player?.id}) {
+            return String(index + 1)
+        }
+        return ""
+    }
+
+    public func characterSelected(character: Character, by id: String) {
+        
+    }
+
     public func tvControllerEnabledChanged(to value: Bool) {
         if value, let player = Player() {
             players.insert(player, at: 0)

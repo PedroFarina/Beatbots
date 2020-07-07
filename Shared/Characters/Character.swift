@@ -8,4 +8,7 @@
 
 public protocol Character {
     static var imagePath: String { get }
+    #if os(tvOS)
+    var player: Player? { get }
+    #endif
 }

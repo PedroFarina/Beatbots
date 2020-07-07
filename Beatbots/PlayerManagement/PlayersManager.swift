@@ -17,6 +17,7 @@ public class PlayersManager: MultipeerHandler {
         return mc
     }()
     private init() {
+        tvControllerEnabledChanged(to: GlobalProperties.tvControllerEnabled)
     }
 
     public var stateHolder: StateHolder?
@@ -31,7 +32,9 @@ public class PlayersManager: MultipeerHandler {
     }
 
     public func characterSelected(character: Character, by id: String) {
-        
+        if let player = players.first(where: {$0.id == id}) {
+            character.player = player
+        }
     }
 
     public func tvControllerEnabledChanged(to value: Bool) {

@@ -6,9 +6,11 @@
 //  Copyright © 2020 Pedro Giuliano Farina. All rights reserved.
 //
 
-public protocol Character {
+import SwiftUI
+
+public protocol Character: class {
     static var imagePath: String { get }
     #if os(tvOS)
-    var player: Player? { get }
+    var player: Player? { get set }
     #endif
 }

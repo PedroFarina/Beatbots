@@ -51,12 +51,26 @@ public struct Menu: View {
         }
     }
 
-    @State private var cid = CID()
+
+    @ObservedObject private var cid: CID = CID()
     fileprivate func createImageOf(_ character: Character) -> some View {
-        let image = Image(type(of: character).imagePath).modifier(CharacterFrameModifier(character: character))
+        let image = Image(type(of: character).imagePath)
+            .padding(.all, 40)
+            .clipShape(Circle())
+            .overlay(
+                Circle()
+                    .stroke(lineWidth: 3))
+            .overlay(
+                Circle()
+                    .fill(Color.red)
+                    .frame(width: 80, height: 80)
+                    .padding([.top, .leading], 230)
+                    .overlay(Text("\(PlayersManager.shared().numberOfPlayer(character.player))")
+                        .frame(width: 80, height: 80, alignment: .center), alignment: .bottomTrailing))
         if GlobalProperties.tvControllerEnabled {
             return AnyView(Button(action: {
-                PlayersManager.shared().characterSelected(character: character, by: GlobalProperties.tvControllerPlayerID)
+                PlayersManager.shared().characterSelected(character: character, by:
+                    GlobalProperties.tvControllerPlayerID)
             }) {
                 image
             })
@@ -108,10 +122,3 @@ struct TestStateHolder: StateHolder {
     }
 }
 #endif
-
-struct CharacterFrameModifier: ViewModifier {
-    var character: Character
-    func body(content: Content) -> some View {
-        content.padding(.all, 40).clipShape(Circle()).overlay(Circle().stroke(lineWidth: 3)).overlay(Circle().fill(Color.red).frame(width: 80, height: 80).padding([.top, .leading], 230).overlay(Text("\(PlayersManager.shared().numberOfPlayer(character.player))").frame(width: 80, height: 80, alignment: .center), alignment: .bottomTrailing))
-    }
-}

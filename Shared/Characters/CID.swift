@@ -8,10 +8,9 @@
 
 import Foundation
 
-public struct CID: Character {
+public class CID: Character, ObservableObject {
     public static let imagePath: String = "CID"
     #if os(tvOS)
-    public var player: Player?
+    @Published public var player: Player?
     #endif
-    
 }

@@ -9,10 +9,17 @@
 import MultipeerConnectivity
 
 public class Player {
-    
+
     public let id: String
     public var connected: Bool = true
+    public var selectedCharacter: Character?
 
+    init?() {
+        guard GlobalProperties.tvControllerEnabled else {
+            return nil
+        }
+        id = GlobalProperties.tvControllerPlayerID
+    }
     init(id: MCPeerID) {
         self.id = id.displayName
     }

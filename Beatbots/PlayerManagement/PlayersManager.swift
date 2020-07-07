@@ -23,6 +23,16 @@ public class PlayersManager: MultipeerHandler {
 
     public private(set) var players: [Player] = []
 
+    public func tvControllerEnabledChanged(to value: Bool) {
+        if value, let player = Player() {
+            players.insert(player, at: 0)
+        } else {
+            if let index = players.firstIndex(where: {$0.id == GlobalProperties.tvControllerPlayerID}) {
+                players.remove(at: index)
+            }
+        }
+    }
+
     public func peerReceivedInvitation(_ id: MCPeerID) -> Bool {
         return players.count < 3
     }

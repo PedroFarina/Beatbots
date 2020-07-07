@@ -114,8 +114,9 @@ extension MultipeerController: MCSessionDelegate {
             message == "disconnect",
             connectionType == .peer {
             endSession()
+        } else {
+            delegate?.receivedData(data, from: peerID)
         }
-        delegate?.receivedData(data, from: peerID)
     }
 
     public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
@@ -154,6 +155,8 @@ extension MultipeerController: MCNearbyServiceAdvertiserDelegate {
     public func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         if delegate?.peerReceivedInvitation(peerID) ?? false {
             invitationHandler(true, self.session)
+        } else {
+            invitationHandler(false, nil)
         }
     }
 }

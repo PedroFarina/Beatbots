@@ -20,7 +20,7 @@ public protocol MultipeerHandler {
     #if os(iOS)
     func peerDiscovered(_ id: MCPeerID) -> Bool
     func peerLost(_ id: MCPeerID)
-    #else
+    #elseif os(tvOS)
     func peerReceivedInvitation(_ id: MCPeerID) -> Bool
     #endif
 }
@@ -42,6 +42,8 @@ public extension MultipeerHandler {
     func peerJoined(_ id: MCPeerID) {
     }
     func peerLeft(_ id: MCPeerID) {
+    }
+    func sessionEnded() {
     }
 }
 

@@ -17,6 +17,7 @@ public class PlayersManager: MultipeerHandler {
         return mc
     }()
     private init() {
+        MultipeerController.shared().delegate = self
         tvControllerEnabledChanged(to: GlobalProperties.tvControllerEnabled)
     }
 
@@ -29,6 +30,19 @@ public class PlayersManager: MultipeerHandler {
             return String(index + 1)
         }
         return ""
+    }
+    public func colorFor(_ player: Player?) -> UIColor {
+        let number = numberOfPlayer(player)
+        switch number {
+        case "1":
+            return UIColor.systemRed
+        case "2":
+            return UIColor.systemGreen
+        case "3":
+            return UIColor.systemTeal
+        default:
+            return UIColor.clear
+        }
     }
 
     public func characterSelected(character: Character, by id: String) {
@@ -55,6 +69,7 @@ public class PlayersManager: MultipeerHandler {
 
     public func sessionEnded() {
         players.removeAll()
+        tvControllerEnabledChanged(to: GlobalProperties.tvControllerEnabled)
     }
 
     public func peerJoined(_ id: MCPeerID) {

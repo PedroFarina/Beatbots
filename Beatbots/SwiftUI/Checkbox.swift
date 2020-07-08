@@ -19,9 +19,9 @@ struct Checkbox: View {
         _isMarked = State(initialValue: initialValue)
     }
 
-    init(color: Color = .black, initialValue: Bool = false, didSelect: @escaping (Bool)-> Void ) {
+    init(color: Color = .black, initialValue: Bool = false, didChangeValue: @escaping (Bool)-> Void ) {
         self.color = color
-        self.didSelect = didSelect
+        self.didSelect = didChangeValue
         _isMarked = State(initialValue: initialValue)
     }
 

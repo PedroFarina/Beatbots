@@ -35,7 +35,9 @@ public struct Menu: View {
                 HStack {
                     Text("AppleTV controler enabled")
                     Spacer()
-                    Checkbox(initialValue: true)
+                    Checkbox(initialValue: GlobalProperties.tvControllerEnabled) { value in
+                        GlobalProperties.tvControllerEnabled = value
+                    }
                 }.frame(width: 1000, height: 130, alignment: .center)
                 HStack {
                     Text("Control Style")
@@ -67,10 +69,13 @@ public struct Menu: View {
                     .stroke(lineWidth: 3))
             .overlay(
                 Circle()
-                    .fill(Color.red)
+                    .fill(Color(PlayersManager.shared().colorFor(character.player)))
                     .frame(width: 80, height: 80)
                     .padding([.top, .leading], 230)
                     .overlay(Text("\(PlayersManager.shared().numberOfPlayer(character.player))")
+                        .fontWeight(.bold)
+                        .font(.largeTitle)
+                        .accentColor(.white)
                         .frame(width: 80, height: 80, alignment: .center), alignment: .bottomTrailing))
         if GlobalProperties.tvControllerEnabled {
             return AnyView(Button(action: {
@@ -84,16 +89,23 @@ public struct Menu: View {
         }
     }
     private func choosingCharactersView() -> some View {
-        return VStack(alignment: .trailing) {
+        return VStack(alignment: .center) {
             HStack() {
-                createImageOf(cid)
                 createImageOf(bimo)
                 createImageOf(root)
+                createImageOf(cid)
             }
-            Button(action: {
-                self.delegate.setState(to: .Playing)
-            }) {
-                Text("Confirm")
+            HStack(spacing: 1170) {
+                Button(action: {
+                    self.delegate.setState(to: .StartMenu)
+                }) {
+                    Text("Back")
+                }
+                Button(action: {
+                    self.delegate.setState(to: .Playing)
+                }) {
+                    Text("Confirm")
+                }
             }
         }
     }

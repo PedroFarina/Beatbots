@@ -11,18 +11,19 @@ import Foundation
 public class GlobalProperties {
     #if os(tvOS)
     fileprivate static let tvControllerKey = "tvControllerDisabled"
-    public static let tvControllerPlayerID = "tvControllerPlayer"
     #endif
     private init() {
     }
     public static let serviceType = "Beatbots"
     #if os(tvOS)
+    public static let tvControllerPlayerID = "tvControllerPlayer"
     public static var tvControllerEnabled: Bool {
         get {
         return !UserDefaults.standard.bool(forKey: tvControllerKey)
         }
         set {
         UserDefaults.standard.set(!newValue, forKey: tvControllerKey)
+        PlayersManager.shared().tvControllerEnabledChanged(to: newValue)
         }
     }
     #endif

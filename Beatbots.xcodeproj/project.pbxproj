@@ -30,6 +30,7 @@
 		02CA62AA24B63B8B002F190D /* BiMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA62A924B63B8B002F190D /* BiMO.swift */; };
 		02CA62AC24B63BA9002F190D /* ROOT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA62AB24B63BA9002F190D /* ROOT.swift */; };
 		02CA62AE24B66083002F190D /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA62AD24B66083002F190D /* CGPointExtension.swift */; };
+		02CA62B024B671C1002F190D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA62AF24B671C1002F190D /* Command.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		02CA62A924B63B8B002F190D /* BiMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiMO.swift; sourceTree = "<group>"; };
 		02CA62AB24B63BA9002F190D /* ROOT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROOT.swift; sourceTree = "<group>"; };
 		02CA62AD24B66083002F190D /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
+		02CA62AF24B671C1002F190D /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				028AF02124AFBC8B00411179 /* GameState.swift */,
 				028AF01F24AFBC6200411179 /* StateHolder.swift */,
 				02CA62AD24B66083002F190D /* CGPointExtension.swift */,
+				02CA62AF24B671C1002F190D /* Command.swift */,
 			);
 			path = "Game Logic";
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				028AF01B24AFAE6900411179 /* GameScene.swift in Sources */,
 				026C125324AFC7FA0069DF07 /* RoundedCorners.swift in Sources */,
 				0237550D24B2B78900089A16 /* CID.swift in Sources */,
+				02CA62B024B671C1002F190D /* Command.swift in Sources */,
 				0237551524B2CD1F00089A16 /* MultipeerController.swift in Sources */,
 				028AF00624AFA1BA00411179 /* AppDelegate.swift in Sources */,
 				02CA62AA24B63B8B002F190D /* BiMO.swift in Sources */,

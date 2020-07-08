@@ -25,6 +25,10 @@ public class PlayersManager: MultipeerHandler {
 
     public private(set) var players: [Player] = []
 
+    public func getPlayer(from id: String) -> Player? {
+        return players.first(where: {$0.id == id})
+    }
+
     public func numberOfPlayer(_ player: Player?) -> String {
         if let index = players.firstIndex(where: {$0.id == player?.id}) {
             return String(index + 1)

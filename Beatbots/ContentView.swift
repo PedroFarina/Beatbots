@@ -32,7 +32,7 @@ struct ContentView: View, StateHolder {
     @State var gameState: GameState = .StartMenu
     var body: some View {
         ZStack {
-            SceneView().edgesIgnoringSafeArea(.all)
+            SceneView(scene: GameScene(stateDelegate: self)).edgesIgnoringSafeArea(.all)
             if gameState != GameState.Playing  {
                 Menu(delegate: self)
             }

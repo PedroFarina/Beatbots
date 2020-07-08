@@ -10,7 +10,7 @@ import SpriteKit
 import SwiftUI
 
 public struct SceneView: UIViewRepresentable {
-    public private(set) var scene: GameScene = GameScene()
+    public private(set) var scene: GameScene
 
     public  func makeUIView(context: Context) -> SKView {
         return SKView(frame: .zero)

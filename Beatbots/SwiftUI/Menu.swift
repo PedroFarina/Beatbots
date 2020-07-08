@@ -52,10 +52,15 @@ public struct Menu: View {
     }
 
 
-    @ObservedObject private var cid: CID = CID()
+    @ObservedObject private var cid = CID()
+    @ObservedObject private var bimo = BiMO()
+    @ObservedObject private var root = ROOT()
     fileprivate func createImageOf(_ character: Character) -> some View {
         let image = Image(type(of: character).imagePath)
-            .padding(.all, 40)
+            .resizable()
+            .scaledToFit()
+            .frame(minWidth: 280, idealWidth: 300, maxWidth: 320, minHeight: 280, idealHeight: 300, maxHeight: 320, alignment: .center)
+            .padding()
             .clipShape(Circle())
             .overlay(
                 Circle()
@@ -82,8 +87,8 @@ public struct Menu: View {
         return VStack(alignment: .trailing) {
             HStack() {
                 createImageOf(cid)
-                createImageOf(CID())
-                createImageOf(CID())
+                createImageOf(bimo)
+                createImageOf(root)
             }
             Button(action: {
                 self.delegate.setState(to: .Playing)

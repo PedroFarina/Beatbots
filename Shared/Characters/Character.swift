@@ -9,6 +9,7 @@
 import SwiftUI
 
 public protocol Character: class {
+    static var name: String { get }
     static var imagePath: String { get }
     #if os(tvOS)
     var player: Player? { get set }

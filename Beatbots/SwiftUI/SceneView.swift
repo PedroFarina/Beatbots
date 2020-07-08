@@ -20,3 +20,9 @@ public struct SceneView: UIViewRepresentable {
         uiView.presentScene(scene)
     }
 }
+
+struct SceneView_Previews: PreviewProvider {
+    static var previews: some View {
+        SceneView().edgesIgnoringSafeArea(.all)
+    }
+}

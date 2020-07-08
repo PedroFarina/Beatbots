@@ -33,7 +33,9 @@ public class PlayersManager: MultipeerHandler {
 
     public func characterSelected(character: Character, by id: String) {
         if let player = players.first(where: {$0.id == id}) {
+            player.selectedCharacter?.player = nil
             character.player = player
+            player.selectedCharacter = character
         }
     }
 

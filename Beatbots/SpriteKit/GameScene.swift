@@ -26,8 +26,7 @@ public class GameScene: SKScene {
     }
 
     public override func sceneDidLoad() {
-        let node = SKSpriteNode(color: .red, size: CGSize(width: 0.5, height: 0.5))
-        addChild(node)
+        self.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 1, alpha: 1)
     }
 
     func touchDown(atPoint pos : CGPoint) {

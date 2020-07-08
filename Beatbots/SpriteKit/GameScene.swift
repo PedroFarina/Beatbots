@@ -29,16 +29,48 @@ public class GameScene: SKScene {
         self.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 1, alpha: 1)
     }
 
+    let threshold: CGFloat = 0.2
+    var firstPoint: CGPoint?
+    var recognizing = true
     func touchDown(atPoint pos : CGPoint) {
-        print("Touch Down")
+        recognizing = true
+        firstPoint = pos
     }
 
     func touchMoved(toPoint pos : CGPoint) {
-        print("Touch Move")
+        checkSwipe(on: pos)
     }
 
     func touchUp(atPoint pos : CGPoint) {
-        print("Touch Up")
+        checkSwipe(on: pos)
+        guard recognizing else {
+            return
+        }
+        print("Tap")
+    }
+
+    private func checkSwipe(on pos: CGPoint) {
+        guard recognizing else {
+            return
+        }
+        let movement = pos - (firstPoint ?? CGPoint(x: 0, y: 0))
+        let value = max(abs(movement.x), abs(movement.y))
+        if value > threshold {
+            recognizing = false
+            if abs(pos.x) == value {
+                if pos.x < 0 {
+                    print("Swipe Left")
+                } else {
+                    print("Swipe Right")
+                }
+            } else if abs(pos.y) == value {
+                if pos.y < 0 {
+                    print("Swipe Down")
+                } else {
+                    print("Swipe Up")
+                }
+            }
+        }
     }
 
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

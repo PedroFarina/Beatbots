@@ -35,9 +35,9 @@ public class GlobalProperties {
                 return controlStyle
             } else {
                 defer {
-                    tvControlStyle = .Click
+                    tvControlStyle = .Tap
                 }
-                return .Click
+                return .Tap
             }
         }
 

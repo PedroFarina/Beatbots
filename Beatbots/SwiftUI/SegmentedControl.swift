@@ -13,6 +13,15 @@ public struct SegmentedControl: View {
         self._selectedIndex = State(initialValue: selectedIndex)
         didSelect = nil
     }
+    init(_ options: String..., selectedItem: String, didSelect: @escaping (String) -> Void) {
+        self.options = options
+        if let index = options.firstIndex(of: selectedItem) {
+            self._selectedIndex = State(initialValue: index)
+        } else {
+            self._selectedIndex = State(initialValue: 0)
+        }
+        self.didSelect = didSelect
+    }
     init(_ options: String..., selectedIndex: Int = 0, didSelect: @escaping (String) -> Void) {
         self.options = options
         self._selectedIndex = State(initialValue: selectedIndex)
@@ -43,19 +52,23 @@ public struct SegmentedControl: View {
 
     private func roundedCornerFor(_ index: Int) -> RoundedCorners {
         if index == 0 {
-            return RoundedCorners(color: backgroundColorFor(index), tl: 10, tr: 0, bl: 10, br: 0)
+            return RoundedCorners(backgroundColor: backgroundColorFor(index), strokeColor: strokeColorFor(index), tl: 10, tr: 0, bl: 10, br: 0)
         } else if index == options.count - 1 {
-            return RoundedCorners(color: backgroundColorFor(index), tl: 0, tr: 10, bl: 0, br: 10)
+            return RoundedCorners(backgroundColor: backgroundColorFor(index), strokeColor: strokeColorFor(index), tl: 0, tr: 10, bl: 0, br: 10)
         }
-        return RoundedCorners(color: backgroundColorFor(index), tl: 0, tr: 0, bl: 0, br: 0)
+        return RoundedCorners(backgroundColor: backgroundColorFor(index), strokeColor: strokeColorFor(index), tl: 0, tr: 0, bl: 0, br: 0)
     }
 
     private func backgroundColorFor(_ index: Int) ->  Color {
-        return isIndexSelected(index) ? .green : .gray
+        return isIndexSelected(index) ? Color(UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.75)) : .clear
+    }
+
+    private func strokeColorFor(_ index: Int) -> Color {
+        return Color(UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.75))
     }
 
     private func textColorFor(_ index: Int) -> Color {
-        return isIndexSelected(index) ? .black : .white
+        return isIndexSelected(index) ? .white : .black
     }
 
     private func isIndexSelected(_ index: Int) -> Bool {

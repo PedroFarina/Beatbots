@@ -11,6 +11,8 @@ import Foundation
 public class GlobalProperties {
     #if os(tvOS)
     fileprivate static let tvControllerKey = "tvControllerDisabled"
+    fileprivate static let controlStyleKey = "tvControlStyle"
+    fileprivate static let userDefaults = UserDefaults.standard
     #endif
     private init() {
     }
@@ -19,12 +21,36 @@ public class GlobalProperties {
     public static let tvControllerPlayerID = "tvControllerPlayer"
     public static var tvControllerEnabled: Bool {
         get {
-        return !UserDefaults.standard.bool(forKey: tvControllerKey)
+            return !userDefaults.bool(forKey: tvControllerKey)
         }
         set {
-        UserDefaults.standard.set(!newValue, forKey: tvControllerKey)
-        PlayersManager.shared().tvControllerEnabledChanged(to: newValue)
+            userDefaults.set(!newValue, forKey: tvControllerKey)
+            PlayersManager.shared().tvControllerEnabledChanged(to: newValue)
+        }
+    }
+    public static var tvControlStyle: TVControlStyle {
+        get {
+            if let value = userDefaults.string(forKey: controlStyleKey),
+            let controlStyle = TVControlStyle(rawValue: value) {
+                return controlStyle
+            } else {
+                defer {
+                    tvControlStyle = .Click
+                }
+                return .Click
+            }
+        }
+
+        set {
+            userDefaults.set(newValue.rawValue, forKey: controlStyleKey)
         }
     }
     #endif
 }
+
+#if os(tvOS)
+public enum TVControlStyle: String {
+    case Tap
+    case Click
+}
+#endif

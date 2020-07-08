@@ -42,7 +42,11 @@ public struct Menu: View {
                 HStack {
                     Text("Control Style")
                     Spacer()
-                    SegmentedControl("Tap", "Click")
+                    SegmentedControl(TVControlStyle.Click.rawValue, TVControlStyle.Tap.rawValue, selectedItem: GlobalProperties.tvControlStyle.rawValue) { value in
+                        if let style = TVControlStyle(rawValue: value) {
+                            GlobalProperties.tvControlStyle = style
+                        }
+                    }
                 }.frame(width: 1000, height: 130, alignment: .center)
             }.padding(.all, 30).background(RoundedRectangle(cornerRadius: 30).foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.5, opacity: 0.5)))
             Button(action: {

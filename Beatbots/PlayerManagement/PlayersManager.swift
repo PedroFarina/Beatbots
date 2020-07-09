@@ -80,6 +80,7 @@ public class PlayersManager: MultipeerHandler {
         if !players.contains(where: {$0.id == id.displayName}) {
             players.append(Player(id: id))
         }
+        print(MultipeerController.shared().connectedPeers.count)
     }
     public func peerLeft(_ id: MCPeerID) {
         if let index = players.firstIndex(where: {$0.id == id.displayName}) {

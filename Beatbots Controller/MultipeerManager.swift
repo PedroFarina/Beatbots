@@ -17,25 +17,31 @@ public class MultipeerManager: ObservableObject, MultipeerHandler {
         MultipeerController.shared().startService()
     }
 
+    private func setState(to state: ConnectionStatus) {
+        DispatchQueue.main.async {
+            self.state = state
+        }
+    }
+
     public func peerDiscovered(_ id: MCPeerID) -> Bool {
-        state = .Found(id: id.displayName)
+        setState(to: .Found(id: id.displayName))
         return true
     }
 
     public func peerLeft(_ id: MCPeerID) {
-        state = .Disconnected(id: id.displayName)
+        setState(to: .Disconnected(id: id.displayName))
     }
 
     public func peerJoining(_ id: MCPeerID) {
-        state = .Connecting(id: id.displayName)
+        setState(to: .Connecting(id: id.displayName))
     }
 
     public func peerJoined(_ id: MCPeerID) {
-        state = .Connected(id: id.displayName)
+        setState(to: .Connected(id: id.displayName))
     }
 
     public func peerLost(_ id: MCPeerID) {
-        state = .Lost(id: id.displayName)
+        setState(to: .Lost(id: id.displayName))
     }
 
 

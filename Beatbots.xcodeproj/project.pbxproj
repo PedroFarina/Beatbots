@@ -16,6 +16,12 @@
 		0237551724B2CD3A00089A16 /* GlobalProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237551624B2CD3A00089A16 /* GlobalProperties.swift */; };
 		026C125124AFC1970069DF07 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C125024AFC1970069DF07 /* SegmentedControl.swift */; };
 		026C125324AFC7FA0069DF07 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C125224AFC7FA0069DF07 /* RoundedCorners.swift */; };
+		027BD91024B790EA000CCC35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027BD90F24B790EA000CCC35 /* AppDelegate.swift */; };
+		027BD91224B790EA000CCC35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027BD91124B790EA000CCC35 /* SceneDelegate.swift */; };
+		027BD91424B790EA000CCC35 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027BD91324B790EA000CCC35 /* ContentView.swift */; };
+		027BD91624B790F0000CCC35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 027BD91524B790F0000CCC35 /* Assets.xcassets */; };
+		027BD91924B790F0000CCC35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 027BD91824B790F0000CCC35 /* Preview Assets.xcassets */; };
+		027BD91C24B790F0000CCC35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027BD91A24B790F0000CCC35 /* LaunchScreen.storyboard */; };
 		028AF00624AFA1BA00411179 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF00524AFA1BA00411179 /* AppDelegate.swift */; };
 		028AF00824AFA1BA00411179 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF00724AFA1BA00411179 /* ContentView.swift */; };
 		028AF00A24AFA1BD00411179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 028AF00924AFA1BD00411179 /* Assets.xcassets */; };
@@ -43,6 +49,14 @@
 		0237551624B2CD3A00089A16 /* GlobalProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalProperties.swift; sourceTree = "<group>"; };
 		026C125024AFC1970069DF07 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		026C125224AFC7FA0069DF07 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		027BD90D24B790EA000CCC35 /* Beatbots Controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beatbots Controller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		027BD90F24B790EA000CCC35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		027BD91124B790EA000CCC35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		027BD91324B790EA000CCC35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		027BD91524B790F0000CCC35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		027BD91824B790F0000CCC35 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		027BD91B24B790F0000CCC35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		027BD91D24B790F0000CCC35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		028AF00224AFA1BA00411179 /* Beatbots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatbots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		028AF00524AFA1BA00411179 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		028AF00724AFA1BA00411179 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +77,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		027BD90A24B790EA000CCC35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		028AEFFF24AFA1BA00411179 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,11 +127,34 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		027BD90E24B790EA000CCC35 /* Beatbots Controller */ = {
+			isa = PBXGroup;
+			children = (
+				027BD90F24B790EA000CCC35 /* AppDelegate.swift */,
+				027BD91124B790EA000CCC35 /* SceneDelegate.swift */,
+				027BD91324B790EA000CCC35 /* ContentView.swift */,
+				027BD91524B790F0000CCC35 /* Assets.xcassets */,
+				027BD91A24B790F0000CCC35 /* LaunchScreen.storyboard */,
+				027BD91D24B790F0000CCC35 /* Info.plist */,
+				027BD91724B790F0000CCC35 /* Preview Content */,
+			);
+			path = "Beatbots Controller";
+			sourceTree = "<group>";
+		};
+		027BD91724B790F0000CCC35 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				027BD91824B790F0000CCC35 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		028AEFF924AFA1BA00411179 = {
 			isa = PBXGroup;
 			children = (
 				0237551124B2CCDC00089A16 /* Shared */,
 				028AF00424AFA1BA00411179 /* Beatbots */,
+				027BD90E24B790EA000CCC35 /* Beatbots Controller */,
 				028AF00324AFA1BA00411179 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -119,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				028AF00224AFA1BA00411179 /* Beatbots.app */,
+				027BD90D24B790EA000CCC35 /* Beatbots Controller.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,6 +225,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		027BD90C24B790EA000CCC35 /* Beatbots Controller */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 027BD92024B790F0000CCC35 /* Build configuration list for PBXNativeTarget "Beatbots Controller" */;
+			buildPhases = (
+				027BD90924B790EA000CCC35 /* Sources */,
+				027BD90A24B790EA000CCC35 /* Frameworks */,
+				027BD90B24B790EA000CCC35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Beatbots Controller";
+			productName = "Beatbots Controller";
+			productReference = 027BD90D24B790EA000CCC35 /* Beatbots Controller.app */;
+			productType = "com.apple.product-type.application";
+		};
 		028AF00124AFA1BA00411179 /* Beatbots */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 028AF01424AFA1BD00411179 /* Build configuration list for PBXNativeTarget "Beatbots" */;
@@ -207,6 +269,9 @@
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Pedro Giuliano Farina";
 				TargetAttributes = {
+					027BD90C24B790EA000CCC35 = {
+						CreatedOnToolsVersion = 11.5;
+					};
 					028AF00124AFA1BA00411179 = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -226,11 +291,22 @@
 			projectRoot = "";
 			targets = (
 				028AF00124AFA1BA00411179 /* Beatbots */,
+				027BD90C24B790EA000CCC35 /* Beatbots Controller */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		027BD90B24B790EA000CCC35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				027BD91C24B790F0000CCC35 /* LaunchScreen.storyboard in Resources */,
+				027BD91924B790F0000CCC35 /* Preview Assets.xcassets in Resources */,
+				027BD91624B790F0000CCC35 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		028AF00024AFA1BA00411179 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,6 +320,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		027BD90924B790EA000CCC35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				027BD91024B790EA000CCC35 /* AppDelegate.swift in Sources */,
+				027BD91224B790EA000CCC35 /* SceneDelegate.swift in Sources */,
+				027BD91424B790EA000CCC35 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		028AEFFE24AFA1BA00411179 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -275,6 +361,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		027BD91A24B790F0000CCC35 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				027BD91B24B790F0000CCC35 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		028AF00E24AFA1BD00411179 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -286,6 +380,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		027BD91E24B790F0000CCC35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Beatbots Controller/Preview Content\"";
+				DEVELOPMENT_TEAM = BVZY57RJZG;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Beatbots Controller/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PGF.Beatbots-Controller";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		027BD91F24B790F0000CCC35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Beatbots Controller/Preview Content\"";
+				DEVELOPMENT_TEAM = BVZY57RJZG;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Beatbots Controller/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PGF.Beatbots-Controller";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		028AF01224AFA1BD00411179 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -443,6 +581,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		027BD92024B790F0000CCC35 /* Build configuration list for PBXNativeTarget "Beatbots Controller" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				027BD91E24B790F0000CCC35 /* Debug */,
+				027BD91F24B790F0000CCC35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		028AEFFD24AFA1BA00411179 /* Build configuration list for PBXProject "Beatbots" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

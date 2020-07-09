@@ -13,15 +13,8 @@ public class Player {
     public let id: String
     public var connected: Bool = true
     public var selectedCharacter: Character?
-    public var currentCommand: Command? {
-        didSet {
-            if currentCommand == nil {
-                alreadyNil = true
-            } else {
-                alreadyNil = false
-            }
-        }
-    }
+    public var currentCommand: Command?
+
     public let commandTimeOut: TimeInterval = 0.25
     public private(set) var commandCountdown: TimeInterval = 0.25
 
@@ -35,9 +28,8 @@ public class Player {
         self.id = id.displayName
     }
 
-    var alreadyNil: Bool = false
     func update(deltaTime: TimeInterval) {
-        if alreadyNil { return }
+        if currentCommand == nil { return }
         commandCountdown -= deltaTime
         guard commandCountdown <= 0 else {
             return

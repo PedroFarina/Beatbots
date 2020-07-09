@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject private var manager = MultipeerManager()
     var body: some View {
-        Text("Hello, World!")
+        Text(manager.state.getText())
     }
 }
 

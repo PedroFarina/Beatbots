@@ -104,7 +104,10 @@ extension MultipeerController: MCSessionDelegate {
     public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         if state == .connected {
             delegate?.peerJoined(peerID)
-        } else if state == .notConnected {
+        } else if state == .connecting {
+            delegate?.peerJoining(peerID)
+        }
+        else if state == .notConnected {
             delegate?.peerLeft(peerID)
         }
     }

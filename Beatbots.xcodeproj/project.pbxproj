@@ -22,6 +22,15 @@
 		027BD91624B790F0000CCC35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 027BD91524B790F0000CCC35 /* Assets.xcassets */; };
 		027BD91924B790F0000CCC35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 027BD91824B790F0000CCC35 /* Preview Assets.xcassets */; };
 		027BD91C24B790F0000CCC35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027BD91A24B790F0000CCC35 /* LaunchScreen.storyboard */; };
+		027BD92124B79691000CCC35 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237550824B2B60500089A16 /* Character.swift */; };
+		027BD92224B79691000CCC35 /* CID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237550C24B2B78900089A16 /* CID.swift */; };
+		027BD92324B79691000CCC35 /* BiMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA62A924B63B8B002F190D /* BiMO.swift */; };
+		027BD92424B79691000CCC35 /* ROOT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA62AB24B63BA9002F190D /* ROOT.swift */; };
+		027BD92524B79691000CCC35 /* GlobalProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237551624B2CD3A00089A16 /* GlobalProperties.swift */; };
+		027BD92624B79691000CCC35 /* MultipeerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237551224B2CCFA00089A16 /* MultipeerHandler.swift */; };
+		027BD92724B79691000CCC35 /* MultipeerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237551424B2CD1F00089A16 /* MultipeerController.swift */; };
+		027BD92924B796E9000CCC35 /* MultipeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027BD92824B796E9000CCC35 /* MultipeerManager.swift */; };
+		027BD92A24B79E93000CCC35 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA62AF24B671C1002F190D /* Command.swift */; };
 		028AF00624AFA1BA00411179 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF00524AFA1BA00411179 /* AppDelegate.swift */; };
 		028AF00824AFA1BA00411179 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF00724AFA1BA00411179 /* ContentView.swift */; };
 		028AF00A24AFA1BD00411179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 028AF00924AFA1BD00411179 /* Assets.xcassets */; };
@@ -57,6 +66,7 @@
 		027BD91824B790F0000CCC35 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		027BD91B24B790F0000CCC35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		027BD91D24B790F0000CCC35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		027BD92824B796E9000CCC35 /* MultipeerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerManager.swift; sourceTree = "<group>"; };
 		028AF00224AFA1BA00411179 /* Beatbots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatbots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		028AF00524AFA1BA00411179 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		028AF00724AFA1BA00411179 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,7 +121,6 @@
 				028AF02124AFBC8B00411179 /* GameState.swift */,
 				028AF01F24AFBC6200411179 /* StateHolder.swift */,
 				02CA62AD24B66083002F190D /* CGPointExtension.swift */,
-				02CA62AF24B671C1002F190D /* Command.swift */,
 			);
 			path = "Game Logic";
 			sourceTree = "<group>";
@@ -119,6 +128,7 @@
 		0237551124B2CCDC00089A16 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				02CA62AF24B671C1002F190D /* Command.swift */,
 				0237550B24B2B63900089A16 /* Characters */,
 				0237551624B2CD3A00089A16 /* GlobalProperties.swift */,
 				0237551224B2CCFA00089A16 /* MultipeerHandler.swift */,
@@ -130,6 +140,7 @@
 		027BD90E24B790EA000CCC35 /* Beatbots Controller */ = {
 			isa = PBXGroup;
 			children = (
+				027BD92824B796E9000CCC35 /* MultipeerManager.swift */,
 				027BD90F24B790EA000CCC35 /* AppDelegate.swift */,
 				027BD91124B790EA000CCC35 /* SceneDelegate.swift */,
 				027BD91324B790EA000CCC35 /* ContentView.swift */,
@@ -324,9 +335,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				027BD92324B79691000CCC35 /* BiMO.swift in Sources */,
 				027BD91024B790EA000CCC35 /* AppDelegate.swift in Sources */,
 				027BD91224B790EA000CCC35 /* SceneDelegate.swift in Sources */,
+				027BD92224B79691000CCC35 /* CID.swift in Sources */,
 				027BD91424B790EA000CCC35 /* ContentView.swift in Sources */,
+				027BD92724B79691000CCC35 /* MultipeerController.swift in Sources */,
+				027BD92424B79691000CCC35 /* ROOT.swift in Sources */,
+				027BD92124B79691000CCC35 /* Character.swift in Sources */,
+				027BD92924B796E9000CCC35 /* MultipeerManager.swift in Sources */,
+				027BD92524B79691000CCC35 /* GlobalProperties.swift in Sources */,
+				027BD92624B79691000CCC35 /* MultipeerHandler.swift in Sources */,
+				027BD92A24B79E93000CCC35 /* Command.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,11 +7,41 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ContentView: View {
     @ObservedObject private var manager = MultipeerManager()
+
+    func makeText() -> (Text, Bool) {
+        let state = manager.connectionState
+        switch state {
+        case .Connected(_):
+            return (Text(""), true)
+        default:
+            return (Text(state.getText()), false)
+        }
+    }
     var body: some View {
-        Text(manager.state.getText())
+        let showUI = makeText()
+        return VStack {
+            if showUI.1 {
+                Circle().frame(width: 120, height: 120, alignment: .center)
+                HStack {
+                    Image(systemName: "arrow.left").resizable().scaledToFit()
+                    Image(systemName: "arrow.right").resizable().scaledToFit()
+                }.overlay(SwipeGesture(
+                    Swipe(direction: .left, action: { print("Left")} ),
+                    Swipe(direction: .right, action: { print("Right")} )
+                ))
+                Button(action: {
+                    print("oie")
+                }) {
+                    Text("Confirm")
+                }
+            } else {
+                showUI.0
+            }
+        }
     }
 }
 

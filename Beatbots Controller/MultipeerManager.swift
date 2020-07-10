@@ -10,7 +10,7 @@ import MultipeerConnectivity
 import SwiftUI
 
 public class MultipeerManager: ObservableObject, MultipeerHandler {
-    @Published public private(set) var state: ConnectionStatus = .Searching
+    @Published public private(set) var connectionState: ConnectionStatus = .Searching
 
     init() {
         MultipeerController.shared().delegate = self
@@ -19,7 +19,7 @@ public class MultipeerManager: ObservableObject, MultipeerHandler {
 
     private func setState(to state: ConnectionStatus) {
         DispatchQueue.main.async {
-            self.state = state
+            self.connectionState = state
         }
     }
 

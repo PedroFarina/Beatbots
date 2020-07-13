@@ -82,11 +82,19 @@ public class MultipeerController: NSObject {
         delegate?.sessionEnded()
     }
 
+    public func sendToAllPeers(_ str: String, reliably: Bool) {
+        sendToAllPeers(Data(str.utf8), reliably: reliably)
+    }
     public func sendToAllPeers(_ data: Data, reliably: Bool) {
         sendToPeers(data, reliably: reliably, peers: connectedPeers)
     }
 
     #if os(iOS)
+    public func sendToHost(_ str: String, reliably: Bool) {
+        if let host = host {
+            sendToPeers(Data(str.utf8), reliably: reliably, peers: [host])
+        }
+    }
     public func sendToHost(_ data: Data, reliably: Bool) {
         if let host = host {
             sendToPeers(data, reliably: reliably, peers: [host])
@@ -94,6 +102,9 @@ public class MultipeerController: NSObject {
     }
     #endif
 
+    public func sendToPeers(_ str: String, reliably: Bool, peers: [MCPeerID]) {
+        sendToPeers(Data(str.utf8), reliably: reliably, peers: peers)
+    }
     public func sendToPeers(_ data: Data, reliably: Bool, peers: [MCPeerID]) {
         guard !peers.isEmpty else { return }
         do {

@@ -9,6 +9,8 @@
 import Foundation
 
 public class BiMO: Character, ObservableObject {
+    public var isAvailable: Bool = true
+
     public static let name = "BiMO"
     public static let imagePath = "BiMO"
     #if os(tvOS)

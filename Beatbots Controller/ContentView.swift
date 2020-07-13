@@ -66,9 +66,13 @@ struct ContentView: View {
                     } )
                 )).padding([.top, .bottom], 120)
                 Button(action: {
-                    MultipeerController.shared().sendToHost(Data("Choose \(type(of: self.visibleCharacter).name)".utf8), reliably: false)
+                    MultipeerController.shared().sendToHost("\(GlobalProperties.choosingKey)\(type(of: self.visibleCharacter).name)", reliably: false)
                 }) {
-                    Text("Confirm")
+                    if manager.characterState == .Choosing {
+                        Text("Select")
+                    } else {
+                        Text("Unselect")
+                    }
                 }
             } else {
                 showUI.0
@@ -77,8 +81,10 @@ struct ContentView: View {
     }
 }
 
+#if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+#endif

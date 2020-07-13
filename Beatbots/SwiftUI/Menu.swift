@@ -58,9 +58,9 @@ public struct Menu: View {
     }
 
 
-    @ObservedObject private var cid = CID()
-    @ObservedObject private var bimo = BiMO()
-    @ObservedObject private var root = ROOT()
+    @ObservedObject private var cid = PlayersManager.shared().cid
+    @ObservedObject private var bimo = PlayersManager.shared().bimo
+    @ObservedObject private var root = PlayersManager.shared().root
     fileprivate func createImageOf(_ character: Character) -> some View {
         let image = Image(type(of: character).imagePath)
             .resizable()

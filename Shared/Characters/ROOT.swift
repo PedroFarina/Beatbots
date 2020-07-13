@@ -9,6 +9,8 @@
 import Foundation
 
 public class ROOT: Character, ObservableObject {
+    public var isAvailable: Bool = true
+
     public static let name = "ROOT"
     public static let imagePath = "ROOT"
     #if os(tvOS)

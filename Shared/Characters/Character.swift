@@ -11,6 +11,7 @@ import SwiftUI
 public protocol Character: class {
     static var name: String { get }
     static var imagePath: String { get }
+    var isAvailable: Bool { get set }
     #if os(tvOS)
     var player: Player? { get set }
     #endif

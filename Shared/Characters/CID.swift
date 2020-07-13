@@ -9,6 +9,8 @@
 import Foundation
 
 public class CID: Character, ObservableObject {
+    public var isAvailable: Bool = true
+
     public static let name = "CID"
     public static let imagePath = "CID"
     #if os(tvOS)

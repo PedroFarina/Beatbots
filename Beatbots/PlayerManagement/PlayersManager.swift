@@ -20,6 +20,9 @@ public class PlayersManager: MultipeerHandler {
         MultipeerController.shared().delegate = self
         tvControllerEnabledChanged(to: GlobalProperties.tvControllerEnabled)
     }
+    public private(set) var cid = CID()
+    public private(set) var bimo = BiMO()
+    public private(set) var root = ROOT()
 
     public var stateHolder: StateHolder?
 
@@ -50,10 +53,18 @@ public class PlayersManager: MultipeerHandler {
     }
 
     public func characterSelected(character: Character, by id: String) {
-        if let player = players.first(where: {$0.id == id}) {
-            player.selectedCharacter?.player = nil
-            character.player = player
-            player.selectedCharacter = character
+        if let player = self.players.first(where: {$0.id == id}) {
+            if character.player === player {
+                player.selectedCharacter?.player = nil
+                character.player = nil
+                character.isAvailable = true
+            } else if character.isAvailable {
+                player.selectedCharacter?.isAvailable = true
+                player.selectedCharacter?.player = nil
+                character.player = player
+                player.selectedCharacter = character
+                character.isAvailable = false
+            }
         }
     }
 
@@ -93,8 +104,28 @@ public class PlayersManager: MultipeerHandler {
         }
     }
 
+    private func getCharacter(from str: String) -> Character? {
+        if str == type(of: cid).name {
+            return cid
+        } else if str == type(of: bimo).name {
+            return bimo
+        } else if str == type(of: root).name {
+            return root
+        }
+        return nil
+    }
+
     public func receivedData(_ data: Data, from peerID: MCPeerID) {
         if let str = String(bytes: data, encoding: .utf8) {
+            if str.starts(with: GlobalProperties.choosingKey),
+                let character = getCharacter(from: String(str.suffix(str.count - GlobalProperties.choosingKey.count))){
+                DispatchQueue.main.async {
+                    self.characterSelected(character: character, by: peerID.displayName)
+                    if character.isAvailable || character.player?.id == peerID.displayName {
+                        MultipeerController.shared().sendToPeers(GlobalProperties.confirmationKey, reliably: false, peers: [peerID])
+                    }
+                }
+            }
         }
     }
 }

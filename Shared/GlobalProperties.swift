@@ -17,6 +17,8 @@ public class GlobalProperties {
     private init() {
     }
     public static let serviceType = "Beatbots"
+    public static let choosingKey = "Choosing"
+    public static let confirmationKey = "ActionOccur"
     #if os(tvOS)
     public static let tvControllerPlayerID = "tvControllerPlayer"
     public static var tvControllerEnabled: Bool {

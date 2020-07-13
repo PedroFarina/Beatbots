@@ -11,6 +11,7 @@ import SwiftUI
 
 public class MultipeerManager: ObservableObject, MultipeerHandler {
     @Published public private(set) var connectionState: ConnectionStatus = .Searching
+    @Published public private(set) var characterState: CharacterStatus = .Choosing
     let myQueue = DispatchQueue(label: "MultipeerManager")
 
     init() {
@@ -48,6 +49,28 @@ public class MultipeerManager: ObservableObject, MultipeerHandler {
 
     public func peerLost(_ id: MCPeerID) {
         setState(to: .Lost(id: id.displayName))
+    }
+
+    public func receivedData(_ data: Data, from peerID: MCPeerID) {
+        if let str = String(bytes: data, encoding: .utf8) {
+            if str == GlobalProperties.confirmationKey {
+                DispatchQueue.main.async {
+                    self.characterState = self.characterState.toggle()
+                }
+            }
+        }
+    }
+}
+
+public enum CharacterStatus {
+    case Choosing
+    case Confirmed
+
+    func toggle() -> CharacterStatus {
+        if self == .Choosing {
+            return .Confirmed
+        }
+        return .Choosing
     }
 }
 

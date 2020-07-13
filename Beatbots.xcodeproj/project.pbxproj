@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0203C3C324B90BB100CAEDE2 /* Characters.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0203C3C224B90BB100CAEDE2 /* Characters.xcassets */; };
+		0203C3C424B90BB700CAEDE2 /* Characters.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0203C3C224B90BB100CAEDE2 /* Characters.xcassets */; };
 		0237550724AFD76700089A16 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237550624AFD76700089A16 /* Checkbox.swift */; };
 		0237550924B2B60500089A16 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237550824B2B60500089A16 /* Character.swift */; };
 		0237550D24B2B78900089A16 /* CID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237550C24B2B78900089A16 /* CID.swift */; };
@@ -50,6 +52,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0203C3C224B90BB100CAEDE2 /* Characters.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Characters.xcassets; sourceTree = "<group>"; };
 		0237550624AFD76700089A16 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		0237550824B2B60500089A16 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		0237550C24B2B78900089A16 /* CID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CID.swift; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 		0237550B24B2B63900089A16 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				0203C3C224B90BB100CAEDE2 /* Characters.xcassets */,
 				0237550824B2B60500089A16 /* Character.swift */,
 				0237550C24B2B78900089A16 /* CID.swift */,
 				02CA62A924B63B8B002F190D /* BiMO.swift */,
@@ -318,6 +322,7 @@
 				027BD91C24B790F0000CCC35 /* LaunchScreen.storyboard in Resources */,
 				027BD91924B790F0000CCC35 /* Preview Assets.xcassets in Resources */,
 				027BD91624B790F0000CCC35 /* Assets.xcassets in Resources */,
+				0203C3C424B90BB700CAEDE2 /* Characters.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +333,7 @@
 				028AF01024AFA1BD00411179 /* LaunchScreen.storyboard in Resources */,
 				028AF00D24AFA1BD00411179 /* Preview Assets.xcassets in Resources */,
 				028AF00A24AFA1BD00411179 /* Assets.xcassets in Resources */,
+				0203C3C324B90BB100CAEDE2 /* Characters.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

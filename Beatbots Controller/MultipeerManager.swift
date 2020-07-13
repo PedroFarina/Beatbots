@@ -11,6 +11,7 @@ import SwiftUI
 
 public class MultipeerManager: ObservableObject, MultipeerHandler {
     @Published public private(set) var connectionState: ConnectionStatus = .Searching
+    let myQueue = DispatchQueue(label: "MultipeerManager")
 
     init() {
         MultipeerController.shared().delegate = self
@@ -30,6 +31,11 @@ public class MultipeerManager: ObservableObject, MultipeerHandler {
 
     public func peerLeft(_ id: MCPeerID) {
         setState(to: .Disconnected(id: id.displayName))
+        MultipeerController.shared().stopService()
+        myQueue.asyncAfter(deadline: .now() + 3) {
+            self.setState(to: .Searching)
+            MultipeerController.shared().startService()
+        }
     }
 
     public func peerJoining(_ id: MCPeerID) {
@@ -43,8 +49,6 @@ public class MultipeerManager: ObservableObject, MultipeerHandler {
     public func peerLost(_ id: MCPeerID) {
         setState(to: .Lost(id: id.displayName))
     }
-
-
 }
 
 public enum ConnectionStatus {

@@ -92,4 +92,9 @@ public class PlayersManager: MultipeerHandler {
             }
         }
     }
+
+    public func receivedData(_ data: Data, from peerID: MCPeerID) {
+        if let str = String(bytes: data, encoding: .utf8) {
+        }
+    }
 }

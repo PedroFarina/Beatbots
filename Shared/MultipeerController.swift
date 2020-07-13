@@ -49,6 +49,7 @@ public class MultipeerController: NSObject {
 
     #if os(iOS)
     private var browser: MCNearbyServiceBrowser
+    private var host: MCPeerID?
     #elseif os(tvOS)
     private var advertiser: MCNearbyServiceAdvertiser
     #endif
@@ -72,7 +73,6 @@ public class MultipeerController: NSObject {
     }
 
     public func endSession() {
-        #warning("Disconnecting from a session might require to initialize another one")
         if connectionType == .peer {
             session.disconnect()
         } else if connectionType == .host {
@@ -85,6 +85,14 @@ public class MultipeerController: NSObject {
     public func sendToAllPeers(_ data: Data, reliably: Bool) {
         sendToPeers(data, reliably: reliably, peers: connectedPeers)
     }
+
+    #if os(iOS)
+    public func sendToHost(_ data: Data, reliably: Bool) {
+        if let host = host {
+            sendToPeers(data, reliably: reliably, peers: [host])
+        }
+    }
+    #endif
 
     public func sendToPeers(_ data: Data, reliably: Bool, peers: [MCPeerID]) {
         guard !peers.isEmpty else { return }
@@ -109,6 +117,11 @@ extension MultipeerController: MCSessionDelegate {
         }
         else if state == .notConnected {
             delegate?.peerLeft(peerID)
+            #if os(iOS)
+            if peerID == host {
+                host = nil
+            }
+            #endif
         }
     }
 
@@ -145,7 +158,10 @@ extension MultipeerController: MCSessionDelegate {
 extension MultipeerController: MCNearbyServiceBrowserDelegate {
     public func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         if delegate?.peerDiscovered(peerID) ?? false {
-            browser.invitePeer(peerID, to: session, withContext: nil, timeout: 10)
+            browser.invitePeer(peerID, to: session, withContext: nil, timeout: 15)
+            #if os(iOS)
+            self.host = peerID
+            #endif
         }
     }
 

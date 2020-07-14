@@ -74,7 +74,11 @@ public class MultipeerManager: ObservableObject, MultipeerHandler {
                 case GlobalProperties.confirmationKey:
                     self.characterState.toggle()
                 case GlobalProperties.startKey:
-                    self.characterState = .Playing
+                    if self.characterState == .Confirmed {
+                        self.characterState = .Playing
+                    } else {
+                        MultipeerController.shared().endSession()
+                    }
                 default:
                     break
                 }

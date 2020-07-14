@@ -8,7 +8,21 @@
 
 import MultipeerConnectivity
 
-public class PlayersManager: MultipeerHandler {
+public class PlayersManager: MultipeerHandler, StateObserver {
+    private var state: GameState = .StartMenu
+    public func stateChangedTo(_ state: GameState) {
+        if self.state == .StartMenu && state == .ChoosingCharacters {
+            MultipeerController.shared().startService()
+        } else if (self.state == .ChoosingCharacters || self.state == .GameOver) && state == .StartMenu {
+            MultipeerController.shared().stopService()
+            MultipeerController.shared().endSession()
+        } else if state == .Playing {
+            MultipeerController.shared().sendToAllPeers(GlobalProperties.startKey, reliably: false)
+        }
+        
+        self.state = state
+    }
+
     public static func shared() -> PlayersManager {
         return sharedInstance
     }
@@ -79,7 +93,12 @@ public class PlayersManager: MultipeerHandler {
     }
 
     public func peerReceivedInvitation(_ id: MCPeerID) -> Bool {
-        return players.count < 3
+        if state == GameState.ChoosingCharacters {
+            return players.count < 3
+        } else if state == GameState.Paused {
+            return getPlayer(from: id.displayName) != nil
+        }
+        return false
     }
 
     public func sessionEnded() {
@@ -94,12 +113,17 @@ public class PlayersManager: MultipeerHandler {
     public func peerJoined(_ id: MCPeerID) {
         if !players.contains(where: {$0.id == id.displayName}) {
             players.append(Player(id: id))
+        } else if let player = getPlayer(from: id.displayName) {
+            player.connected = true
         }
-        print(MultipeerController.shared().connectedPeers.count)
+        if state == GameState.Paused,
+            !players.contains(where: {!$0.connected}) {
+            stateHolder?.setState(to: .Playing)
+        }
     }
     public func peerLeft(_ id: MCPeerID) {
         if let index = players.firstIndex(where: {$0.id == id.displayName}) {
-            if stateHolder?.getState() == GameState.Playing {
+            if state == GameState.Playing {
                 players[index].connected = false
                 stateHolder?.setState(to: .Paused)
             } else {
@@ -121,7 +145,10 @@ public class PlayersManager: MultipeerHandler {
 
     public func receivedData(_ data: Data, from peerID: MCPeerID) {
         if let str = String(bytes: data, encoding: .utf8) {
-            if str.starts(with: GlobalProperties.selectKey),
+            if let command = Command(rawValue: str),
+                let player = getPlayer(from: peerID.displayName) {
+                player.currentCommand = command
+            } else if str.starts(with: GlobalProperties.selectKey),
                 let character = getCharacter(from: String(str.suffix(str.count - GlobalProperties.selectKey.count))){
                 DispatchQueue.main.async {
                     if character.isAvailable {

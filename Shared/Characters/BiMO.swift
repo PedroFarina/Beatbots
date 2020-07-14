@@ -13,6 +13,7 @@ public class BiMO: Character, ObservableObject {
 
     public static let name = "BiMO"
     public static let imagePath = "BiMO"
+    public static let framePath = "Frame BiMO"
     #if os(tvOS)
     @Published public var player: Player?
     #endif

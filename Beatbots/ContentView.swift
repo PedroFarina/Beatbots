@@ -8,35 +8,23 @@
 
 import SwiftUI
 
-struct ContentView: View, StateHolder {
+struct ContentView: View {
 
+    @ObservedObject var stateHolder = StateHolder()
+    var scene: SceneView?
     init() {
-        PlayersManager.shared().stateHolder = self
+        stateHolder.subscribe(PlayersManager.shared())
+        PlayersManager.shared().stateHolder = stateHolder
+        let gameScene = GameScene(stateDelegate: stateHolder)
+        stateHolder.subscribe(gameScene)
+        scene = SceneView(scene: gameScene)
     }
 
-    func getState() -> GameState {
-        return gameState
-    }
-
-    func setState(to state: GameState) {
-        if gameState == .StartMenu && state == .ChoosingCharacters {
-            MultipeerController.shared().startService()
-        } else if (gameState == .ChoosingCharacters || gameState == .GameOver) && state == .StartMenu {
-            MultipeerController.shared().stopService()
-            MultipeerController.shared().endSession()
-        } else if state == .Playing {
-            MultipeerController.shared().sendToAllPeers(GlobalProperties.startKey, reliably: false)
-        }
-
-        gameState = state
-    }
-
-    @State var gameState: GameState = .StartMenu
     var body: some View {
         ZStack {
-            SceneView(scene: GameScene(stateDelegate: self)).edgesIgnoringSafeArea(.all)
-            if gameState != GameState.Playing  {
-                Menu(delegate: self)
+            scene.edgesIgnoringSafeArea(.all)
+            if stateHolder.state != GameState.Playing  {
+                Menu(delegate: stateHolder, currentState: stateHolder.state)
             }
         }
     }

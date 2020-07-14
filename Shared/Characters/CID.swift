@@ -13,6 +13,7 @@ public class CID: Character, ObservableObject {
 
     public static let name = "CID"
     public static let imagePath = "CID"
+    public static let framePath = "Frame CID"
     #if os(tvOS)
     @Published public var player: Player?
     #endif

@@ -6,7 +6,9 @@
 //  Copyright © 2020 Pedro Giuliano Farina. All rights reserved.
 //
 
-public protocol StateHolder {
+public protocol StateController {
     func getState() -> GameState
     func setState(to state: GameState)
 }
+
+

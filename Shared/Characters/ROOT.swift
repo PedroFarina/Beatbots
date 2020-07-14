@@ -13,6 +13,7 @@ public class ROOT: Character, ObservableObject {
 
     public static let name = "ROOT"
     public static let imagePath = "ROOT"
+    public static let framePath = "Frame ROOT"
     #if os(tvOS)
     @Published public var player: Player?
     #endif

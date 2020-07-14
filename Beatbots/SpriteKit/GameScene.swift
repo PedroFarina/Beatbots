@@ -8,10 +8,18 @@
 
 import SpriteKit
 
-public class GameScene: SKScene {
-    init(stateDelegate: StateHolder) {
+public class GameScene: SKScene, StateObserver {
+
+    var state: GameState = .StartMenu
+    public func stateChangedTo(_ state: GameState) {
+        if state == .Playing {
+            setupGame(with: "music")
+        }
+        self.state = state
+    }
+
+    init(stateDelegate: StateController) {
         super.init()
-        self.stateDelegate = stateDelegate
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         scaleMode = .aspectFill
     }
@@ -23,17 +31,33 @@ public class GameScene: SKScene {
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let delegate = aDecoder.decodeObject(forKey: "stateDelegate") as? StateHolder else {
+        guard let delegate = aDecoder.decodeObject(forKey: "stateDelegate") as? StateController else {
             return nil
         }
         self.init(stateDelegate: delegate)
     }
 
-    var stateDelegate: StateHolder?
     var tvControllerPlayer: Player?
+    var backgroundNode: SKSpriteNode = SKSpriteNode(color: UIColor(red: 0.8, green: 0.8, blue: 1, alpha: 1), size: CGSize(width: 1, height: 0.6))
+    var characters: [SKSpriteNode] = []
     public override func sceneDidLoad() {
-        self.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 1, alpha: 1)
+        addChild(backgroundNode)
         tvControllerPlayer = PlayersManager.shared().getPlayer(from: GlobalProperties.tvControllerPlayerID)
+    }
+
+    public func setupGame(with music: String) {
+        backgroundNode.texture = SKTexture(imageNamed: "playBackground")
+        var yValue = 0.4
+        for character in PlayersManager.shared().players.map({return $0.selectedCharacter}) {
+            yValue -= 0.20
+            if let charValue = character {
+                let characterNode = SKSpriteNode(imageNamed: type(of: charValue).framePath)
+                characterNode.size = CGSize(width: 0.135, height: 0.135)
+                characterNode.position = CGPoint(x: -0.4, y: yValue)
+                characters.append(characterNode)
+                addChild(characterNode)
+            }
+        }
     }
 
     let threshold: CGFloat = 0.2
@@ -83,7 +107,7 @@ public class GameScene: SKScene {
     var previousTime: TimeInterval = 0
     public override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
-        guard stateDelegate?.getState() == GameState.Playing else {
+        guard state == GameState.Playing else {
             return
         }
         let deltaTime = currentTime - previousTime

@@ -29,7 +29,7 @@ struct ContentView: View {
     var body: some View {
         let showUI = makeText()
         if manager.characterState ==  .Playing {
-            return AnyView(Text(""))
+            return AnyView(PlayingView(character: $visibleCharacter))
         } else {
             return AnyView(SelectionView(connected: showUI.1, connectionText: showUI.0, selecting: manager.characterState == .Choosing, visibleCharacter: $visibleCharacter))
         }

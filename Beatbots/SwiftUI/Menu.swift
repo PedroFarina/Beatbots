@@ -9,10 +9,8 @@
 import SwiftUI
 
 public struct Menu: View {
-    init(delegate: StateHolder) {
-        self.delegate = delegate
-    }
-    public private(set) var delegate: StateHolder
+    public private(set) var delegate: StateController
+    public private(set) var currentState: GameState
 
     private func startMenuView() -> some View {
         VStack {
@@ -119,7 +117,7 @@ public struct Menu: View {
     }
 
     public var body: some View {
-        switch delegate.getState() {
+        switch currentState {
         case .StartMenu:
             return AnyView(startMenuView())
         case .Config:
@@ -131,19 +129,3 @@ public struct Menu: View {
         }
     }
 }
-
-#if DEBUG
-struct Menu_Previews: PreviewProvider {
-    static var previews: some View {
-        Menu(delegate: TestStateHolder())
-    }
-}
-
-struct TestStateHolder: StateHolder {
-    func getState() -> GameState {
-        return .ChoosingCharacters
-    }
-    func setState(to state: GameState) {
-    }
-}
-#endif

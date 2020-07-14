@@ -13,7 +13,11 @@ public class Player {
     public let id: String
     public var connected: Bool = true
     public var selectedCharacter: Character?
-    public var currentCommand: Command?
+    public var currentCommand: Command? {
+        didSet {
+            print(currentCommand)
+        }
+    }
 
     public let commandTimeOut: TimeInterval = 0.25
     public private(set) var commandCountdown: TimeInterval = 0.25

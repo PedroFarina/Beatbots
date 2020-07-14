@@ -48,6 +48,7 @@
 		029BDA6024BE2DD70039188D /* NodePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BDA5F24BE2DD70039188D /* NodePool.swift */; };
 		029BDA6224BE2E180039188D /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BDA6124BE2E180039188D /* Pool.swift */; };
 		029BDA6424BE31320039188D /* Notes.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 029BDA6324BE31320039188D /* Notes.xcassets */; };
+		029BDA6F24BE519B0039188D /* PlayingBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BDA6E24BE519B0039188D /* PlayingBehaviour.swift */; };
 		02B993B724BCF38300EF560F /* PlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B993B624BCF38300EF560F /* PlayingView.swift */; };
 		02B993B924BCF5D400EF560F /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B993B824BCF5D400EF560F /* SelectionView.swift */; };
 		02BE472524B2D29D00A74008 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE472424B2D29D00A74008 /* Player.swift */; };
@@ -94,6 +95,7 @@
 		029BDA5F24BE2DD70039188D /* NodePool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePool.swift; sourceTree = "<group>"; };
 		029BDA6124BE2E180039188D /* Pool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pool.swift; sourceTree = "<group>"; };
 		029BDA6324BE31320039188D /* Notes.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Notes.xcassets; sourceTree = "<group>"; };
+		029BDA6E24BE519B0039188D /* PlayingBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingBehaviour.swift; sourceTree = "<group>"; };
 		02B993B624BCF38300EF560F /* PlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingView.swift; sourceTree = "<group>"; };
 		02B993B824BCF5D400EF560F /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		02BE472424B2D29D00A74008 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -194,8 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				029BDA6524BE4F9B0039188D /* Model */,
-				029BDA6A24BE50B60039188D /* View */,
 				029BDA6924BE50B00039188D /* Controller */,
+				029BDA6A24BE50B60039188D /* View */,
 				028AF00524AFA1BA00411179 /* AppDelegate.swift */,
 				028AF00924AFA1BD00411179 /* Assets.xcassets */,
 				028AF00E24AFA1BD00411179 /* LaunchScreen.storyboard */,
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				028AF01A24AFAE6900411179 /* GameScene.swift */,
+				029BDA6E24BE519B0039188D /* PlayingBehaviour.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				0237550724AFD76700089A16 /* Checkbox.swift in Sources */,
 				028AF01B24AFAE6900411179 /* GameScene.swift in Sources */,
 				026C125324AFC7FA0069DF07 /* RoundedCorners.swift in Sources */,
+				029BDA6F24BE519B0039188D /* PlayingBehaviour.swift in Sources */,
 				0237550D24B2B78900089A16 /* CID.swift in Sources */,
 				02CA62B024B671C1002F190D /* Command.swift in Sources */,
 				0237551524B2CD1F00089A16 /* MultipeerController.swift in Sources */,

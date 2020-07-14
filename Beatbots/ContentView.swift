@@ -24,6 +24,8 @@ struct ContentView: View, StateHolder {
         } else if (gameState == .ChoosingCharacters || gameState == .GameOver) && state == .StartMenu {
             MultipeerController.shared().stopService()
             MultipeerController.shared().endSession()
+        } else if state == .Playing {
+            MultipeerController.shared().sendToAllPeers(GlobalProperties.startKey, reliably: false)
         }
 
         gameState = state

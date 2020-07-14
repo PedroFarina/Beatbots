@@ -44,6 +44,8 @@
 		028AF01E24AFB43C00411179 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF01D24AFB43C00411179 /* Menu.swift */; };
 		028AF02024AFBC6200411179 /* StateHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF01F24AFBC6200411179 /* StateHolder.swift */; };
 		028AF02224AFBC8B00411179 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF02124AFBC8B00411179 /* GameState.swift */; };
+		02B993B724BCF38300EF560F /* PlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B993B624BCF38300EF560F /* PlayingView.swift */; };
+		02B993B924BCF5D400EF560F /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B993B824BCF5D400EF560F /* SelectionView.swift */; };
 		02BE472524B2D29D00A74008 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE472424B2D29D00A74008 /* Player.swift */; };
 		02CA62AA24B63B8B002F190D /* BiMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA62A924B63B8B002F190D /* BiMO.swift */; };
 		02CA62AC24B63BA9002F190D /* ROOT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA62AB24B63BA9002F190D /* ROOT.swift */; };
@@ -84,6 +86,8 @@
 		028AF01D24AFB43C00411179 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		028AF01F24AFBC6200411179 /* StateHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateHolder.swift; sourceTree = "<group>"; };
 		028AF02124AFBC8B00411179 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		02B993B624BCF38300EF560F /* PlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingView.swift; sourceTree = "<group>"; };
+		02B993B824BCF5D400EF560F /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		02BE472424B2D29D00A74008 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		02CA62A924B63B8B002F190D /* BiMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiMO.swift; sourceTree = "<group>"; };
 		02CA62AB24B63BA9002F190D /* ROOT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROOT.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 				027BD91124B790EA000CCC35 /* SceneDelegate.swift */,
 				0246614924B8EA4300FB1DBB /* SwipeGesture.swift */,
 				027BD91324B790EA000CCC35 /* ContentView.swift */,
+				02B993B824BCF5D400EF560F /* SelectionView.swift */,
+				02B993B624BCF38300EF560F /* PlayingView.swift */,
 				027BD91524B790F0000CCC35 /* Assets.xcassets */,
 				027BD91A24B790F0000CCC35 /* LaunchScreen.storyboard */,
 				027BD91D24B790F0000CCC35 /* Info.plist */,
@@ -347,6 +353,7 @@
 				027BD92324B79691000CCC35 /* BiMO.swift in Sources */,
 				027BD91024B790EA000CCC35 /* AppDelegate.swift in Sources */,
 				027BD91224B790EA000CCC35 /* SceneDelegate.swift in Sources */,
+				02B993B724BCF38300EF560F /* PlayingView.swift in Sources */,
 				027BD92224B79691000CCC35 /* CID.swift in Sources */,
 				027BD91424B790EA000CCC35 /* ContentView.swift in Sources */,
 				027BD92724B79691000CCC35 /* MultipeerController.swift in Sources */,
@@ -357,6 +364,7 @@
 				027BD92624B79691000CCC35 /* MultipeerHandler.swift in Sources */,
 				027BD92A24B79E93000CCC35 /* Command.swift in Sources */,
 				0246614A24B8EA4300FB1DBB /* SwipeGesture.swift in Sources */,
+				02B993B924BCF5D400EF560F /* SelectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -83,8 +83,12 @@ public struct Menu: View {
                         .frame(width: 80, height: 80, alignment: .center), alignment: .bottomTrailing))
         if GlobalProperties.tvControllerEnabled {
             return AnyView(Button(action: {
-                PlayersManager.shared().characterSelected(character: character, by:
-                    GlobalProperties.tvControllerPlayerID)
+                if character.isAvailable {
+                    PlayersManager.shared().selectCharacter(character: character, by: GlobalProperties.tvControllerPlayerID)
+                } else if let player = PlayersManager.shared().getPlayer(from: GlobalProperties.tvControllerPlayerID),
+                character.player === player {
+                    PlayersManager.shared().deselectCharacter(character: character)
+                }
             }) {
                 image
             })

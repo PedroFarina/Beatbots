@@ -31,6 +31,13 @@ public class MultipeerManager: ObservableObject, MultipeerHandler {
     }
 
     public func peerLeft(_ id: MCPeerID) {
+        guard id == MultipeerController.shared().host else { return }
+        for char in ContentView.characters {
+            char.reset()
+        }
+        DispatchQueue.main.async {
+            self.characterState = .Choosing
+        }
         setState(to: .Disconnected(id: id.displayName))
         MultipeerController.shared().stopService()
         myQueue.asyncAfter(deadline: .now() + 3) {
@@ -39,23 +46,37 @@ public class MultipeerManager: ObservableObject, MultipeerHandler {
         }
     }
 
+    public func sessionEnded() {
+        for char in ContentView.characters {
+            char.reset()
+        }
+    }
+
     public func peerJoining(_ id: MCPeerID) {
+        guard id == MultipeerController.shared().host else { return }
         setState(to: .Connecting(id: id.displayName))
     }
 
     public func peerJoined(_ id: MCPeerID) {
+        guard id == MultipeerController.shared().host else { return }
         setState(to: .Connected(id: id.displayName))
     }
 
     public func peerLost(_ id: MCPeerID) {
+        guard id == MultipeerController.shared().host else { return }
         setState(to: .Lost(id: id.displayName))
     }
 
     public func receivedData(_ data: Data, from peerID: MCPeerID) {
         if let str = String(bytes: data, encoding: .utf8) {
-            if str == GlobalProperties.confirmationKey {
-                DispatchQueue.main.async {
-                    self.characterState = self.characterState.toggle()
+            DispatchQueue.main.async {
+                switch str {
+                case GlobalProperties.confirmationKey:
+                    self.characterState.toggle()
+                case GlobalProperties.startKey:
+                    self.characterState = .Playing
+                default:
+                    break
                 }
             }
         }
@@ -65,12 +86,14 @@ public class MultipeerManager: ObservableObject, MultipeerHandler {
 public enum CharacterStatus {
     case Choosing
     case Confirmed
+    case Playing
 
-    func toggle() -> CharacterStatus {
+    @inlinable public mutating func toggle() {
         if self == .Choosing {
-            return .Confirmed
+            self = .Confirmed
+        } else if self == .Confirmed {
+            self = .Choosing
         }
-        return .Choosing
     }
 }
 

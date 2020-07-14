@@ -49,7 +49,7 @@ public class MultipeerController: NSObject {
 
     #if os(iOS)
     private var browser: MCNearbyServiceBrowser
-    private var host: MCPeerID?
+    public private(set) var host: MCPeerID?
     #elseif os(tvOS)
     private var advertiser: MCNearbyServiceAdvertiser
     #endif

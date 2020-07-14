@@ -16,4 +16,11 @@ public class CID: Character, ObservableObject {
     #if os(tvOS)
     @Published public var player: Player?
     #endif
+    
+    public func reset() {
+        #if os(tvOS)
+        player = nil
+        #endif
+        isAvailable = true
+    }
 }

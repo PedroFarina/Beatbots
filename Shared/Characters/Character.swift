@@ -15,4 +15,6 @@ public protocol Character: class {
     #if os(tvOS)
     var player: Player? { get set }
     #endif
+    
+    func reset()
 }

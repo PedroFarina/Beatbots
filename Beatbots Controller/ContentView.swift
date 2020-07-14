@@ -12,71 +12,26 @@ import Combine
 struct ContentView: View {
     @ObservedObject private var manager = MultipeerManager()
 
-    func makeText() -> (Text, Bool) {
+    func makeText() -> (String, Bool) {
         let state = manager.connectionState
+        let str = state.getText()
+
         switch state {
         case .Connected(_):
-            return (Text(""), true)
+            return (str, true)
         default:
-            return (Text(state.getText()), false)
+            return (str, false)
         }
     }
 
-    private static let characters: [Character] = [CID(), BiMO(), ROOT()]
+    public static let characters: [Character] = [CID(), BiMO(), ROOT()]
     @State private var visibleCharacter: Character = ContentView.characters[0]
     var body: some View {
         let showUI = makeText()
-        return VStack {
-            if showUI.1 {
-                Image(type(of: visibleCharacter).imagePath).resizable()
-                    .scaledToFit()
-                    .frame(minWidth: 120, idealWidth: 150, maxWidth: 180, minHeight: 120, idealHeight: 150, maxHeight: 180, alignment: .center)
-                    .padding()
-                    .clipShape(Circle()).overlay(
-                        Circle()
-                            .stroke(lineWidth: 3))
-                HStack {
-                    Spacer()
-                    Image(systemName: "arrow.left").resizable().scaledToFill().frame(minWidth: 50, idealWidth: 80, maxWidth: 100, minHeight: 50, idealHeight: 80, maxHeight: 100)
-                    Spacer()
-                    Image(systemName: "arrow.right").resizable().scaledToFill().frame(minWidth: 50, idealWidth: 80, maxWidth: 100, minHeight: 50, idealHeight: 80, maxHeight: 100)
-                    Spacer()
-                }.overlay(SwipeGesture(
-                    Swipe(direction: .left, action: {
-                        if let index = ContentView.characters.firstIndex(where: {$0 === self.visibleCharacter}) {
-                            let value: Int
-                            if index - 1 < 0 {
-                                value = ContentView.characters.count - 1
-                            } else {
-                                value = index - 1
-                            }
-                            self.visibleCharacter = ContentView.characters[value]
-                        }
-                    }),
-                    Swipe(direction: .right, action: {
-                        if let index = ContentView.characters.firstIndex(where: {$0 === self.visibleCharacter}) {
-                            let value: Int
-                            if index + 1 == ContentView.characters.count {
-                                value = 0
-                            } else {
-                                value = index + 1
-                            }
-                            self.visibleCharacter = ContentView.characters[value]
-                        }
-                    } )
-                )).padding([.top, .bottom], 120)
-                Button(action: {
-                    MultipeerController.shared().sendToHost("\(GlobalProperties.choosingKey)\(type(of: self.visibleCharacter).name)", reliably: false)
-                }) {
-                    if manager.characterState == .Choosing {
-                        Text("Select")
-                    } else {
-                        Text("Unselect")
-                    }
-                }
-            } else {
-                showUI.0
-            }
+        if manager.characterState ==  .Playing {
+            return AnyView(Text(""))
+        } else {
+            return AnyView(SelectionView(connected: showUI.1, connectionText: showUI.0, selecting: manager.characterState == .Choosing, visibleCharacter: $visibleCharacter))
         }
     }
 }

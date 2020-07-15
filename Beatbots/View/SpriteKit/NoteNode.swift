@@ -8,24 +8,31 @@
 
 import SpriteKit
 
-public class NoteNode: SKNode {
-    public private(set) var visualNode: SKSpriteNode
+public class NoteNode: SKSpriteNode {
     public private(set) var command: Command
 
-    override convenience init() {
+    convenience init() {
         self.init(command: .Tap)
     }
 
     init(command: Command) {
         self.command = command
-        visualNode = SKSpriteNode()
-        visualNode.texture = command.texture
-        super.init()
+        if let texture = command.texture {
+            super.init(texture: texture, color: .clear, size: CGSize(width: 0.08, height: 0.083))
+        } else {
+            super.init(texture: nil, color: .red, size: CGSize(width: 0.5, height: 0.5))
+        }
+        position = CGPoint(x: 1.1, y: 0)
     }
 
     public func changeCommand(to command: Command) {
         self.command = command
-        visualNode.texture = command.texture
+        texture = command.texture
+    }
+
+    public func reset() {
+        position = CGPoint(x: 1.1, y: 0)
+        removeAllActions()
     }
 
     required convenience init?(coder aDecoder: NSCoder) {

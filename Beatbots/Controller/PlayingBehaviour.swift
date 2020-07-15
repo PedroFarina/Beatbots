@@ -10,14 +10,15 @@ import SpriteKit
 
 public class PlayingBehaviour: GameBehaviour {
     public var scene: GameScene
-    var tvControllerPlayer: Player?
+    weak var tvControllerPlayer: Player?
     var characters: [SKSpriteNode] = []
+    lazy var spawner = NoteSpawner(scene: scene, music: Music(name: "Teste"))
 
     init(scene: GameScene) {
         self.scene = scene
         scene.backgroundNode.texture = SKTexture(imageNamed: "playBackground")
         makeCharacters()
-        tvControllerPlayer = PlayersManager.shared().getPlayer(from: GlobalProperties.tvControllerPlayerID)
+        tvControllerPlayer = PlayersManager.shared().getPlayerFrom(GlobalProperties.tvControllerPlayerID)
     }
 
     private func makeCharacters() {
@@ -79,10 +80,15 @@ public class PlayingBehaviour: GameBehaviour {
     }
 
     public func update(deltaTime: TimeInterval) {
+        spawner.update(deltaTime: deltaTime)
         for player in PlayersManager.shared().players {
             player.update(deltaTime: deltaTime)
         }
     }
 
-
+    deinit {
+        for character in characters {
+            character.removeFromParent()
+        }
+    }
 }

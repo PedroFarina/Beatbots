@@ -31,7 +31,7 @@ public class NodePool {
         }
     }
     public static func release(note: NoteNode) {
-        note.removeAllActions()
+        note.reset()
         note.removeFromParent()
         notes.release(note)
     }

@@ -83,7 +83,7 @@ public struct Menu: View {
             return AnyView(Button(action: {
                 if character.isAvailable {
                     PlayersManager.shared().selectCharacter(character: character, by: GlobalProperties.tvControllerPlayerID)
-                } else if let player = PlayersManager.shared().getPlayer(from: GlobalProperties.tvControllerPlayerID),
+                } else if let player = PlayersManager.shared().getPlayerFrom(GlobalProperties.tvControllerPlayerID),
                 character.player === player {
                     PlayersManager.shared().deselectCharacter(character: character)
                 }

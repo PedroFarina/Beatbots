@@ -168,11 +168,10 @@ public class PlayersManager: MultipeerHandler, StateObserver {
                         MultipeerController.shared().sendToPeers(GlobalProperties.confirmationKey, reliably: false, peers: [peerID])
                     }
                 }
-            } else if str.starts(with: GlobalProperties.deselectKey),
-                let character = getCharacter(from: String(str.suffix(str.count - GlobalProperties.deselectKey.count))) {
+            } else if str.starts(with: GlobalProperties.deselectKey) {
                 DispatchQueue.main.async {
                     if let player = self.getPlayerFrom(peerID.displayName),
-                    character.player === player {
+                        let character = player.selectedCharacter {
                         self.deselectCharacter(character: character)
                         MultipeerController.shared().sendToPeers(GlobalProperties.confirmationKey, reliably: false, peers: [peerID])
                     }

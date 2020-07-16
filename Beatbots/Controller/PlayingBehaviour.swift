@@ -63,14 +63,14 @@ public class PlayingBehaviour: GameBehaviour {
         let value = max(abs(movement.x), abs(movement.y))
         if value > threshold {
             recognizing = false
-            if abs(pos.x) == value {
-                if pos.x < 0 {
+            if abs(movement.x) == value {
+                if movement.x < 0 {
                     tvControllerPlayer?.currentCommand = .SwipeLeft
                 } else {
                     tvControllerPlayer?.currentCommand = .SwipeRight
                 }
-            } else if abs(pos.y) == value {
-                if pos.y < 0 {
+            } else if abs(movement.y) == value {
+                if movement.y < 0 {
                     tvControllerPlayer?.currentCommand = .SwipeDown
                 } else {
                     tvControllerPlayer?.currentCommand = .SwipeUp

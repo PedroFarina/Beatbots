@@ -11,7 +11,7 @@ import Combine
 
 struct ContentView: View {
     var body: some View {
-        SceneView(scene: ControllerScene())
+        SceneView(scene: ControllerScene()).statusBar(hidden: true).edgesIgnoringSafeArea(.all)
     }
 }
 

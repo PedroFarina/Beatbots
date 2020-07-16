@@ -33,7 +33,7 @@ public class ControllerScene: SKScene, StateObserver {
     }
 
     public override func sceneDidLoad() {
-        backgroundColor = .gray
+        backgroundColor = UIColor(named: "background") ?? .white
     }
 
     public let characters: [Character] = [BiMO(), ROOT(), CID()]

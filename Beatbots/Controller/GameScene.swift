@@ -41,6 +41,8 @@ public class GameScene: SKScene, StateObserver {
 
     var backgroundNode: SKSpriteNode = SKSpriteNode(color: UIColor(red: 0.8, green: 0.8, blue: 1, alpha: 1), size: CGSize(width: 1, height: 0.6))
     public override func sceneDidLoad() {
+        let texture = SKTexture(imageNamed: "mainBackground")
+        backgroundNode.texture = texture
         addChild(backgroundNode)
     }
 

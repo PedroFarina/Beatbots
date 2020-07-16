@@ -16,6 +16,7 @@
 		0237551324B2CCFA00089A16 /* MultipeerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237551224B2CCFA00089A16 /* MultipeerHandler.swift */; };
 		0237551524B2CD1F00089A16 /* MultipeerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237551424B2CD1F00089A16 /* MultipeerController.swift */; };
 		0237551724B2CD3A00089A16 /* GlobalProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237551624B2CD3A00089A16 /* GlobalProperties.swift */; };
+		024EC7ED24C0D0A10054DCAD /* StartMenuBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024EC7EC24C0D0A10054DCAD /* StartMenuBehaviour.swift */; };
 		026C125124AFC1970069DF07 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C125024AFC1970069DF07 /* SegmentedControl.swift */; };
 		026C125324AFC7FA0069DF07 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C125224AFC7FA0069DF07 /* RoundedCorners.swift */; };
 		027BD91024B790EA000CCC35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027BD90F24B790EA000CCC35 /* AppDelegate.swift */; };
@@ -75,6 +76,7 @@
 		0237551224B2CCFA00089A16 /* MultipeerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerHandler.swift; sourceTree = "<group>"; };
 		0237551424B2CD1F00089A16 /* MultipeerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerController.swift; sourceTree = "<group>"; };
 		0237551624B2CD3A00089A16 /* GlobalProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalProperties.swift; sourceTree = "<group>"; };
+		024EC7EC24C0D0A10054DCAD /* StartMenuBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuBehaviour.swift; sourceTree = "<group>"; };
 		026C125024AFC1970069DF07 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		026C125224AFC7FA0069DF07 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		027BD90D24B790EA000CCC35 /* Beatbots Controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beatbots Controller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,6 +274,7 @@
 			children = (
 				028AF01A24AFAE6900411179 /* GameScene.swift */,
 				029BDA6E24BE519B0039188D /* PlayingBehaviour.swift */,
+				024EC7EC24C0D0A10054DCAD /* StartMenuBehaviour.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				028AF01B24AFAE6900411179 /* GameScene.swift in Sources */,
 				026C125324AFC7FA0069DF07 /* RoundedCorners.swift in Sources */,
 				029BDA6F24BE519B0039188D /* PlayingBehaviour.swift in Sources */,
+				024EC7ED24C0D0A10054DCAD /* StartMenuBehaviour.swift in Sources */,
 				0237550D24B2B78900089A16 /* CID.swift in Sources */,
 				029BDA7424BF7D0F0039188D /* Music.swift in Sources */,
 				02CA62B024B671C1002F190D /* Command.swift in Sources */,

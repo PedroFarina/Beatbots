@@ -17,12 +17,12 @@ public struct Menu: View {
             Button(action: {
                 self.delegate.setState(to: .ChoosingCharacters)
             }) {
-                Text("Start")
-            }.padding(.top, 550)
+                Text("Start").foregroundColor(.white)
+            }.padding(.top, 800)
             Button(action: {
                 self.delegate.setState(to: .Config)
             }) {
-                Text("Config")
+                Text("Config").foregroundColor(.white)
             }
         }
     }
@@ -31,19 +31,17 @@ public struct Menu: View {
         VStack(alignment: .trailing, spacing: 10) {
             VStack(spacing: 10) {
                 HStack {
-                    Text("AppleTV controler enabled")
+                    Text("AppleTV controler enabled").foregroundColor(.white)
                     Spacer()
-                    Checkbox(initialValue: GlobalProperties.tvControllerEnabled) { value in
+                    Checkbox(color: .white, initialValue: GlobalProperties.tvControllerEnabled) { value in
                         GlobalProperties.tvControllerEnabled = value
                     }
                 }.frame(width: 1000, height: 130, alignment: .center)
                 HStack {
-                    Text("Control Style")
+                    Text("Curtains Closed").foregroundColor(.white)
                     Spacer()
-                    SegmentedControl(TVControlStyle.Click.rawValue, TVControlStyle.Tap.rawValue, selectedItem: GlobalProperties.tvControlStyle.rawValue) { value in
-                        if let style = TVControlStyle(rawValue: value) {
-                            GlobalProperties.tvControlStyle = style
-                        }
+                    Checkbox(color: .white, initialValue: GlobalProperties.curtainClosed) { value in
+                        GlobalProperties.curtainClosed = value
                     }
                 }.frame(width: 1000, height: 130, alignment: .center)
             }.padding(.all, 30).background(RoundedRectangle(cornerRadius: 30).foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.5, opacity: 0.5)))

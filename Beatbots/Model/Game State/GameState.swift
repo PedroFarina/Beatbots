@@ -17,6 +17,13 @@ public protocol GameBehaviour: class {
     func update(deltaTime: TimeInterval)
 }
 
+public extension GameBehaviour {
+    func touchDown(at pos: CGPoint) {}
+    func touchMoved(to pos: CGPoint) {}
+    func touchUp(at pos: CGPoint) {}
+    func update(deltaTime: TimeInterval) {}
+}
+
 public enum GameState {
     case StartMenu
     case Config
@@ -27,6 +34,8 @@ public enum GameState {
 
     func behaviour(on scene: GameScene) -> GameBehaviour? {
         switch self {
+        case .StartMenu:
+            return StartMenuBehaviour(scene: scene)
         case .Playing:
             return PlayingBehaviour(scene: scene)
         default:

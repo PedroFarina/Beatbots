@@ -33,7 +33,7 @@ struct Checkbox: View {
             self.didSelect?(self.isMarked)
         }) {
             Image(systemName: self.isMarked ? "checkmark.square" : "square")
-                .renderingMode(.original)
+                .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: self.size, height: self.size)

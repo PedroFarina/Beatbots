@@ -17,6 +17,8 @@
 		0237551524B2CD1F00089A16 /* MultipeerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237551424B2CD1F00089A16 /* MultipeerController.swift */; };
 		0237551724B2CD3A00089A16 /* GlobalProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237551624B2CD3A00089A16 /* GlobalProperties.swift */; };
 		024EC7ED24C0D0A10054DCAD /* StartMenuBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024EC7EC24C0D0A10054DCAD /* StartMenuBehaviour.swift */; };
+		02514B9724C0D5F400CC058A /* loop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 02514B9624C0D5F400CC058A /* loop.wav */; };
+		02514B9924C0D7C000CC058A /* MusicFilePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02514B9824C0D7C000CC058A /* MusicFilePlayer.swift */; };
 		026C125124AFC1970069DF07 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C125024AFC1970069DF07 /* SegmentedControl.swift */; };
 		026C125324AFC7FA0069DF07 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C125224AFC7FA0069DF07 /* RoundedCorners.swift */; };
 		027BD91024B790EA000CCC35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027BD90F24B790EA000CCC35 /* AppDelegate.swift */; };
@@ -77,6 +79,8 @@
 		0237551424B2CD1F00089A16 /* MultipeerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerController.swift; sourceTree = "<group>"; };
 		0237551624B2CD3A00089A16 /* GlobalProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalProperties.swift; sourceTree = "<group>"; };
 		024EC7EC24C0D0A10054DCAD /* StartMenuBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuBehaviour.swift; sourceTree = "<group>"; };
+		02514B9624C0D5F400CC058A /* loop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = loop.wav; sourceTree = "<group>"; };
+		02514B9824C0D7C000CC058A /* MusicFilePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFilePlayer.swift; sourceTree = "<group>"; };
 		026C125024AFC1970069DF07 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		026C125224AFC7FA0069DF07 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		027BD90D24B790EA000CCC35 /* Beatbots Controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beatbots Controller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +167,15 @@
 				02EDE35124C00AEB00CB8059 /* SceneView.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		02514B9524C0D5DF00CC058A /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				02514B9824C0D7C000CC058A /* MusicFilePlayer.swift */,
+				02514B9624C0D5F400CC058A /* loop.wav */,
+			);
+			path = Files;
 			sourceTree = "<group>";
 		};
 		027BD90E24B790EA000CCC35 /* Beatbots Controller */ = {
@@ -320,6 +333,7 @@
 		029BDA7224BF7CFC0039188D /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				02514B9524C0D5DF00CC058A /* Files */,
 				029BDA7324BF7D0F0039188D /* Music.swift */,
 				029BDA7024BF7C160039188D /* NoteSpawner.swift */,
 			);
@@ -454,6 +468,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02514B9724C0D5F400CC058A /* loop.wav in Resources */,
 				029BDA6424BE31320039188D /* Notes.xcassets in Resources */,
 				028AF01024AFA1BD00411179 /* LaunchScreen.storyboard in Resources */,
 				028AF00D24AFA1BD00411179 /* Preview Assets.xcassets in Resources */,
@@ -500,6 +515,7 @@
 				028AF02224AFBC8B00411179 /* GameState.swift in Sources */,
 				029BDA5E24BE2CF50039188D /* NoteNode.swift in Sources */,
 				02EDE35224C00AEB00CB8059 /* SceneView.swift in Sources */,
+				02514B9924C0D7C000CC058A /* MusicFilePlayer.swift in Sources */,
 				02CA62AE24B66083002F190D /* CGPointExtension.swift in Sources */,
 				029BDA6024BE2DD70039188D /* NodePool.swift in Sources */,
 				0237550F24B2CCB300089A16 /* PlayersManager.swift in Sources */,

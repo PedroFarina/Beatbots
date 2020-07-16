@@ -13,6 +13,7 @@ struct ContentView: View {
     @ObservedObject var stateHolder = StateHolder()
     var scene: SceneView?
     init() {
+        MusicFilePlayer.playSounds(fileName: "loop", ext: ".wav", looped: true)
         stateHolder.subscribe(PlayersManager.shared())
         PlayersManager.shared().stateHolder = stateHolder
         let gameScene = GameScene(stateDelegate: stateHolder)
@@ -21,7 +22,7 @@ struct ContentView: View {
     }
 
     var body: some View {
-        ZStack {
+        return ZStack {
             scene.edgesIgnoringSafeArea(.all)
             if stateHolder.state != GameState.Playing  {
                 Menu(delegate: stateHolder, currentState: stateHolder.state)

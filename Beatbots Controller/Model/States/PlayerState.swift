@@ -38,6 +38,7 @@ public enum PlayerState {
 public protocol PlayerStateBehaviour: class {
     var scene: ControllerScene { get }
     var nextBehaviour: PlayerStateBehaviour? { get }
+    func setup()
     func touchDown(at pos: CGPoint)
     func touchMoved(to pos: CGPoint)
     func touchUp(at pos: CGPoint)

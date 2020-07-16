@@ -13,10 +13,17 @@ public class PlayingBehaviour: PlayerStateBehaviour {
     public private(set) var nextBehaviour: PlayerStateBehaviour?
 
     private var frameNode: SKSpriteNode
+    var confirmNode: SKSpriteNode?
 
-    init(scene: ControllerScene, frameNode: SKSpriteNode) {
+    init(scene: ControllerScene, frameNode: SKSpriteNode, confirmNode: SKSpriteNode) {
         self.scene = scene
         self.frameNode = frameNode
+        self.confirmNode = confirmNode
+    }
+
+    public func setup() {
+        confirmNode?.removeFromParent()
+        confirmNode = nil
     }
 
     let threshold: CGFloat = 0.15

@@ -41,6 +41,9 @@ public class ChoosingBehaviour: PlayerStateBehaviour {
         }
         self.frameNode = frameNode
         self.confirmNode = confirmNode
+    }
+
+    public func setup() {
         confirmNode.color = .green
     }
 

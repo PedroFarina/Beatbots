@@ -14,6 +14,9 @@ public class WaitingConnectionBehaviour: PlayerStateBehaviour {
 
     init(scene: ControllerScene) {
         self.scene = scene
+    }
+
+    public func setup() {
         for child in scene.children {
             child.removeFromParent()
         }

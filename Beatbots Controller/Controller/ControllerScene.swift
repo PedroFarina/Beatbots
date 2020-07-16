@@ -56,7 +56,11 @@ public class ControllerScene: SKScene, StateObserver {
             }
         }
     }
-    var behaviour: PlayerStateBehaviour?
+    var behaviour: PlayerStateBehaviour? {
+        didSet {
+            behaviour?.setup()
+        }
+    }
     public func connectionStateChanged(to state: ConnectionStatus) {
         switch state {
         case .Disconnected(_):

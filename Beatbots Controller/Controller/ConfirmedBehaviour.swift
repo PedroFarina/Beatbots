@@ -19,8 +19,11 @@ public class ConfirmedBehaviour: PlayerStateBehaviour {
         self.scene = scene
         self.frameNode = frameNode
         self.confirmNode = confirmNode
-        self.playingBehaviour = PlayingBehaviour(scene: scene, frameNode: frameNode)
+        self.playingBehaviour = PlayingBehaviour(scene: scene, frameNode: frameNode, confirmNode: confirmNode)
         nextBehaviour = playingBehaviour
+    }
+
+    public func setup() {
         confirmNode.color = .red
     }
 
@@ -34,12 +37,6 @@ public class ConfirmedBehaviour: PlayerStateBehaviour {
         if let firstPoint = firstPoint, confirmNode.contains(firstPoint) && confirmNode.contains(pos) {
             nextBehaviour = ChoosingBehaviour(scene: scene, frameNode: frameNode, confirmNode: confirmNode)
             MultipeerController.shared().sendToHost(GlobalProperties.deselectKey, reliably: false)
-        }
-    }
-
-    deinit {
-        if let next = nextBehaviour, type(of: next) == PlayingBehaviour.self {
-            confirmNode.removeFromParent()
         }
     }
 }

@@ -12,16 +12,17 @@ public class PlayingBehaviour: GameBehaviour {
     public var scene: GameScene
     weak var tvControllerPlayer: Player?
     var characters: [SKSpriteNode] = []
+    var lanes: [SKSpriteNode] = []
     lazy var spawner = NoteSpawner(scene: scene, music: Music(name: "Teste"))
 
     init(scene: GameScene) {
         self.scene = scene
         scene.backgroundNode.texture = SKTexture(imageNamed: "playBackground")
-        makeCharacters()
+        makeLanes()
         tvControllerPlayer = PlayersManager.shared().getPlayerFrom(GlobalProperties.tvControllerPlayerID)
     }
 
-    private func makeCharacters() {
+    private func makeLanes() {
         var yValue = 0.4
         for character in PlayersManager.shared().players.map({return $0.selectedCharacter}) {
             yValue -= 0.20
@@ -32,6 +33,11 @@ public class PlayingBehaviour: GameBehaviour {
                 characters.append(characterNode)
                 scene.addChild(characterNode)
             }
+            let lane = SKSpriteNode(texture: SKTexture(imageNamed: "Lane"))
+            lanes.append(lane)
+            lane.size = CGSize(width: 0.82, height: 0.2)
+            lane.position = CGPoint(x: 0.111, y: yValue)
+            scene.addChild(lane)
         }
     }
 

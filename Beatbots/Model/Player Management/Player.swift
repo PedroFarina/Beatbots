@@ -15,7 +15,7 @@ public class Player {
     public var selectedCharacter: Character?
     public var currentCommand: Command?
 
-    public let commandTimeOut: TimeInterval = 0.3
+    public let commandTimeOut: TimeInterval = 0.25
     public private(set) var commandCountdown: TimeInterval
 
     init?() {

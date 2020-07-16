@@ -24,7 +24,7 @@ public class ConfirmedBehaviour: PlayerStateBehaviour {
     }
 
     public func setup() {
-        confirmNode.color = .red
+        confirmNode.texture = SKTexture(imageNamed: "btnChange")
     }
 
     var firstPoint: CGPoint?

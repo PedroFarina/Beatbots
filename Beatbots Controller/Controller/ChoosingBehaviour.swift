@@ -15,9 +15,11 @@ public class ChoosingBehaviour: PlayerStateBehaviour {
     private var textures: [SKTexture] = []
     private var frameNode: SKSpriteNode
     private var confirmNode: SKSpriteNode
+    private var gesturesNode: SKSpriteNode
 
     convenience init(scene:ControllerScene) {
-        let confirmNode = SKSpriteNode(color: .green, size: CGSize(width: 0.1, height: 0.1))
+        let confirmNode = SKSpriteNode(texture: SKTexture(imageNamed: "btnChoose"))
+        confirmNode.size = CGSize(width: 0.25, height: 0.09)
         confirmNode.position = CGPoint(x: 0, y: -0.3)
         scene.addChild(confirmNode)
         let frameNode = SKSpriteNode(imageNamed: type(of: scene.characters.first ?? BiMO()).framePath)
@@ -28,7 +30,8 @@ public class ChoosingBehaviour: PlayerStateBehaviour {
     }
 
     convenience init(scene: ControllerScene, frameNode: SKSpriteNode) {
-        let confirmNode = SKSpriteNode(color: .green, size: CGSize(width: 0.1, height: 0.1))
+        let confirmNode = SKSpriteNode(texture: SKTexture(imageNamed: "btnChoose"))
+        confirmNode.size = CGSize(width: 0.25, height: 0.09)
         confirmNode.position = CGPoint(x: 0, y: -0.3)
         scene.addChild(confirmNode)
         self.init(scene: scene, frameNode: frameNode, confirmNode: confirmNode)
@@ -41,10 +44,14 @@ public class ChoosingBehaviour: PlayerStateBehaviour {
         }
         self.frameNode = frameNode
         self.confirmNode = confirmNode
+        self.gesturesNode = SKSpriteNode(texture: SKTexture(imageNamed: "selectGestures"))
+        gesturesNode.size = CGSize(width: 0.45, height: 0.15)
+        gesturesNode.position.y = -0.1
+        scene.addChild(gesturesNode)
     }
 
     public func setup() {
-        confirmNode.color = .green
+        confirmNode.texture = SKTexture(imageNamed: "btnChoose")
     }
 
     private var _selectedIndex: Int = 0 {
@@ -103,5 +110,9 @@ public class ChoosingBehaviour: PlayerStateBehaviour {
                 selectedIndex += 1
             }
         }
+    }
+
+    deinit {
+        gesturesNode.removeFromParent()
     }
 }

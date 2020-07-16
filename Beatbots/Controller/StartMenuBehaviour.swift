@@ -12,6 +12,6 @@ public class StartMenuBehaviour: GameBehaviour {
     public var scene: GameScene
     init(scene: GameScene) {
         self.scene = scene
-        scene.backgroundNode.texture = SKTexture(imageNamed: "mainBackground")
+        scene.backgroundNode.texture = SKTexture(imageNamed: "startBackground")
     }
 }

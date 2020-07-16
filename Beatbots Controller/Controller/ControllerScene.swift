@@ -32,8 +32,12 @@ public class ControllerScene: SKScene, StateObserver {
         }
     }
 
+    var backgroundNode = SKSpriteNode(color: UIColor(red: 0.8, green: 0.8, blue: 1, alpha: 1), size: CGSize(width: 0.6, height: 1))
     public override func sceneDidLoad() {
-        backgroundColor = UIColor(named: "background") ?? .white
+        let texture =  SKTexture(imageNamed: "iOSBackground")
+        backgroundNode.texture = texture
+        backgroundNode.name = "background"
+        addChild(backgroundNode)
     }
 
     public let characters: [Character] = [BiMO(), ROOT(), CID()]

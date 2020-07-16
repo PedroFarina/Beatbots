@@ -13,7 +13,7 @@ struct ContentView: View {
     @ObservedObject var stateHolder = StateHolder()
     var scene: SceneView?
     init() {
-        MusicFilePlayer.playSounds(fileName: "loop", ext: ".wav", looped: true)
+        MusicFilePlayer.playInBackground(fileName: "loop", ext: ".wav", looped: true)
         stateHolder.subscribe(PlayersManager.shared())
         PlayersManager.shared().stateHolder = stateHolder
         let gameScene = GameScene(stateDelegate: stateHolder)

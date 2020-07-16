@@ -13,10 +13,12 @@ public class NoteSpawner {
     private let lockQueue = DispatchQueue(label: "NoteSpawnerLocker")
     let speed: TimeInterval
     private var lanes: [Lane] = []
+    private var nPlayers: Int
     init(scene: GameScene, music: Music) {
         self.scene = scene
         speed = music.speed
-        for i in 1...3 {
+        nPlayers = PlayersManager.shared().players.count
+        for i in 1...nPlayers {
             lanes.append(Lane(num: i, music: music, nextNote: music.getNextNoteFor(i)))
         }
     }
@@ -63,7 +65,7 @@ public class NoteSpawner {
     }
     public func update(deltaTime: TimeInterval) {
         timeElapsed += deltaTime
-        DispatchQueue.concurrentPerform(iterations: 3) { (i) in
+        DispatchQueue.concurrentPerform(iterations: nPlayers) { (i) in
             let lane = i + 1
             self.checkLane(lane)
         }

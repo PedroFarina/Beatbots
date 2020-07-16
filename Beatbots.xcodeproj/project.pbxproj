@@ -83,7 +83,7 @@
 		02514B9824C0D7C000CC058A /* MusicFilePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFilePlayer.swift; sourceTree = "<group>"; };
 		026C125024AFC1970069DF07 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		026C125224AFC7FA0069DF07 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
-		027BD90D24B790EA000CCC35 /* Beatbots Controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beatbots Controller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		027BD90D24B790EA000CCC35 /* Beatbots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatbots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		027BD90F24B790EA000CCC35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		027BD91124B790EA000CCC35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		027BD91324B790EA000CCC35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				028AF00224AFA1BA00411179 /* Beatbots.app */,
-				027BD90D24B790EA000CCC35 /* Beatbots Controller.app */,
+				027BD90D24B790EA000CCC35 /* Beatbots.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -395,7 +395,7 @@
 			);
 			name = "Beatbots Controller";
 			productName = "Beatbots Controller";
-			productReference = 027BD90D24B790EA000CCC35 /* Beatbots Controller.app */;
+			productReference = 027BD90D24B790EA000CCC35 /* Beatbots.app */;
 			productType = "com.apple.product-type.application";
 		};
 		028AF00124AFA1BA00411179 /* Beatbots */ = {
@@ -581,7 +581,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "PGF.Beatbots-Controller";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Beatbots;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -603,7 +603,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "PGF.Beatbots-Controller";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Beatbots;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

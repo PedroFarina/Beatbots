@@ -11,7 +11,7 @@ import AVFoundation
 public class MusicFilePlayer {
     static var backgroundAudioPlayer: AVAudioPlayer = AVAudioPlayer()
 
-    static func playSounds(fileName: String, ext: String, looped: Bool = false) {
+    static func playInBackground(fileName: String, ext: String, looped: Bool = false) {
         if let path = Bundle.main.path(forResource: fileName, ofType: ext) {
             let url = URL(fileURLWithPath: path)
             do{
@@ -23,5 +23,9 @@ public class MusicFilePlayer {
             } catch {
             }
         }
+    }
+
+    static func stopPlaying() {
+        backgroundAudioPlayer.stop()
     }
 }

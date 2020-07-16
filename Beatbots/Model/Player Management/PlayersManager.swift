@@ -43,7 +43,9 @@ public class PlayersManager: MultipeerHandler, StateObserver {
     public private(set) var players: [Player] = []
 
     public func getPlayerFrom(_ lane: Int) -> Player? {
-        return nil
+        let i = lane - 1
+        guard i < players.count else { return nil }
+        return players[i]
     }
 
     public func getPlayerFrom(_ id: String) -> Player? {

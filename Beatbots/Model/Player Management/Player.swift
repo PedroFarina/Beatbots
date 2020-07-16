@@ -15,17 +15,19 @@ public class Player {
     public var selectedCharacter: Character?
     public var currentCommand: Command?
 
-    public let commandTimeOut: TimeInterval = 0.4
-    public private(set) var commandCountdown: TimeInterval = 0.25
+    public let commandTimeOut: TimeInterval = 0.3
+    public private(set) var commandCountdown: TimeInterval
 
     init?() {
         guard GlobalProperties.tvControllerEnabled else {
             return nil
         }
         id = GlobalProperties.tvControllerPlayerID
+        commandCountdown = commandTimeOut
     }
     init(id: MCPeerID) {
         self.id = id.displayName
+        commandCountdown = commandTimeOut
     }
 
     func update(deltaTime: TimeInterval) {

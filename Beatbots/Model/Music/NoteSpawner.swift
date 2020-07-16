@@ -35,7 +35,7 @@ public class NoteSpawner {
             let noteNode = NodePool.getNote(with: currentNote.command)
             noteNode.position.y = 0.4 - (0.2 * CGFloat(lane))
             let actions = SKAction.sequence([
-                SKAction.moveTo(x: -0.247, duration: speed),
+                SKAction.moveTo(x: -0.248, duration: speed),
                 SKAction.run({
                     let newActions: [SKAction]
                     let release = SKAction.run {

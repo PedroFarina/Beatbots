@@ -584,7 +584,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "PGF.Beatbots-Controller";
+				PRODUCT_BUNDLE_IDENTIFIER = PGF.Beatbots;
 				PRODUCT_NAME = Beatbots;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -606,7 +606,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "PGF.Beatbots-Controller";
+				PRODUCT_BUNDLE_IDENTIFIER = PGF.Beatbots;
 				PRODUCT_NAME = Beatbots;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;

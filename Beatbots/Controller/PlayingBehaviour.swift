@@ -17,7 +17,7 @@ public class PlayingBehaviour: GameBehaviour {
 
     init(scene: GameScene) {
         self.scene = scene
-        scene.backgroundNode.texture = SKTexture(imageNamed: "playBackground")
+        scene.backgroundNode.texture = SKTexture(imageNamed: GlobalProperties.curtainClosed ? "playBackground2": "playBackground")
         makeLanes()
         tvControllerPlayer = PlayersManager.shared().getPlayerFrom(GlobalProperties.tvControllerPlayerID)
     }

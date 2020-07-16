@@ -18,6 +18,7 @@ public class PlayingBehaviour: GameBehaviour {
     init(scene: GameScene) {
         self.scene = scene
         scene.backgroundNode.texture = SKTexture(imageNamed: GlobalProperties.curtainClosed ? "playBackground2": "playBackground")
+        MusicFilePlayer.playInBackground(fileName: "Musica 1", ext: ".wav")
         makeLanes()
         tvControllerPlayer = PlayersManager.shared().getPlayerFrom(GlobalProperties.tvControllerPlayerID)
     }

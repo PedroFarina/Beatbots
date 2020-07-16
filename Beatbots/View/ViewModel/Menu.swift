@@ -17,12 +17,12 @@ public struct Menu: View {
             Button(action: {
                 self.delegate.setState(to: .ChoosingCharacters)
             }) {
-                Text("Start").foregroundColor(.white)
+                Text("Play").foregroundColor(.white).padding([.leading, .trailing], 20)
             }.padding(.top, 800)
             Button(action: {
                 self.delegate.setState(to: .Config)
             }) {
-                Text("Config").foregroundColor(.white)
+                Text("Settings").foregroundColor(.white).padding([.leading, .trailing], 10)
             }
         }
     }
@@ -48,7 +48,7 @@ public struct Menu: View {
             Button(action: {
                 self.delegate.setState(to: .StartMenu)
             }) {
-                Text("Back").foregroundColor(.white)
+                Text("Back").foregroundColor(.white).padding([.leading, .trailing], 20)
             }
         }
     }

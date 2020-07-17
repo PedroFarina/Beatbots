@@ -31,12 +31,13 @@ public class PlayingBehaviour: PlayerStateBehaviour {
         scene.addChild(gesturesNode)
     }
 
-    let threshold: CGFloat = 0.15
+    let threshold: CGFloat = 0.1
     var firstPoint: CGPoint?
     var recognizing = true
     public func touchDown(at pos: CGPoint) {
         recognizing = true
         firstPoint = pos
+        MultipeerController.shared().sendToHost(Command.Tap.rawValue, reliably: false)
     }
 
     public func touchMoved(to pos: CGPoint) {
@@ -48,7 +49,6 @@ public class PlayingBehaviour: PlayerStateBehaviour {
         guard recognizing else {
             return
         }
-        MultipeerController.shared().sendToHost(Command.Tap.rawValue, reliably: false)
     }
 
     private func checkSwipe(on pos: CGPoint) {

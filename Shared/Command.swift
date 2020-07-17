@@ -19,8 +19,21 @@ public enum Command: String {
 
     #if os(tvOS)
     public var texture: SKTexture? {
-        return Command.textures[self.rawValue]
+        let index: Int
+        switch self {
+        case .SwipeUp:
+            index = 0
+        case .SwipeRight:
+            index = 1
+        case .SwipeDown:
+            index = 2
+        case .SwipeLeft:
+            index = 3
+        case .Tap:
+            index = 4
+        }
+        return Command.textures[index]
     }
-    private static let textures: [String:SKTexture] = ["SwipeUp":SKTexture(imageNamed: "SwipeUp"), "SwipeRight":SKTexture(imageNamed: "SwipeRight"), "SwipeDown":SKTexture(imageNamed: "SwipeDown"), "SwipeLeft":SKTexture(imageNamed: "SwipeLeft"), "Tap":SKTexture(imageNamed: "Tap")]
+    private static let textures: [SKTexture] = [SKTexture(imageNamed: "SwipeUp"), SKTexture(imageNamed: "SwipeRight"), SKTexture(imageNamed: "SwipeDown"), SKTexture(imageNamed: "SwipeLeft"), SKTexture(imageNamed: "Tap")]
     #endif
 }

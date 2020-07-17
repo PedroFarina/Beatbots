@@ -22,9 +22,7 @@ public class NodePool {
         } else {
             defer {
                 lockQueue.async {
-                    for _ in 1...40 {
-                        notes.release(NoteNode())
-                    }
+                    
                 }
             }
             return NoteNode(command: command)

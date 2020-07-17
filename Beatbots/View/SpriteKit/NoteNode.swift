@@ -32,6 +32,8 @@ public class NoteNode: SKSpriteNode {
 
     public func reset() {
         position = CGPoint(x: 1.1, y: 0)
+        size =  CGSize(width: 0.08, height: 0.08)
+        alpha = 1
         removeAllActions()
     }
 

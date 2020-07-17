@@ -15,7 +15,7 @@ public class Player {
     public var selectedCharacter: Character?
     public var currentCommand: Command?
 
-    public let commandTimeOut: TimeInterval = 0.25
+    public let commandTimeOut: TimeInterval
     public private(set) var commandCountdown: TimeInterval
 
     init?() {
@@ -23,10 +23,12 @@ public class Player {
             return nil
         }
         id = GlobalProperties.tvControllerPlayerID
+        commandTimeOut = 0.25
         commandCountdown = commandTimeOut
     }
     init(id: MCPeerID) {
         self.id = id.displayName
+        commandTimeOut = 0.32
         commandCountdown = commandTimeOut
     }
 

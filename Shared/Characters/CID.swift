@@ -11,6 +11,7 @@ import Foundation
 public class CID: Character, ObservableObject {
     public var isAvailable: Bool = true
 
+    public static let part = MusicPart.Melody
     public static let name = "CID"
     public static let imagePath = "CID"
     public static let framePath = "Frame CID"

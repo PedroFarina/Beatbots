@@ -18,8 +18,11 @@ public class NoteSpawner {
         self.scene = scene
         speed = music.speed
         nPlayers = PlayersManager.shared().players.count
-        for i in 1...nPlayers {
-            lanes.append(Lane(num: i, music: music, nextNote: music.getNextNoteFor(i)))
+        for player in PlayersManager.shared().players {
+            if let char = player.selectedCharacter {
+                let part = type(of: char).part
+                lanes.append(Lane(musicPart: part, player: player, music: music, nextNote: music.getNextNoteFor(part)))
+            }
         }
     }
 
@@ -41,8 +44,8 @@ public class NoteSpawner {
                     let release = SKAction.run {
                         NodePool.release(note: noteNode)
                     }
-                    if let player = self.lanes[lane - 1].player,
-                    player.currentCommand == noteNode.command {
+                    let player = self.lanes[lane - 1].player
+                    if player.currentCommand == noteNode.command {
                         newActions = [SKAction.resize(toWidth: 0.03, height: 0.03, duration: 0.2), release]
                     } else {
                         newActions = [
@@ -74,17 +77,12 @@ public class NoteSpawner {
 
 
 struct Lane {
-    var num: Int
-    var player: Player?
+    var musicPart: MusicPart
+    var player: Player
     var music: Music
     var nextNote: Note?
-    init(num: Int, music: Music, nextNote: Note?) {
-        self.num = num
-        self.music = music
-        self.nextNote = nextNote
-        self.player = PlayersManager.shared().getPlayerFrom(num)
-    }
+
     public mutating func getNextNote() {
-        nextNote = music.getNextNoteFor(num)
+        nextNote = music.getNextNoteFor(musicPart)
     }
 }

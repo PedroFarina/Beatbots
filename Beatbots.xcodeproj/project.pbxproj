@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		0203C3C324B90BB100CAEDE2 /* Characters.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0203C3C224B90BB100CAEDE2 /* Characters.xcassets */; };
 		0203C3C424B90BB700CAEDE2 /* Characters.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0203C3C224B90BB100CAEDE2 /* Characters.xcassets */; };
-		020D310E24C10A9B000DFC04 /* Musica 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 020D310D24C10A9A000DFC04 /* Musica 1.wav */; };
+		020E684C24C1F0A50075CCC8 /* 01melody.wav in Resources */ = {isa = PBXBuildFile; fileRef = 020E684824C1F0A40075CCC8 /* 01melody.wav */; };
+		020E684D24C1F0A50075CCC8 /* 01rhythm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 020E684924C1F0A40075CCC8 /* 01rhythm.wav */; };
+		020E684E24C1F0A50075CCC8 /* 01background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 020E684A24C1F0A50075CCC8 /* 01background.wav */; };
+		020E684F24C1F0A50075CCC8 /* 01harmony.wav in Resources */ = {isa = PBXBuildFile; fileRef = 020E684B24C1F0A50075CCC8 /* 01harmony.wav */; };
 		0237550724AFD76700089A16 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237550624AFD76700089A16 /* Checkbox.swift */; };
 		0237550924B2B60500089A16 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237550824B2B60500089A16 /* Character.swift */; };
 		0237550D24B2B78900089A16 /* CID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237550C24B2B78900089A16 /* CID.swift */; };
@@ -72,7 +75,10 @@
 
 /* Begin PBXFileReference section */
 		0203C3C224B90BB100CAEDE2 /* Characters.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Characters.xcassets; sourceTree = "<group>"; };
-		020D310D24C10A9A000DFC04 /* Musica 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Musica 1.wav"; sourceTree = "<group>"; };
+		020E684824C1F0A40075CCC8 /* 01melody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 01melody.wav; sourceTree = "<group>"; };
+		020E684924C1F0A40075CCC8 /* 01rhythm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 01rhythm.wav; sourceTree = "<group>"; };
+		020E684A24C1F0A50075CCC8 /* 01background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 01background.wav; sourceTree = "<group>"; };
+		020E684B24C1F0A50075CCC8 /* 01harmony.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 01harmony.wav; sourceTree = "<group>"; };
 		0237550624AFD76700089A16 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		0237550824B2B60500089A16 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		0237550C24B2B78900089A16 /* CID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CID.swift; sourceTree = "<group>"; };
@@ -145,6 +151,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		020E683F24C1F03A0075CCC8 /* Music 1 */ = {
+			isa = PBXGroup;
+			children = (
+				020E684A24C1F0A50075CCC8 /* 01background.wav */,
+				020E684B24C1F0A50075CCC8 /* 01harmony.wav */,
+				020E684824C1F0A40075CCC8 /* 01melody.wav */,
+				020E684924C1F0A40075CCC8 /* 01rhythm.wav */,
+			);
+			path = "Music 1";
+			sourceTree = "<group>";
+		};
 		0237550B24B2B63900089A16 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,8 +191,8 @@
 		02514B9524C0D5DF00CC058A /* Files */ = {
 			isa = PBXGroup;
 			children = (
+				020E683F24C1F03A0075CCC8 /* Music 1 */,
 				02514B9824C0D7C000CC058A /* MusicFilePlayer.swift */,
-				020D310D24C10A9A000DFC04 /* Musica 1.wav */,
 				02514B9624C0D5F400CC058A /* loop.wav */,
 			);
 			path = Files;
@@ -473,11 +490,14 @@
 			files = (
 				02514B9724C0D5F400CC058A /* loop.wav in Resources */,
 				029BDA6424BE31320039188D /* Notes.xcassets in Resources */,
-				020D310E24C10A9B000DFC04 /* Musica 1.wav in Resources */,
 				028AF01024AFA1BD00411179 /* LaunchScreen.storyboard in Resources */,
 				028AF00D24AFA1BD00411179 /* Preview Assets.xcassets in Resources */,
 				028AF00A24AFA1BD00411179 /* Assets.xcassets in Resources */,
+				020E684D24C1F0A50075CCC8 /* 01rhythm.wav in Resources */,
 				0203C3C324B90BB100CAEDE2 /* Characters.xcassets in Resources */,
+				020E684E24C1F0A50075CCC8 /* 01background.wav in Resources */,
+				020E684F24C1F0A50075CCC8 /* 01harmony.wav in Resources */,
+				020E684C24C1F0A50075CCC8 /* 01melody.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

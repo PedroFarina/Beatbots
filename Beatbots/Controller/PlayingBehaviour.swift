@@ -13,12 +13,18 @@ public class PlayingBehaviour: GameBehaviour {
     weak var tvControllerPlayer: Player?
     var characters: [SKSpriteNode] = []
     var lanes: [SKSpriteNode] = []
-    lazy var spawner = NoteSpawner(scene: scene, music: Music(name: "Teste"))
+    lazy var spawner = NoteSpawner(scene: scene, music: Music(name: "01"))
 
     init(scene: GameScene) {
         self.scene = scene
         scene.backgroundNode.texture = SKTexture(imageNamed: GlobalProperties.curtainClosed ? "playBackground2": "playBackground")
-        MusicFilePlayer.playInBackground(fileName: "Musica 1", ext: ".wav")
+        MusicFilePlayer.stopPlaying()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            MusicFilePlayer.playInBackground(fileName: "01background", ext: ".wav")
+            MusicFilePlayer.playInPart(fileName: "01", ext: ".wav", part: .Harmony)
+            MusicFilePlayer.playInPart(fileName: "01", ext: ".wav", part: .Melody)
+            MusicFilePlayer.playInPart(fileName: "01", ext: ".wav", part: .Rhythm)
+        }
         makeLanes()
         tvControllerPlayer = PlayersManager.shared().getPlayerFrom(GlobalProperties.tvControllerPlayerID)
     }

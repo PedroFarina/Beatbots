@@ -11,6 +11,7 @@ import Foundation
 public class ROOT: Character, ObservableObject {
     public var isAvailable: Bool = true
 
+    public static let part = MusicPart.Rhythm
     public static let name = "ROOT"
     public static let imagePath = "ROOT"
     public static let framePath = "Frame ROOT"

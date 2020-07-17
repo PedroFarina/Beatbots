@@ -11,6 +11,7 @@ import Foundation
 public class BiMO: Character, ObservableObject {
     public var isAvailable: Bool = true
 
+    public static let part = MusicPart.Harmony
     public static let name = "BiMO"
     public static let imagePath = "BiMO"
     public static let framePath = "Frame BiMO"

@@ -15,7 +15,14 @@ public protocol Character: class {
     var isAvailable: Bool { get set }
     #if os(tvOS)
     var player: Player? { get set }
+    static var part: MusicPart { get }
     #endif
     
     func reset()
+}
+
+public enum MusicPart: String {
+    case Rhythm = "rhythm"
+    case Melody = "melody"
+    case Harmony = "harmony"
 }

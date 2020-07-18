@@ -9,34 +9,46 @@
 import AVFoundation
 
 public class MusicFilePlayer {
-    private static var players: [AVAudioPlayer] = [AVAudioPlayer(), AVAudioPlayer(), AVAudioPlayer(), AVAudioPlayer()]
+    public static var players: [AVAudioPlayer] = [AVAudioPlayer(), AVAudioPlayer(), AVAudioPlayer(), AVAudioPlayer()]
 
     static func setup() {
         let audioSession = AVAudioSession.sharedInstance()
         try? audioSession.setCategory(.playback)
         try? audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-    }
-
-    static func playInBackground(fileName: String, ext: String, looped: Bool = false) {
-        if let path = Bundle.main.path(forResource: fileName, ofType: ext) {
+        if let path = Bundle.main.path(forResource: "loop", ofType: "wav") {
             let url = URL(fileURLWithPath: path)
-            setPlayer(0, with: url, looped: looped)
+            players[0] = (try? AVAudioPlayer(contentsOf: url)) ?? players[0]
         }
     }
 
-    private static func setPlayer(_ index: Int, with url: URL, looped: Bool) {
+    public static func now() -> TimeInterval {
+        return players[0].deviceCurrentTime
+    }
+
+    static func playInBackground(fileName: String, ext: String, looped: Bool = false, at time: TimeInterval? = now()) {
+        if let path = Bundle.main.path(forResource: fileName, ofType: ext) {
+            let url = URL(fileURLWithPath: path)
+            setPlayer(0, with: url, looped: looped, at: time)
+        }
+    }
+
+    private static func setPlayer(_ index: Int, with url: URL, looped: Bool, at time: TimeInterval? = nil) {
         do {
             players[index] = try AVAudioPlayer(contentsOf: url)
             players[index].numberOfLoops = looped ? -1 : 0
             if players[index].prepareToPlay() {
-                players[index].play()
+                if let time = time {
+                    players[index].play(atTime: time)
+                } else {
+                    players[index].play()
+                }
             }
         } catch {
 
         }
     }
 
-    static func playInPart(fileName: String, ext: String, part: MusicPart) {
+    static func playInPart(fileName: String, ext: String, part: MusicPart, at time: TimeInterval) {
         if let path = Bundle.main.path(forResource: "\(fileName)\(part.rawValue)", ofType: ext) {
             let url = URL(fileURLWithPath: path)
             let index: Int
@@ -48,7 +60,7 @@ public class MusicFilePlayer {
             case .Rhythm:
                 index = 3
             }
-            setPlayer(index, with: url, looped: false)
+            setPlayer(index, with: url, looped: false, at: time)
         }
     }
 

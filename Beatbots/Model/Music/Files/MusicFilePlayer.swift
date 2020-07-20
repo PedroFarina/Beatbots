@@ -64,6 +64,19 @@ public class MusicFilePlayer {
         }
     }
 
+    static func setVolume(_ volume: Float, on part: MusicPart) {
+        let index: Int
+        switch part {
+        case .Harmony:
+            index = 1
+        case .Melody:
+            index = 2
+        case .Rhythm:
+            index = 3
+        }
+        players[index].volume = volume
+    }
+
     static func stopPlaying() {
         DispatchQueue.concurrentPerform(iterations: 4) { (i) in
             players[i].stop()

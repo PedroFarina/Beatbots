@@ -12,6 +12,7 @@ public class GlobalProperties {
     #if os(tvOS)
     fileprivate static let tvControllerKey = "tvControllerDisabled"
     fileprivate static let curtainClosedKey = "curtainClosed"
+    fileprivate static let perfectNotesKey = "perfectNotes"
     fileprivate static let userDefaults = UserDefaults.standard
     #endif
     private init() {
@@ -38,6 +39,14 @@ public class GlobalProperties {
         }
         set {
         userDefaults.set(newValue, forKey: curtainClosedKey)
+        }
+    }
+    public static var perfectNotes: Bool {
+        get {
+        return userDefaults.bool(forKey: perfectNotesKey)
+        }
+        set {
+        userDefaults.set(newValue, forKey: perfectNotesKey)
         }
     }
     #endif

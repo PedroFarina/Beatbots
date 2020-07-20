@@ -12,6 +12,7 @@ public class Player {
 
     public let id: String
     public var connected: Bool = true
+    public let controlStyle: ControlStyle
     public var selectedCharacter: Character?
     public var currentCommand: Command?
 
@@ -25,11 +26,13 @@ public class Player {
         id = GlobalProperties.tvControllerPlayerID
         commandTimeOut = 0.25
         commandCountdown = commandTimeOut
+        controlStyle = .tvController
     }
     init(id: MCPeerID) {
         self.id = id.displayName
-        commandTimeOut = 0.32
+        commandTimeOut = 0.4
         commandCountdown = commandTimeOut
+        controlStyle = .iPhone
     }
 
     func update(deltaTime: TimeInterval) {
@@ -40,5 +43,10 @@ public class Player {
         }
         commandCountdown = commandTimeOut
         currentCommand = nil
+    }
+
+    public enum ControlStyle {
+        case tvController
+        case iPhone
     }
 }

@@ -19,6 +19,7 @@ public class PlayingBehaviour: GameBehaviour {
     init(scene: GameScene) {
         self.scene = scene
         scene.backgroundNode.texture = SKTexture(imageNamed: GlobalProperties.curtainClosed ? "playBackground2": "playBackground")
+        MusicFilePlayer.stopPlaying()
         DispatchQueue.main.async {
             let now = MusicFilePlayer.now()
             MusicFilePlayer.playInBackground(fileName: "01background", ext: ".wav", at: now + self.music.speed)

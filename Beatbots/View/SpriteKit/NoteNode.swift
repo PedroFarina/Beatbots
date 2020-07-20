@@ -10,6 +10,9 @@ import SpriteKit
 
 public class NoteNode: SKSpriteNode {
     public private(set) var command: Command
+    public weak var player: Player?
+    public var part: MusicPart?
+    public var isWaiting: Bool = false
 
     convenience init() {
         self.init(command: .Tap)
@@ -35,6 +38,9 @@ public class NoteNode: SKSpriteNode {
         size =  CGSize(width: 0.08, height: 0.08)
         alpha = 1
         removeAllActions()
+        isWaiting = false
+        player = nil
+        part = nil
     }
 
     required convenience init?(coder aDecoder: NSCoder) {

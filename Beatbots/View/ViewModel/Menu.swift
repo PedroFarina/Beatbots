@@ -38,6 +38,13 @@ public struct Menu: View {
                     }
                 }.frame(width: 1000, height: 130, alignment: .center)
                 HStack {
+                    Text("Perfect Notes").foregroundColor(.white)
+                    Spacer()
+                    Checkbox(color: .white, initialValue: GlobalProperties.perfectNotes) { value in
+                        GlobalProperties.perfectNotes = value
+                    }
+                }.frame(width: 1000, height: 130, alignment: .center)
+                HStack {
                     Text("Curtains Closed").foregroundColor(.white)
                     Spacer()
                     Checkbox(color: .white, initialValue: GlobalProperties.curtainClosed) { value in

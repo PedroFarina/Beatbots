@@ -26,40 +26,59 @@ public class NoteSpawner {
         }
     }
 
+    var waitingNotes: Set<NoteNode> = []
     var timeElapsed: TimeInterval = 0
 
-    private func checkLane(_ lane: Int) {
-        guard let currentNote = lanes[lane - 1].nextNote else {
+    private func checkLane(_ nLane: Int) {
+        let laneIndex = nLane - 1
+        guard let currentNote = lanes[laneIndex].nextNote else {
             return
         }
         if timeElapsed + speed > currentNote.at {
-            self.lanes[lane - 1].getNextNote()
+            self.lanes[laneIndex].getNextNote()
 
             let noteNode = NodePool.getNote(with: currentNote.command)
-            noteNode.position.y = 0.4 - (0.2 * CGFloat(lane))
+            let player = self.lanes[laneIndex].player
+            noteNode.player = player
+            noteNode.part = self.lanes[laneIndex].musicPart
+            
+            noteNode.position.y = 0.4 - (0.2 * CGFloat(nLane))
             let actions = SKAction.sequence([
                 SKAction.moveTo(x: -0.248, duration: speed),
-                SKAction.wait(forDuration: 0.05),
-                SKAction.run({
-                    let newActions: [SKAction]
-                    let release = SKAction.run {
-                        NodePool.release(note: noteNode)
+                SKAction.run {
+                    noteNode.isWaiting = true
+                    _ = self.lockQueue.sync {
+                        self.waitingNotes.insert(noteNode)
                     }
-                    let player = self.lanes[lane - 1].player
-                    if player.currentCommand == noteNode.command {
-                        newActions = [SKAction.resize(toWidth: 0.03, height: 0.03, duration: 0.2), release]
-                    } else {
-                        newActions = [
-                         SKAction.group([
+                },
+                SKAction.wait(forDuration: lanes[laneIndex].player.controlStyle == .iPhone ?  0.075 : 0.05),
+                SKAction.run {
+                    let removeAction = SKAction.run {
+                        MusicFilePlayer.setVolume(0, on: self.lanes[laneIndex].musicPart)
+                        _ = self.lockQueue.sync {
+                            self.waitingNotes.remove(noteNode)
+                        }
+                    }
+
+                    var newActions:[SKAction] = [
+                        //fade out
+                        SKAction.group([
                             SKAction.moveBy(x: -0.1, y: 0, duration: 0.2),
                             SKAction.fadeOut(withDuration: 0.2)]),
-                         SKAction.run {
+                        //release
+                        SKAction.run {
                             NodePool.release(note: noteNode)
-                         }
-                      ]
+                        }
+                    ]
+
+                    if GlobalProperties.perfectNotes {
+                        newActions.insert(removeAction, at: 0)
+                    } else {
+                        newActions.insert(removeAction, at: 1)
                     }
+
                     noteNode.run(SKAction.sequence(newActions))
-                })
+                }
             ])
             noteNode.run(actions)
             lockQueue.sync {
@@ -72,6 +91,23 @@ public class NoteSpawner {
         DispatchQueue.concurrentPerform(iterations: nPlayers) { (i) in
             let lane = i + 1
             self.checkLane(lane)
+        }
+
+        for note in waitingNotes where note.player?.currentCommand == note.command {
+            _ = lockQueue.sync {
+                waitingNotes.remove(note)
+            }
+            note.removeAllActions()
+            if let part = note.part {
+                MusicFilePlayer.setVolume(1.0, on: part)
+            }
+            let newActions = [
+                SKAction.resize(toWidth: 0.03, height: 0.03, duration: 0.2),
+                SKAction.run({
+                    NodePool.release(note: note)
+                })
+            ]
+            note.run(SKAction.sequence(newActions))
         }
     }
 }

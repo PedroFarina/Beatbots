@@ -13,6 +13,7 @@ public class GlobalProperties {
     fileprivate static let tvControllerKey = "tvControllerDisabled"
     fileprivate static let curtainClosedKey = "curtainClosed"
     fileprivate static let perfectNotesKey = "perfectNotes"
+    fileprivate static let menuMusicDisabledKey = "menuMusicDisabled"
     fileprivate static let userDefaults = UserDefaults.standard
     #endif
     private init() {
@@ -47,6 +48,19 @@ public class GlobalProperties {
         }
         set {
         userDefaults.set(newValue, forKey: perfectNotesKey)
+        }
+    }
+    public static var menuMusicEnabled: Bool {
+        get {
+        return !userDefaults.bool(forKey: menuMusicDisabledKey)
+        }
+        set {
+        userDefaults.set(!newValue, forKey: menuMusicDisabledKey)
+        if newValue {
+        MusicFilePlayer.playInBackground(fileName: "loop", ext: "wav")
+        } else {
+        MusicFilePlayer.stopPlaying()
+        }
         }
     }
     #endif

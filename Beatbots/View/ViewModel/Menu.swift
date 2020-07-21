@@ -45,6 +45,13 @@ public struct Menu: View {
                     }
                 }.frame(width: 1000, height: 130, alignment: .center)
                 HStack {
+                    Text("Menu Music Enabled").foregroundColor(.white)
+                    Spacer()
+                    Checkbox(color: .white, initialValue: GlobalProperties.menuMusicEnabled) { value in
+                        GlobalProperties.menuMusicEnabled = value
+                    }
+                }.frame(width: 1000, height: 130, alignment: .center)
+                HStack {
                     Text("Curtains Closed").foregroundColor(.white)
                     Spacer()
                     Checkbox(color: .white, initialValue: GlobalProperties.curtainClosed) { value in

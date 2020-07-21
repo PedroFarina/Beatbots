@@ -22,6 +22,9 @@ public class PlayersManager: MultipeerHandler, StateObserver {
             for player in PlayersManager.shared().players {
                 player.points = 0
             }
+            if state == .StartMenu, GlobalProperties.menuMusicEnabled {
+                MusicFilePlayer.playInBackground(fileName: "loop", ext: "wav", looped: true)
+            }
         }
         
         self.state = state

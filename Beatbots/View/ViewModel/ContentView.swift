@@ -16,7 +16,7 @@ struct ContentView: View {
         MusicFilePlayer.playInBackground(fileName: "loop", ext: ".wav", looped: true)
         stateHolder.subscribe(PlayersManager.shared())
         PlayersManager.shared().stateHolder = stateHolder
-        let gameScene = GameScene(stateDelegate: stateHolder)
+        let gameScene = GameScene()
         stateHolder.subscribe(gameScene)
         scene = SceneView(scene: gameScene)
     }

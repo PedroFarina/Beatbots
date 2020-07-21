@@ -14,10 +14,14 @@ public class PlayersManager: MultipeerHandler, StateObserver {
         if self.state == .StartMenu && state == .ChoosingCharacters {
             MultipeerController.shared().startService()
         } else if (self.state == .ChoosingCharacters || self.state == .GameOver) && state == .StartMenu {
-            MultipeerController.shared().stopService()
             MultipeerController.shared().endSession()
+            MultipeerController.shared().stopService()
         } else if state == .Playing {
             MultipeerController.shared().sendToAllPeers(GlobalProperties.startKey, reliably: false)
+        } else if self.state == .GameOver {
+            for player in PlayersManager.shared().players {
+                player.points = 0
+            }
         }
         
         self.state = state

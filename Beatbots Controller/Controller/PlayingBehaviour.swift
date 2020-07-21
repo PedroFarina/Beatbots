@@ -13,22 +13,20 @@ public class PlayingBehaviour: PlayerStateBehaviour {
     public private(set) var nextBehaviour: PlayerStateBehaviour?
 
     private var frameNode: SKSpriteNode
-    var confirmNode: SKSpriteNode?
     let gesturesNode: SKSpriteNode
 
-    init(scene: ControllerScene, frameNode: SKSpriteNode, confirmNode: SKSpriteNode) {
+    init(scene: ControllerScene, frameNode: SKSpriteNode) {
         self.scene = scene
         self.frameNode = frameNode
-        self.confirmNode = confirmNode
         gesturesNode = SKSpriteNode(texture: SKTexture(imageNamed: "playGestures"))
         gesturesNode.size = CGSize(width: 0.45, height: 0.45)
         gesturesNode.position.y = -0.23
     }
 
     public func setup() {
-        confirmNode?.removeFromParent()
-        confirmNode = nil
-        scene.addChild(gesturesNode)
+        ThreadSafeController.resetScene(scene)
+        ThreadSafeController.add(frameNode, to: scene)
+        ThreadSafeController.add(gesturesNode, to: scene)
     }
 
     let threshold: CGFloat = 0.1

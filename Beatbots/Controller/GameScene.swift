@@ -20,7 +20,7 @@ public class GameScene: SKScene, StateObserver {
         self.state = state
     }
 
-    init(stateDelegate: StateController) {
+    override init() {
         super.init()
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         scaleMode = .aspectFill
@@ -33,10 +33,7 @@ public class GameScene: SKScene, StateObserver {
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let delegate = aDecoder.decodeObject(forKey: "stateDelegate") as? StateController else {
-            return nil
-        }
-        self.init(stateDelegate: delegate)
+        self.init()
     }
 
     var backgroundNode: SKSpriteNode = SKSpriteNode(color: UIColor(red: 0.8, green: 0.8, blue: 1, alpha: 1), size: CGSize(width: 1, height: 0.6))

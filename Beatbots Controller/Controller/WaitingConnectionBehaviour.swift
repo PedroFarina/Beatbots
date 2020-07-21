@@ -18,23 +18,13 @@ public class WaitingConnectionBehaviour: PlayerStateBehaviour {
     }
 
     public func setup() {
-        for child in scene.children where child.name != "background" {
-            child.removeFromParent()
-        }
+        ThreadSafeController.resetScene(scene)
 
         rocketNode.size = CGSize(width: 0.3, height: 0.3)
-        scene.addChild(rocketNode)
+        ThreadSafeController.add(rocketNode, to: scene)
         rocketNode.position.y = -0.05
         let up = SKAction.move(by: CGVector(dx: 0, dy: 0.1), duration: 1)
         let down = SKAction.move(by: CGVector(dx: 0, dy: -0.1), duration: 1)
         rocketNode.run(SKAction.repeatForever(SKAction.sequence([up, down])))
-    }
-
-    deinit {
-        let rocket = rocketNode
-        rocketNode.removeAllActions()
-        rocketNode.run(SKAction.sequence([SKAction.moveTo(y: 3, duration: 0.5), SKAction.run {
-            rocket.removeFromParent()
-        }]))
     }
 }

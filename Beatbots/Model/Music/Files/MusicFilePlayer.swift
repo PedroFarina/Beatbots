@@ -51,30 +51,19 @@ public class MusicFilePlayer {
     static func playInPart(fileName: String, ext: String, part: MusicPart, at time: TimeInterval) {
         if let path = Bundle.main.path(forResource: "\(fileName)\(part.rawValue)", ofType: ext) {
             let url = URL(fileURLWithPath: path)
-            let index: Int
-            switch part {
-            case .Harmony:
-                index = 1
-            case .Melody:
-                index = 2
-            case .Rhythm:
-                index = 3
-            }
-            setPlayer(index, with: url, looped: false, at: time)
+            setPlayer(part.getIndex() + 1, with: url, looped: false, at: time)
         }
     }
 
     static func setVolume(_ volume: Float, on part: MusicPart) {
-        let index: Int
-        switch part {
-        case .Harmony:
-            index = 1
-        case .Melody:
-            index = 2
-        case .Rhythm:
-            index = 3
-        }
-        players[index].volume = volume
+        players[part.getIndex() + 1].volume = volume
+    }
+
+    static func isBackgroundPlaying() -> Bool {
+        return players[0].isPlaying
+    }
+    static func isPlaying(on part: MusicPart) -> Bool {
+        return players[part.getIndex() + 1].isPlaying
     }
 
     static func stopPlaying() {

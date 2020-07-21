@@ -113,11 +113,36 @@ public struct Menu: View {
                     Text("Back")
                 }
                 Button(action: {
-                    self.delegate.setState(to: .Playing)
+                    if let player = PlayersManager.shared()
+                        .getPlayerFrom(GlobalProperties.tvControllerPlayerID)
+                    {
+                        if player.selectedCharacter != nil {
+                            self.delegate.setState(to: .Playing)
+                        }
+                    } else if let _ = PlayersManager.shared()
+                        .players.first(where: {$0.selectedCharacter != nil}) {
+                        self.delegate.setState(to: .Playing)
+                    }
                 }) {
                     Text("Confirm")
                 }
             }
+        }
+    }
+    private func gameOverView() -> some View {
+        return VStack(alignment: .center) {
+            HStack {
+                Button(action: {
+                    self.delegate.setState(to: .Playing)
+                }) {
+                    Text("Play Again")
+                }
+                Button(action: {
+                    self.delegate.setState(to: .StartMenu)
+                }) {
+                    Text("Exit")
+                }
+            }.padding(.top, 750)
         }
     }
 
@@ -129,6 +154,8 @@ public struct Menu: View {
             return AnyView(configMenuView())
         case .ChoosingCharacters:
             return AnyView(choosingCharactersView())
+        case .GameOver:
+            return AnyView(gameOverView())
         default:
             return AnyView(Text("Not implemented"))
         }

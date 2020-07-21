@@ -133,7 +133,7 @@ public struct Menu: View {
                 }) {
                     Text("Exit")
                 }
-            }
+            }.padding(.top, 750)
         }
     }
 

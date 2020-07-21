@@ -32,6 +32,9 @@ public class PlayingBehaviour: GameBehaviour {
 
     private func makeLanes() {
         var yValue = 0.4
+        if PlayersManager.shared().players.count == 1 {
+            yValue = 0.2
+        }
         for character in PlayersManager.shared().players.map({return $0.selectedCharacter}) {
             yValue -= 0.20
             if let charValue = character {

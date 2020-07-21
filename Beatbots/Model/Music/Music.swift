@@ -293,11 +293,118 @@ public class Music {
             Note(command: .Tap, at: 151.4+speed),
             Note(command: .Tap, at: 151.8+speed),
             Note(command: .Tap, at: 152.2+speed),
-            Note(command: .Tap, at: 152.6+speed)
+            Note(command: .Tap, at: 152.6+speed),
 
-            //song's end
-            
+            //song's end 3.0
+            Note(command: .Tap, at: 155.6+speed),
+            Note(command: .Tap, at: 156+speed),
+            Note(command: .Tap, at: 156.4+speed),
+            Note(command: .Tap, at: 156.8+speed),
+            Note(command: .Tap, at: 157.2+speed),
+            Note(command: .Tap, at: 157.6+speed),
+            Note(command: .Tap, at: 158+speed),
 
+            Note(command: .Tap, at: 159.2+speed),
+            Note(command: .Tap, at: 159.6+speed),
+            Note(command: .Tap, at: 160+speed),
+            Note(command: .Tap, at: 160.4+speed),
+            Note(command: .Tap, at: 160.8+speed),
+            Note(command: .Tap, at: 161.2+speed),
+
+            Note(command: .Tap, at: 162.4+speed),
+            Note(command: .Tap, at: 162.8+speed),
+            Note(command: .Tap, at: 163.2+speed),
+            Note(command: .Tap, at: 163.6+speed),
+            Note(command: .Tap, at: 164+speed),
+            Note(command: .Tap, at: 164.4+speed),
+
+            Note(command: .Tap, at: 165.6+speed),
+            Note(command: .Tap, at: 166+speed),
+            Note(command: .Tap, at: 166.4+speed),
+            Note(command: .Tap, at: 166.8+speed),
+            Note(command: .Tap, at: 166.2+speed),
+
+            Note(command: .Tap, at: 168.8+speed),
+            Note(command: .Tap, at: 169.2+speed),
+            Note(command: .Tap, at: 169.6+speed),
+            Note(command: .Tap, at: 170+speed),
+            Note(command: .Tap, at: 170.4+speed),
+            Note(command: .Tap, at: 170.8+speed),
+
+            Note(command: .Tap, at: 172+speed),
+            Note(command: .Tap, at: 172.4+speed),
+            Note(command: .Tap, at: 172.8+speed),
+            Note(command: .Tap, at: 173.2+speed),
+            Note(command: .Tap, at: 173.6+speed),
+            Note(command: .Tap, at: 174+speed),
+
+            Note(command: .Tap, at: 175.2+speed),
+            Note(command: .Tap, at: 175.6+speed),
+            Note(command: .Tap, at: 176+speed),
+            Note(command: .Tap, at: 176.4+speed),
+            Note(command: .Tap, at: 176.8+speed),
+            Note(command: .Tap, at: 177.2+speed),
+
+            Note(command: .Tap, at: 178.4+speed),
+            Note(command: .Tap, at: 178.8+speed),
+            Note(command: .Tap, at: 179.2+speed),
+            Note(command: .Tap, at: 179.6+speed),
+            Note(command: .Tap, at: 180+speed),
+
+            Note(command: .Tap, at: 181.6+speed),
+            Note(command: .Tap, at: 182+speed),
+            Note(command: .Tap, at: 182.4+speed),
+            Note(command: .Tap, at: 182.8+speed),
+            Note(command: .Tap, at: 183.2+speed),
+            Note(command: .Tap, at: 183.6+speed),
+
+            Note(command: .Tap, at: 184.2+speed),
+            Note(command: .Tap, at: 185+speed),
+            Note(command: .Tap, at: 185.5+speed),
+            Note(command: .Tap, at: 186+speed),
+            Note(command: .Tap, at: 186.5+speed),
+            Note(command: .Tap, at: 187+speed),
+            Note(command: .Tap, at: 187.5+speed),
+            Note(command: .Tap, at: 188.2+speed),
+            Note(command: .Tap, at: 189+speed),
+
+            Note(command: .Tap, at: 190.7+speed),
+
+            Note(command: .Tap, at: 191+speed),
+            Note(command: .Tap, at: 191.5+speed),
+            Note(command: .Tap, at: 192+speed),
+            Note(command: .Tap, at: 193.5+speed),
+
+            Note(command: .Tap, at: 194+speed),
+            Note(command: .Tap, at: 194.5+speed),
+            Note(command: .Tap, at: 195+speed),
+            Note(command: .Tap, at: 195.5+speed),
+            Note(command: .Tap, at: 196+speed),
+
+            Note(command: .Tap, at: 197.2+speed),
+            Note(command: .Tap, at: 198+speed),
+            Note(command: .Tap, at: 198.5+speed),
+            Note(command: .Tap, at: 199+speed),
+            Note(command: .Tap, at: 199.5+speed),
+            Note(command: .Tap, at: 200+speed),
+            Note(command: .Tap, at: 200.5+speed),
+            Note(command: .Tap, at: 201.2+speed),
+            Note(command: .Tap, at: 202+speed),
+
+            Note(command: .Tap, at: 203.7+speed),
+
+            Note(command: .Tap, at: 204+speed),
+            Note(command: .Tap, at: 204.5+speed),
+            Note(command: .Tap, at: 205+speed),
+            Note(command: .Tap, at: 206.5+speed),
+
+            Note(command: .Tap, at: 207+speed),
+            Note(command: .Tap, at: 207.5+speed),
+            Note(command: .Tap, at: 208+speed),
+            Note(command: .Tap, at: 208.5+speed),
+            Note(command: .Tap, at: 209+speed),
+
+            Note(command: .Tap, at: 210.4+speed)
         ]
 
         lanes[.Rhythm] = [Note(command: .Tap, at: 5.8 + speed), Note(command: .Tap, at: 8.9 + speed), Note(command: .Tap, at: 12.1 + speed), Note(command: .Tap, at: 15.2 + speed), Note(command: .Tap, at: 18.3 + speed), Note(command: .Tap, at: 21.7 + speed), Note(command: .Tap, at: 24.8 + speed), Note(command: .Tap, at: 27.8 + speed), Note(command: .Tap, at: 31 + speed), Note(command: .SwipeDown, at: 32 + speed), Note(command: .SwipeDown, at: 34 + speed), Note(command: .SwipeUp, at: 34.6 + speed), Note(command: .SwipeDown, at: 35.2 + speed), Note(command: .SwipeDown, at: 37.5 + speed), Note(command: .SwipeUp, at: 37.8 + speed), Note(command: .SwipeDown, at: 38.5 + speed), Note(command: .SwipeDown, at: 40.5 + speed), Note(command: .SwipeUp, at: 40.8 + speed), Note(command: .SwipeDown, at: 41.5 + speed), Note(command: .SwipeDown, at: 43.7 + speed), Note(command: .SwipeUp, at: 44 + speed), Note(command: .SwipeDown, at: 44.8 + speed), Note(command: .SwipeDown, at: 46.8 + speed), Note(command: .SwipeUp, at: 47.1 + speed), Note(command: .SwipeDown, at: 47.9 + speed), Note(command: .SwipeDown, at: 50 + speed), Note(command: .SwipeUp, at: 50.3 + speed), Note(command: .SwipeDown, at: 51 + speed), Note(command: .SwipeDown, at: 53 + speed), Note(command: .SwipeUp, at: 53.3 + speed), Note(command: .SwipeDown, at: 54 + speed), Note(command: .SwipeDown, at: 56.3 + speed), Note(command: .SwipeUp, at: 56.6 + speed), Note(command: .SwipeDown, at: 57.4 + speed), Note(command: .SwipeDown, at: 58.5 + speed), Note(command: .SwipeUp, at: 59 + speed), Note(command: .SwipeDown, at: 60.7 + speed), Note(command: .SwipeDown, at: 61.3 + speed), Note(command: .SwipeUp, at: 61.8 + speed), Note(command: .SwipeDown, at: 63.7 + speed), Note(command: .SwipeDown, at: 64 + speed), Note(command: .SwipeDown, at: 65.2 + speed), Note(command: .SwipeDown, at: 65.6 + speed), Note(command: .SwipeDown, at: 66 + speed), Note(command: .SwipeUp, at: 66.5 + speed)]

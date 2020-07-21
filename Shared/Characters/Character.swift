@@ -25,4 +25,15 @@ public enum MusicPart: String {
     case Rhythm = "rhythm"
     case Melody = "melody"
     case Harmony = "harmony"
+
+    func getIndex() -> Int {
+        switch self {
+        case .Harmony:
+            return 0
+        case .Melody:
+            return 1
+        case .Rhythm:
+            return 2
+        }
+    }
 }

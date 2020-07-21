@@ -9,6 +9,7 @@
 import SpriteKit
 
 public class NoteNode: SKSpriteNode {
+    public static let name = "NoteNode"
     public private(set) var command: Command
     public weak var player: Player?
     public var part: MusicPart?
@@ -26,6 +27,7 @@ public class NoteNode: SKSpriteNode {
             super.init(texture: nil, color: .red, size: CGSize(width: 0.5, height: 0.5))
         }
         position = CGPoint(x: 1.1, y: 0)
+        self.name = NoteNode.name
     }
 
     public func changeCommand(to command: Command) {

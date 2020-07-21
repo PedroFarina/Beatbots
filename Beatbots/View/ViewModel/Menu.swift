@@ -120,6 +120,22 @@ public struct Menu: View {
             }
         }
     }
+    private func gameOverView() -> some View {
+        return VStack(alignment: .center) {
+            HStack {
+                Button(action: {
+                    self.delegate.setState(to: .Playing)
+                }) {
+                    Text("Play Again")
+                }
+                Button(action: {
+                    self.delegate.setState(to: .StartMenu)
+                }) {
+                    Text("Exit")
+                }
+            }
+        }
+    }
 
     public var body: some View {
         switch currentState {
@@ -129,6 +145,8 @@ public struct Menu: View {
             return AnyView(configMenuView())
         case .ChoosingCharacters:
             return AnyView(choosingCharactersView())
+        case .GameOver:
+            return AnyView(gameOverView())
         default:
             return AnyView(Text("Not implemented"))
         }

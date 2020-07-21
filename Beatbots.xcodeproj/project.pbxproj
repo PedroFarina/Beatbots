@@ -56,6 +56,7 @@
 		029BDA6F24BE519B0039188D /* PlayingBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BDA6E24BE519B0039188D /* PlayingBehaviour.swift */; };
 		029BDA7124BF7C160039188D /* NoteSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BDA7024BF7C160039188D /* NoteSpawner.swift */; };
 		029BDA7424BF7D0F0039188D /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BDA7324BF7D0F0039188D /* Music.swift */; };
+		029F791F24C6A0A4001D54ED /* GameOverBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F791E24C6A0A4001D54ED /* GameOverBehaviour.swift */; };
 		02BE472524B2D29D00A74008 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE472424B2D29D00A74008 /* Player.swift */; };
 		02C9F30624C005FF006F7CBC /* ControllerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C9F30524C005FF006F7CBC /* ControllerScene.swift */; };
 		02C9F30924C00662006F7CBC /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C9F30824C00662006F7CBC /* PlayerState.swift */; };
@@ -118,6 +119,7 @@
 		029BDA6E24BE519B0039188D /* PlayingBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingBehaviour.swift; sourceTree = "<group>"; };
 		029BDA7024BF7C160039188D /* NoteSpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSpawner.swift; sourceTree = "<group>"; };
 		029BDA7324BF7D0F0039188D /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		029F791E24C6A0A4001D54ED /* GameOverBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverBehaviour.swift; sourceTree = "<group>"; };
 		02BE472424B2D29D00A74008 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		02C9F30524C005FF006F7CBC /* ControllerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerScene.swift; sourceTree = "<group>"; };
 		02C9F30824C00662006F7CBC /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
@@ -306,8 +308,9 @@
 			isa = PBXGroup;
 			children = (
 				028AF01A24AFAE6900411179 /* GameScene.swift */,
-				029BDA6E24BE519B0039188D /* PlayingBehaviour.swift */,
 				024EC7EC24C0D0A10054DCAD /* StartMenuBehaviour.swift */,
+				029BDA6E24BE519B0039188D /* PlayingBehaviour.swift */,
+				029F791E24C6A0A4001D54ED /* GameOverBehaviour.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				02CA62AE24B66083002F190D /* CGPointExtension.swift in Sources */,
 				029BDA6024BE2DD70039188D /* NodePool.swift in Sources */,
 				0237550F24B2CCB300089A16 /* PlayersManager.swift in Sources */,
+				029F791F24C6A0A4001D54ED /* GameOverBehaviour.swift in Sources */,
 				028AF02024AFBC6200411179 /* StateController.swift in Sources */,
 				0237550924B2B60500089A16 /* Character.swift in Sources */,
 				028AF00824AFA1BA00411179 /* ContentView.swift in Sources */,

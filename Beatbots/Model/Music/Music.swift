@@ -12,7 +12,8 @@ public class Music {
     public let speed: TimeInterval = 3.25
     private let lockQueue = DispatchQueue(label: "Music")
     public init(name: String) {
-        lanes[.Harmony] = [
+        lanes = [[], [], []]
+        lanes[MusicPart.Harmony.getIndex()] = [
             Note(command: .Tap, at: 0 + speed),
             Note(command: .Tap, at: 0.6 + speed),
             Note(command: .SwipeUp, at: 1.2 + speed),
@@ -234,8 +235,8 @@ public class Music {
             Note(command: .SwipeUp, at: 197 + speed),
             Note(command: .SwipeDown, at: 198.5 + speed)
         ]
-        lanes[.Melody] = [Note(command: .SwipeDown, at: 3), Note(command: .SwipeUp, at: 4), Note(command: .SwipeUp, at: 7), Note(command: .SwipeDown, at: 8), Note(command: .Tap, at: 10), Note(command: .SwipeLeft, at: 11), Note(command: .SwipeUp, at: 14), Note(command: .SwipeUp, at: 16), Note(command: .SwipeUp, at: 16.5), Note(command: .SwipeDown, at: 17), Note(command: .Tap, at: 19), Note(command: .SwipeLeft, at: 22)]
-        lanes[.Rhythm] = [
+        lanes[MusicPart.Melody.getIndex()] = [Note(command: .SwipeDown, at: 3), Note(command: .SwipeUp, at: 4)]
+        lanes[MusicPart.Rhythm.getIndex()] = [
             Note(command: .Tap, at: 5.8 + speed),
             Note(command: .Tap, at: 8.9 + speed),
             Note(command: .Tap, at: 12.1 + speed),
@@ -444,15 +445,23 @@ public class Music {
             Note(command: .SwipeUp, at: 179.2 + speed),
             Note(command: .SwipeRight, at: 192 + speed)
         ]
+
+        totalNotes = [0, 0, 0]
+        totalNotes[MusicPart.Rhythm.getIndex()] = lanes[MusicPart.Rhythm.getIndex()].count
+        totalNotes[MusicPart.Melody.getIndex()] = lanes[MusicPart.Melody.getIndex()].count
+        totalNotes[MusicPart.Harmony.getIndex()] = lanes[MusicPart.Harmony.getIndex()].count
     }
-    private var lanes: [MusicPart: [Note]] = [:]
+
+    public var totalNotes: [Int] = []
+    private var lanes: [[Note]] = []
     public func getNextNoteFor(_ lane: MusicPart) -> Note? {
-        guard var notes = lanes[lane], !notes.isEmpty else {
+        var notes = lanes[lane.getIndex()]
+        guard !notes.isEmpty else {
             return nil
         }
         defer {
             lockQueue.sync {
-                lanes[lane] = notes
+                lanes[lane.getIndex()] = notes
             }
         }
         return notes.removeFirst()

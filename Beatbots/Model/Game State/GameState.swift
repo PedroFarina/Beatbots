@@ -38,6 +38,8 @@ public enum GameState {
             return StartMenuBehaviour(scene: scene)
         case .Playing:
             return PlayingBehaviour(scene: scene)
+        case .GameOver:
+            return GameOverBehaviour(scene: scene)
         default:
             return nil
         }

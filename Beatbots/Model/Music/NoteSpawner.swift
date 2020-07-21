@@ -14,8 +14,10 @@ public class NoteSpawner {
     let speed: TimeInterval
     private var lanes: [Lane] = []
     private var nPlayers: Int
+    let music: Music
     init(scene: GameScene, music: Music) {
         self.scene = scene
+        self.music = music
         speed = music.speed
         nPlayers = PlayersManager.shared().players.count
         for player in PlayersManager.shared().players {
@@ -100,6 +102,7 @@ public class NoteSpawner {
             note.removeAllActions()
             if let part = note.part {
                 MusicFilePlayer.setVolume(1.0, on: part)
+                note.player?.points += Double(1 / music.totalNotes[part.getIndex()])
             }
             let newActions = [
                 SKAction.resize(toWidth: 0.03, height: 0.03, duration: 0.2),

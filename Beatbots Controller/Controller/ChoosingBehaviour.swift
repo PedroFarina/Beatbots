@@ -13,7 +13,7 @@ public class ChoosingBehaviour: PlayerStateBehaviour {
     public private(set) var nextBehaviour: PlayerStateBehaviour?
 
     private var textures: [SKTexture] = []
-    private var frameNode: SKSpriteNode
+    private var frameNode: FrameNode
     private var confirmNode: SKSpriteNode
     private var gesturesNode: SKSpriteNode
 
@@ -21,41 +21,44 @@ public class ChoosingBehaviour: PlayerStateBehaviour {
         let confirmNode = SKSpriteNode(texture: SKTexture(imageNamed: "btnChoose"))
         confirmNode.size = CGSize(width: 0.25, height: 0.09)
         confirmNode.position = CGPoint(x: 0, y: -0.3)
-        scene.addChild(confirmNode)
-        let frameNode = SKSpriteNode(imageNamed: type(of: scene.characters.first ?? BiMO()).framePath)
+        let frameNode = FrameNode()
         frameNode.position = CGPoint(x: 0, y: 0.2)
-        frameNode.size = CGSize(width: 0.3, height: 0.3)
-        scene.addChild(frameNode)
         self.init(scene: scene, frameNode: frameNode, confirmNode: confirmNode)
     }
 
-    convenience init(scene: ControllerScene, frameNode: SKSpriteNode) {
+    convenience init(scene: ControllerScene, frameNode: FrameNode) {
         let confirmNode = SKSpriteNode(texture: SKTexture(imageNamed: "btnChoose"))
         confirmNode.size = CGSize(width: 0.25, height: 0.09)
         confirmNode.position = CGPoint(x: 0, y: -0.3)
-        scene.addChild(confirmNode)
         self.init(scene: scene, frameNode: frameNode, confirmNode: confirmNode)
     }
 
-    init(scene: ControllerScene, frameNode: SKSpriteNode, confirmNode: SKSpriteNode) {
+    init(scene: ControllerScene, frameNode: FrameNode, confirmNode: SKSpriteNode) {
         self.scene = scene
-        for character in scene.characters {
-            textures.append(SKTexture(imageNamed: type(of: character).framePath))
-        }
         self.frameNode = frameNode
         self.confirmNode = confirmNode
         self.gesturesNode = SKSpriteNode(texture: SKTexture(imageNamed: "selectGestures"))
+        for i in 0 ..< scene.characters.count {
+            if scene.characters[i] === frameNode.character {
+                _selectedIndex = i
+            }
+            textures.append(SKTexture(imageNamed: type(of: scene.characters[i]).framePath))
+        }
         gesturesNode.size = CGSize(width: 0.45, height: 0.15)
         gesturesNode.position.y = -0.1
-        scene.addChild(gesturesNode)
     }
 
     public func setup() {
+        ThreadSafeController.resetScene(scene)
         confirmNode.texture = SKTexture(imageNamed: "btnChoose")
+        ThreadSafeController.add(confirmNode, to: scene)
+        ThreadSafeController.add(gesturesNode, to: scene)
+        ThreadSafeController.add(frameNode, to: scene)
     }
 
     private var _selectedIndex: Int = 0 {
         didSet {
+            frameNode.character = scene.characters[_selectedIndex]
             frameNode.texture = textures[_selectedIndex]
         }
     }
@@ -110,9 +113,5 @@ public class ChoosingBehaviour: PlayerStateBehaviour {
                 selectedIndex += 1
             }
         }
-    }
-
-    deinit {
-        gesturesNode.removeFromParent()
     }
 }

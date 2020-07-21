@@ -11,8 +11,7 @@ import SpriteKit
 public class PlayingBehaviour: GameBehaviour {
     public var scene: GameScene
     weak var tvControllerPlayer: Player?
-    var characters: [SKSpriteNode] = []
-    var lanes: [SKSpriteNode] = []
+    var nodesToRemove: Set<SKSpriteNode> = []
     let music = Music(name: "01")
     lazy var spawner = NoteSpawner(scene: scene, music: music)
 
@@ -39,11 +38,11 @@ public class PlayingBehaviour: GameBehaviour {
                 let characterNode = SKSpriteNode(imageNamed: type(of: charValue).framePath)
                 characterNode.size = CGSize(width: 0.135, height: 0.135)
                 characterNode.position = CGPoint(x: -0.4, y: yValue)
-                characters.append(characterNode)
+                nodesToRemove.insert(characterNode)
                 scene.addChild(characterNode)
             }
             let lane = SKSpriteNode(texture: SKTexture(imageNamed: "Lane"))
-            lanes.append(lane)
+            nodesToRemove.insert(lane)
             lane.size = CGSize(width: 0.82, height: 0.2)
             lane.position = CGPoint(x: 0.111, y: yValue)
             scene.addChild(lane)
@@ -99,11 +98,15 @@ public class PlayingBehaviour: GameBehaviour {
         for player in PlayersManager.shared().players {
             player.update(deltaTime: deltaTime)
         }
+        if !MusicFilePlayer.isBackgroundPlaying() && scene.childNode(withName: NoteNode.name) == nil {
+            MusicFilePlayer.stopPlaying()
+            PlayersManager.shared().stateHolder?.setState(to: .GameOver)
+        }
     }
 
     deinit {
-        for character in characters {
-            character.removeFromParent()
+        for node in nodesToRemove {
+            node.removeFromParent()
         }
     }
 }

@@ -15,6 +15,7 @@ public class Player {
     public let controlStyle: ControlStyle
     public var selectedCharacter: Character?
     public var currentCommand: Command?
+    public var points: Double = 0
 
     public let commandTimeOut: TimeInterval
     public private(set) var commandCountdown: TimeInterval
@@ -30,7 +31,7 @@ public class Player {
     }
     init(id: MCPeerID) {
         self.id = id.displayName
-        commandTimeOut = 0.4
+        commandTimeOut = 0.3
         commandCountdown = commandTimeOut
         controlStyle = .iPhone
     }

@@ -113,7 +113,16 @@ public struct Menu: View {
                     Text("Back")
                 }
                 Button(action: {
-                    self.delegate.setState(to: .Playing)
+                    if let player = PlayersManager.shared()
+                        .getPlayerFrom(GlobalProperties.tvControllerPlayerID)
+                    {
+                        if player.selectedCharacter != nil {
+                            self.delegate.setState(to: .Playing)
+                        }
+                    } else if let _ = PlayersManager.shared()
+                        .players.first(where: {$0.selectedCharacter != nil}) {
+                        self.delegate.setState(to: .Playing)
+                    }
                 }) {
                     Text("Confirm")
                 }

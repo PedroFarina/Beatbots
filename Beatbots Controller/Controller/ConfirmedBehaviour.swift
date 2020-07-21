@@ -12,19 +12,22 @@ public class ConfirmedBehaviour: PlayerStateBehaviour {
     public var nextBehaviour: PlayerStateBehaviour?
     public var scene: ControllerScene
 
-    var frameNode: SKSpriteNode
+    var frameNode: FrameNode
     var confirmNode: SKSpriteNode
     let playingBehaviour: PlayingBehaviour
-    init(scene: ControllerScene, frameNode: SKSpriteNode, confirmNode: SKSpriteNode) {
+    init(scene: ControllerScene, frameNode: FrameNode, confirmNode: SKSpriteNode) {
         self.scene = scene
         self.frameNode = frameNode
         self.confirmNode = confirmNode
-        self.playingBehaviour = PlayingBehaviour(scene: scene, frameNode: frameNode, confirmNode: confirmNode)
+        self.playingBehaviour = PlayingBehaviour(scene: scene, frameNode: frameNode)
         nextBehaviour = playingBehaviour
     }
 
     public func setup() {
+        ThreadSafeController.resetScene(scene)
         confirmNode.texture = SKTexture(imageNamed: "btnChange")
+        ThreadSafeController.add(frameNode, to: scene)
+        ThreadSafeController.add(confirmNode, to: scene)
     }
 
     var firstPoint: CGPoint?

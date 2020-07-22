@@ -111,10 +111,15 @@ public class PlayingBehaviour: GameBehaviour {
         }
     }
 
+    var totalTime: TimeInterval = 0
     public func update(deltaTime: TimeInterval) {
         spawner.update(deltaTime: deltaTime)
         for player in PlayersManager.shared().players {
             player.update(deltaTime: deltaTime)
+        }
+        totalTime += deltaTime
+        guard totalTime > music.speed else  {
+            return
         }
         if !MusicFilePlayer.isBackgroundPlaying() && scene.childNode(withName: NoteNode.name) == nil {
             MusicFilePlayer.stopPlaying()

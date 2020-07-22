@@ -13,10 +13,10 @@ public class PlayersManager: MultipeerHandler, StateObserver {
     public func stateChangedTo(_ state: GameState) {
         if self.state == .StartMenu && state == .ChoosingCharacters {
             MultipeerController.shared().startService()
-        } else if (self.state == .ChoosingCharacters || self.state == .GameOver) && state == .StartMenu {
+        } else if (self.state == .Playing || self.state == .ChoosingCharacters || self.state == .GameOver) && state == .StartMenu {
             MultipeerController.shared().endSession()
             MultipeerController.shared().stopService()
-        } else if state == .Playing {
+        } else if self.state == .ChoosingCharacters && state == .Playing {
             MultipeerController.shared().sendToAllPeers(GlobalProperties.startKey, reliably: false)
         } else if self.state == .GameOver {
             for player in PlayersManager.shared().players {
@@ -132,14 +132,14 @@ public class PlayersManager: MultipeerHandler, StateObserver {
     public func peerJoined(_ id: MCPeerID) {
         if !players.contains(where: {$0.id == id.displayName}) {
             players.append(Player(id: id))
-        } else if let player = getPlayerFrom(id.displayName) {
+        } else if let player = getPlayerFrom(id.displayName),
+            let character = player.selectedCharacter {
             player.connected = true
-        }
-        if state == GameState.Paused,
-            !players.contains(where: {!$0.connected}) {
-            stateHolder?.setState(to: .Playing)
+            MultipeerController.shared().sendToPeers(
+                "\(GlobalProperties.startKey)\(type(of:character).name)", reliably: false, peers: [id])
         }
     }
+
     public func peerLeft(_ id: MCPeerID) {
         if let index = players.firstIndex(where: {$0.id == id.displayName}) {
             if state == GameState.Playing {
@@ -148,6 +148,21 @@ public class PlayersManager: MultipeerHandler, StateObserver {
             } else {
                 players.remove(at: index)
             }
+        }
+    }
+
+    public func getDisconnectedPlayers() -> [Player] {
+        var disconnectedPlayers: [Player] = []
+        for player in players where !player.connected {
+            disconnectedPlayers.append(player)
+        }
+        return disconnectedPlayers
+    }
+
+    public func removeDisconnectedPlayers() {
+        while let index = players.firstIndex(where: {!$0.connected}) {
+            players[index].selectedCharacter?.player = nil
+            players.remove(at: index)
         }
     }
 

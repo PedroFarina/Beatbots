@@ -153,6 +153,30 @@ public struct Menu: View {
         }
     }
 
+    private func pausedView() -> some View {
+        let disconnected = PlayersManager.shared().getDisconnectedPlayers()
+        let text = disconnected.isEmpty ? "" : "A player has left.Wait for him to reconnect?"
+        return ZStack() {
+            Image("pauseFrame")
+            VStack(alignment: .center) {
+                Text(text).font(.largeTitle).foregroundColor(Color(#colorLiteral(red: 0.2980392157, green: 0.2980392157, blue: 0.3215686275, alpha: 1))).multilineTextAlignment(.center).padding(.top, 250)
+                Spacer()
+                if !(!GlobalProperties.tvControllerEnabled && PlayersManager.shared().players.count == 1) {
+                    Button(action: {
+                        self.delegate.setState(to: .Playing)
+                    }) {
+                        Text("Return to game").foregroundColor(.white).font(.headline).padding(.all, 5)
+                    }
+                }
+                Button(action: {
+                    self.delegate.setState(to: .StartMenu)
+                }) {
+                    Text("Main Menu").foregroundColor(.white).font(.headline).padding(.all, 5)
+                }
+            }.frame(width: 680, height: 750, alignment: .center)
+        }
+    }
+
     public var body: some View {
         switch currentState {
         case .StartMenu:
@@ -161,6 +185,8 @@ public struct Menu: View {
             return AnyView(configMenuView())
         case .ChoosingCharacters:
             return AnyView(choosingCharactersView())
+        case .Paused:
+            return AnyView(pausedView())
         case .GameOver:
             return AnyView(gameOverView())
         default:

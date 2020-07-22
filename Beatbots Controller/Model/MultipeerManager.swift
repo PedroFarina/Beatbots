@@ -16,6 +16,7 @@ public protocol StateObserver: class {
 
 public class MultipeerManager: MultipeerHandler {
     private var observers: [StateObserver] = []
+    public weak var scene:ControllerScene?
     public func subscribe(_ observer: StateObserver) {
         observers.append(observer)
     }
@@ -81,17 +82,26 @@ public class MultipeerManager: MultipeerHandler {
     public func receivedData(_ data: Data, from peerID: MCPeerID) {
         if let str = String(bytes: data, encoding: .utf8) {
             DispatchQueue.main.async {
-                switch str {
-                case GlobalProperties.confirmationKey:
-                    self.playerState.toggle()
-                case GlobalProperties.startKey:
+                if str.starts(with: GlobalProperties.startKey) {
                     if self.playerState == .Confirmed {
                         self.playerState = .Playing
-                    } else {
+                    } else if str.count > GlobalProperties.startKey.count {
+                        if let scene = self.scene,
+                            let character = scene.characters.first(where:
+                            {type(of:$0).name == str.suffix(str.count - GlobalProperties.startKey.count)})
+                        {
+                            self.playerState = .Playing
+                            let frameNode = FrameNode(character: character)
+                            frameNode.position = CGPoint(x: 0, y: 0.2)
+                            scene.addChild(frameNode)
+                            scene.behaviour = PlayingBehaviour(scene: scene, frameNode: frameNode)
+                        }
+                    }
+                    else {
                         MultipeerController.shared().endSession()
                     }
-                default:
-                    break
+                } else if str == GlobalProperties.confirmationKey {
+                    self.playerState.toggle()
                 }
             }
         }

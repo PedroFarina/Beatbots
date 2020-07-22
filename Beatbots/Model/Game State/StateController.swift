@@ -26,8 +26,10 @@ public class StateHolder: ObservableObject, StateController {
     }
 
     public func setState(to state: GameState) {
-        self.state = state
-        notify()
+        DispatchQueue.main.async {
+            self.state = state
+            self.notify()
+        }
     }
 
     private func notify() {

@@ -11,6 +11,8 @@
 		0203C3C424B90BB700CAEDE2 /* Characters.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0203C3C224B90BB100CAEDE2 /* Characters.xcassets */; };
 		020B065224C74355008D7848 /* FrameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B065124C74355008D7848 /* FrameNode.swift */; };
 		020B065424C745D3008D7848 /* ThreadSafeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B065324C745D3008D7848 /* ThreadSafeController.swift */; };
+		020B065624C78A13008D7848 /* PausedBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B065524C78A13008D7848 /* PausedBehaviour.swift */; };
+		020B065724C88C7B008D7848 /* FrameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B065124C74355008D7848 /* FrameNode.swift */; };
 		020E684C24C1F0A50075CCC8 /* 01melody.wav in Resources */ = {isa = PBXBuildFile; fileRef = 020E684824C1F0A40075CCC8 /* 01melody.wav */; };
 		020E684D24C1F0A50075CCC8 /* 01rhythm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 020E684924C1F0A40075CCC8 /* 01rhythm.wav */; };
 		020E684E24C1F0A50075CCC8 /* 01background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 020E684A24C1F0A50075CCC8 /* 01background.wav */; };
@@ -80,6 +82,7 @@
 		0203C3C224B90BB100CAEDE2 /* Characters.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Characters.xcassets; sourceTree = "<group>"; };
 		020B065124C74355008D7848 /* FrameNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameNode.swift; sourceTree = "<group>"; };
 		020B065324C745D3008D7848 /* ThreadSafeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafeController.swift; sourceTree = "<group>"; };
+		020B065524C78A13008D7848 /* PausedBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedBehaviour.swift; sourceTree = "<group>"; };
 		020E684824C1F0A40075CCC8 /* 01melody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 01melody.wav; sourceTree = "<group>"; };
 		020E684924C1F0A40075CCC8 /* 01rhythm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 01rhythm.wav; sourceTree = "<group>"; };
 		020E684A24C1F0A50075CCC8 /* 01background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 01background.wav; sourceTree = "<group>"; };
@@ -172,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				0203C3C224B90BB100CAEDE2 /* Characters.xcassets */,
+				020B065124C74355008D7848 /* FrameNode.swift */,
 				0237550824B2B60500089A16 /* Character.swift */,
 				0237550C24B2B78900089A16 /* CID.swift */,
 				02CA62A924B63B8B002F190D /* BiMO.swift */,
@@ -313,6 +317,7 @@
 			children = (
 				028AF01A24AFAE6900411179 /* GameScene.swift */,
 				024EC7EC24C0D0A10054DCAD /* StartMenuBehaviour.swift */,
+				020B065524C78A13008D7848 /* PausedBehaviour.swift */,
 				029BDA6E24BE519B0039188D /* PlayingBehaviour.swift */,
 				029F791E24C6A0A4001D54ED /* GameOverBehaviour.swift */,
 			);
@@ -402,7 +407,6 @@
 			isa = PBXGroup;
 			children = (
 				027BD91324B790EA000CCC35 /* ContentView.swift */,
-				020B065124C74355008D7848 /* FrameNode.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -564,6 +568,7 @@
 				029BDA6F24BE519B0039188D /* PlayingBehaviour.swift in Sources */,
 				024EC7ED24C0D0A10054DCAD /* StartMenuBehaviour.swift in Sources */,
 				0237550D24B2B78900089A16 /* CID.swift in Sources */,
+				020B065624C78A13008D7848 /* PausedBehaviour.swift in Sources */,
 				029BDA7424BF7D0F0039188D /* Music.swift in Sources */,
 				02CA62B024B671C1002F190D /* Command.swift in Sources */,
 				0237551524B2CD1F00089A16 /* MultipeerController.swift in Sources */,
@@ -573,6 +578,7 @@
 				026C125124AFC1970069DF07 /* SegmentedControl.swift in Sources */,
 				02CA62AC24B63BA9002F190D /* ROOT.swift in Sources */,
 				0237551324B2CCFA00089A16 /* MultipeerHandler.swift in Sources */,
+				020B065724C88C7B008D7848 /* FrameNode.swift in Sources */,
 				029BDA7124BF7C160039188D /* NoteSpawner.swift in Sources */,
 				028AF01E24AFB43C00411179 /* Menu.swift in Sources */,
 				02BE472524B2D29D00A74008 /* Player.swift in Sources */,

@@ -13,5 +13,6 @@ public class StartMenuBehaviour: GameBehaviour {
     init(scene: GameScene) {
         self.scene = scene
         scene.backgroundNode.texture = SKTexture(imageNamed: "startBackground")
+        scene.children.forEach({if $0 != scene.backgroundNode { $0.removeAllActions(); $0.removeFromParent() }})
     }
 }

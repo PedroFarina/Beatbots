@@ -11,8 +11,14 @@ import SpriteKit
 public class GameScene: SKScene, StateObserver {
 
     var state: GameState = .StartMenu {
-        didSet {
-            behaviour = state.behaviour(on: self)
+        willSet {
+            if let behaviour = behaviour as? PausedBehaviour,
+            newValue == .Playing {
+                self.behaviour = behaviour.playingBehaviour
+                behaviour.playingBehaviour.resume()
+            } else {
+                self.behaviour = newValue.behaviour(on: self)
+            }
         }
     }
     var behaviour: GameBehaviour?

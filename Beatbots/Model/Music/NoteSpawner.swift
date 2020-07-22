@@ -31,6 +31,18 @@ public class NoteSpawner {
     var waitingNotes: Set<NoteNode> = []
     var timeElapsed: TimeInterval = 0
 
+    public func recalculatePlayers() {
+        nPlayers = PlayersManager.shared().players.count
+        for node in scene.children {
+            if let noteNode = node as? NoteNode {
+                if noteNode.player == nil {
+                    noteNode.removeAllActions()
+                    noteNode.removeFromParent()
+                }
+            }
+        }
+    }
+
     private func checkLane(_ nLane: Int) {
         let laneIndex = nLane - 1
         guard let currentNote = lanes[laneIndex].nextNote else {
@@ -56,7 +68,7 @@ public class NoteSpawner {
                         self.waitingNotes.insert(noteNode)
                     }
                 },
-                SKAction.wait(forDuration: lanes[laneIndex].player.controlStyle == .iPhone ?  0.075 : 0.05),
+                SKAction.wait(forDuration: lanes[laneIndex].player?.controlStyle == .iPhone ?  0.075 : 0.05),
                 SKAction.run {
                     let removeAction = SKAction.run {
                         MusicFilePlayer.setVolume(0, on: self.lanes[laneIndex].musicPart)
@@ -85,7 +97,7 @@ public class NoteSpawner {
                     noteNode.run(SKAction.sequence(newActions))
                 }
             ])
-            noteNode.run(actions)
+            noteNode.run(actions, withKey: "moving")
             lockQueue.sync {
                 scene.addChild(noteNode)
             }
@@ -121,7 +133,7 @@ public class NoteSpawner {
 
 struct Lane {
     var musicPart: MusicPart
-    var player: Player
+    weak var player: Player?
     var music: Music
     var nextNote: Note?
 

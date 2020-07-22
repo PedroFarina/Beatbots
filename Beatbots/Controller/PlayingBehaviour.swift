@@ -11,7 +11,8 @@ import SpriteKit
 public class PlayingBehaviour: GameBehaviour {
     public var scene: GameScene
     weak var tvControllerPlayer: Player?
-    var nodesToRemove: Set<SKSpriteNode> = []
+    var charactersNodes: [FrameNode] = []
+    var lanes: [SKSpriteNode] = []
     let music = Music(name: "01")
     lazy var spawner = NoteSpawner(scene: scene, music: music)
 
@@ -30,6 +31,20 @@ public class PlayingBehaviour: GameBehaviour {
         tvControllerPlayer = PlayersManager.shared().getPlayerFrom(GlobalProperties.tvControllerPlayerID)
     }
 
+    public func resume() {
+        MusicFilePlayer.setVolume(1, on: .Harmony)
+        MusicFilePlayer.setVolume(1, on: .Rhythm)
+        MusicFilePlayer.setVolume(1, on: .Melody)
+        PlayersManager.shared().removeDisconnectedPlayers()
+        spawner.recalculatePlayers()
+        lanes.forEach({$0.removeFromParent()})
+        charactersNodes.forEach({$0.removeFromParent()})
+        makeLanes()
+        MusicFilePlayer.resume()
+        scene.isPaused = false
+        scene.children.forEach({$0.action(forKey: "moving")?.speed = 1})
+    }
+
     private func makeLanes() {
         var yValue = 0.4
         if PlayersManager.shared().players.count == 1 {
@@ -38,14 +53,14 @@ public class PlayingBehaviour: GameBehaviour {
         for character in PlayersManager.shared().players.map({return $0.selectedCharacter}) {
             yValue -= 0.20
             if let charValue = character {
-                let characterNode = SKSpriteNode(imageNamed: type(of: charValue).framePath)
+                let characterNode = FrameNode(character: charValue)
                 characterNode.size = CGSize(width: 0.135, height: 0.135)
                 characterNode.position = CGPoint(x: -0.4, y: yValue)
-                nodesToRemove.insert(characterNode)
+                charactersNodes.append(characterNode)
                 scene.addChild(characterNode)
             }
             let lane = SKSpriteNode(texture: SKTexture(imageNamed: "Lane"))
-            nodesToRemove.insert(lane)
+            lanes.append(lane)
             lane.size = CGSize(width: 0.82, height: 0.2)
             lane.position = CGPoint(x: 0.111, y: yValue)
             scene.addChild(lane)
@@ -108,7 +123,10 @@ public class PlayingBehaviour: GameBehaviour {
     }
 
     deinit {
-        for node in nodesToRemove {
+        for node in lanes {
+            node.removeFromParent()
+        }
+        for node in charactersNodes {
             node.removeFromParent()
         }
     }

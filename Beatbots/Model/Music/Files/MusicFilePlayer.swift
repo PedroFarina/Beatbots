@@ -59,6 +59,14 @@ public class MusicFilePlayer {
         players[part.getIndex() + 1].volume = volume
     }
 
+    static func pause() {
+        players.forEach({$0.pause()})
+    }
+
+    static func resume() {
+        players.forEach({$0.play()})
+    }
+
     static func isBackgroundPlaying() -> Bool {
         return players[0].isPlaying
     }

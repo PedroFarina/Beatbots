@@ -12,10 +12,10 @@ public class PlayingBehaviour: PlayerStateBehaviour {
     public private(set) var scene: ControllerScene
     public private(set) var nextBehaviour: PlayerStateBehaviour?
 
-    private var frameNode: SKSpriteNode
+    private var frameNode: FrameNode
     let gesturesNode: SKSpriteNode
 
-    init(scene: ControllerScene, frameNode: SKSpriteNode) {
+    init(scene: ControllerScene, frameNode: FrameNode) {
         self.scene = scene
         self.frameNode = frameNode
         gesturesNode = SKSpriteNode(texture: SKTexture(imageNamed: "playGestures"))

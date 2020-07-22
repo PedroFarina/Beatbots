@@ -44,6 +44,7 @@ public class ControllerScene: SKScene, StateObserver {
     lazy var manager: MultipeerManager = {
         let manager = MultipeerManager()
         manager.subscribe(self)
+        manager.scene = self
         self.connectionState = manager.connectionState
         self.playerState = manager.playerState
         return manager

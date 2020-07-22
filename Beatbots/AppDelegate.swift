@@ -13,13 +13,14 @@ import SwiftUI
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var stateHolder: StateController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // Create the SwiftUI view that provides the window contents.
         MusicFilePlayer.setup()
         let contentView = ContentView()
+        stateHolder = contentView.stateHolder
 
         // Use a UIHostingController as window root view controller.
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -36,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        if stateHolder?.getState() == GameState.Playing {
+            stateHolder?.setState(to: .Paused)
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

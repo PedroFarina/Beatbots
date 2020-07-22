@@ -38,6 +38,11 @@ public enum GameState {
             return StartMenuBehaviour(scene: scene)
         case .Playing:
             return PlayingBehaviour(scene: scene)
+        case  .Paused:
+            if let behaviour = scene.behaviour as? PlayingBehaviour {
+                return PausedBehaviour(scene: scene, playingBehaviour: behaviour)
+            }
+            return nil
         case .GameOver:
             return GameOverBehaviour(scene: scene)
         default:

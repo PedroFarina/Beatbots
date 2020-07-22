@@ -146,6 +146,8 @@ public class PlayersManager: MultipeerHandler, StateObserver {
                 players[index].connected = false
                 stateHolder?.setState(to: .Paused)
             } else {
+                players[index].selectedCharacter?.player = nil
+                players[index].selectedCharacter?.isAvailable = true
                 players.remove(at: index)
             }
         }

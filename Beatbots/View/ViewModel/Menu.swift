@@ -80,7 +80,7 @@ public struct Menu: View {
             .clipShape(Circle())
             .overlay(
                 Circle()
-                    .stroke(lineWidth: 3))
+                    .stroke(lineWidth: 3).foregroundColor(.white))
             .overlay(
                 Circle()
                     .fill(Color(PlayersManager.shared().colorFor(character.player)))
@@ -117,7 +117,7 @@ public struct Menu: View {
                 Button(action: {
                     self.delegate.setState(to: .StartMenu)
                 }) {
-                    Text("Back")
+                    Text("Back").foregroundColor(.white)
                 }
                 Button(action: {
                     if let player = PlayersManager.shared()
@@ -131,7 +131,7 @@ public struct Menu: View {
                         self.delegate.setState(to: .Playing)
                     }
                 }) {
-                    Text("Confirm")
+                    Text("Confirm").foregroundColor(.white)
                 }
             }
         }
@@ -142,12 +142,12 @@ public struct Menu: View {
                 Button(action: {
                     self.delegate.setState(to: .Playing)
                 }) {
-                    Text("Play Again")
+                    Text("Play Again").foregroundColor(.white)
                 }
                 Button(action: {
                     self.delegate.setState(to: .StartMenu)
                 }) {
-                    Text("Exit")
+                    Text("Exit").foregroundColor(.white)
                 }
             }.padding(.top, 750)
         }

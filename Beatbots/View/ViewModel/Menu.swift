@@ -9,18 +9,18 @@
 import SwiftUI
 
 public struct Menu: View {
-    public private(set) var delegate: StateController
+    public private(set) weak var delegate: StateController?
     public private(set) var currentState: GameState
 
     private func startMenuView() -> some View {
         VStack {
             Button(action: {
-                self.delegate.setState(to: .ChoosingCharacters)
+                self.delegate?.setState(to: .ChoosingCharacters)
             }) {
                 Text("Play").foregroundColor(.white).padding([.leading, .trailing], 20)
             }.padding(.top, 800)
             Button(action: {
-                self.delegate.setState(to: .Config)
+                self.delegate?.setState(to: .Config)
             }) {
                 Text("Settings").foregroundColor(.white).padding([.leading, .trailing], 10)
             }
@@ -60,7 +60,7 @@ public struct Menu: View {
                 }.frame(width: 1000, height: 130, alignment: .center)
             }.padding(.all, 30).background(RoundedRectangle(cornerRadius: 30).foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.5, opacity: 0.5)))
             Button(action: {
-                self.delegate.setState(to: .StartMenu)
+                self.delegate?.setState(to: .StartMenu)
             }) {
                 Text("Back").foregroundColor(.white).padding([.leading, .trailing], 20)
             }
@@ -115,7 +115,7 @@ public struct Menu: View {
             }
             HStack(spacing: 1170) {
                 Button(action: {
-                    self.delegate.setState(to: .StartMenu)
+                    self.delegate?.setState(to: .StartMenu)
                 }) {
                     Text("Back").foregroundColor(.white)
                 }
@@ -124,11 +124,11 @@ public struct Menu: View {
                         .getPlayerFrom(GlobalProperties.tvControllerPlayerID)
                     {
                         if player.selectedCharacter != nil {
-                            self.delegate.setState(to: .Playing)
+                            self.delegate?.setState(to: .Playing)
                         }
                     } else if let _ = PlayersManager.shared()
                         .players.first(where: {$0.selectedCharacter != nil}) {
-                        self.delegate.setState(to: .Playing)
+                        self.delegate?.setState(to: .Playing)
                     }
                 }) {
                     Text("Confirm").foregroundColor(.white)
@@ -140,12 +140,12 @@ public struct Menu: View {
         return VStack(alignment: .center) {
             HStack {
                 Button(action: {
-                    self.delegate.setState(to: .Playing)
+                    self.delegate?.setState(to: .Playing)
                 }) {
                     Text("Play Again").foregroundColor(.white)
                 }
                 Button(action: {
-                    self.delegate.setState(to: .StartMenu)
+                    self.delegate?.setState(to: .StartMenu)
                 }) {
                     Text("Exit").foregroundColor(.white)
                 }
@@ -163,13 +163,13 @@ public struct Menu: View {
                 Spacer()
                 if !(!GlobalProperties.tvControllerEnabled && PlayersManager.shared().players.count == 1) {
                     Button(action: {
-                        self.delegate.setState(to: .Playing)
+                        self.delegate?.setState(to: .Playing)
                     }) {
                         Text("Return to game").foregroundColor(.white).font(.headline).padding(.all, 5)
                     }
                 }
                 Button(action: {
-                    self.delegate.setState(to: .StartMenu)
+                    self.delegate?.setState(to: .StartMenu)
                 }) {
                     Text("Main Menu").foregroundColor(.white).font(.headline).padding(.all, 5)
                 }

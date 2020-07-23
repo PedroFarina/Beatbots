@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public protocol StateController {
+public protocol StateController: class {
     func getState() -> GameState
     func setState(to state: GameState)
 }

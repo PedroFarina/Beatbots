@@ -13,7 +13,7 @@ import SwiftUI
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var stateHolder: StateController?
+    weak var stateHolder: StateController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -24,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Use a UIHostingController as window root view controller.
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UIHostingController(rootView: contentView)
+        let myHosting = MyHosting(rootView: contentView)
+        myHosting.stateHolder = stateHolder
+        window.rootViewController = myHosting
         self.window = window
         window.makeKeyAndVisible()
         return true
@@ -53,3 +55,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+class MyHosting: UIHostingController<ContentView> {
+    weak var stateHolder: StateController?
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        if presses.first?.type == UIPress.PressType.menu {
+            switch stateHolder?.getState() {
+            case .StartMenu:
+                exit(EXIT_SUCCESS)
+            case .Config:
+                stateHolder?.setState(to: .StartMenu)
+            case .ChoosingCharacters:
+                stateHolder?.setState(to: .StartMenu)
+            case .Paused:
+                stateHolder?.setState(to: .Playing)
+            case .GameOver:
+                stateHolder?.setState(to: .StartMenu)
+            case .Playing:
+                stateHolder?.setState(to: .Paused)
+            default:
+                break
+            }
+        } else {
+            super.pressesBegan(presses, with: event)
+        }
+    }
+
+    override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        if presses.first?.type != UIPress.PressType.menu {
+            super.pressesBegan(presses, with: event)
+        }
+    }
+}

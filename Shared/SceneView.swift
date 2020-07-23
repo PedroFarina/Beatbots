@@ -10,13 +10,20 @@ import SpriteKit
 import SwiftUI
 
 public struct SceneView: UIViewRepresentable {
-    public private(set) var scene: SKScene
+    #if os(tvOS)
+    public private(set) var scene: GameScene
+    #elseif os(iOS)
+    public private(set) var scene: ControllerScene
+    #endif
 
     public  func makeUIView(context: Context) -> SKView {
-        return SKView(frame: .zero)
+        let view = SKView(frame: .zero)
+        return view
     }
 
     public func updateUIView(_ uiView: SKView, context ext: Context) {
-        uiView.presentScene(scene)
+        if uiView.scene == nil {
+            uiView.presentScene(scene)
+        }
     }
 }

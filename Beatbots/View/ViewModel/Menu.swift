@@ -20,14 +20,14 @@ public struct Menu: View {
                 Text("Play").foregroundColor(.white).padding([.leading, .trailing], 20)
             }.padding(.top, 800)
             Button(action: {
-                self.delegate?.setState(to: .Config)
+                self.delegate?.setState(to: .Settings)
             }) {
                 Text("Settings").foregroundColor(.white).padding([.leading, .trailing], 10)
             }
         }
     }
 
-    private func configMenuView() -> some View {
+    private func settingsMenuView() -> some View {
         VStack(alignment: .trailing, spacing: 10) {
             VStack(spacing: 10) {
                 HStack {
@@ -58,7 +58,7 @@ public struct Menu: View {
                         GlobalProperties.curtainClosed = value
                     }
                 }.frame(width: 1000, height: 130, alignment: .center)
-            }.padding(.all, 30).background(RoundedRectangle(cornerRadius: 30).foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.5, opacity: 0.5)))
+            }.padding(.all, 30).background(RoundedRectangle(cornerRadius: 30).foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.5, opacity: 0.9)))
             Button(action: {
                 self.delegate?.setState(to: .StartMenu)
             }) {
@@ -181,8 +181,8 @@ public struct Menu: View {
         switch currentState {
         case .StartMenu:
             return AnyView(startMenuView())
-        case .Config:
-            return AnyView(configMenuView())
+        case .Settings:
+            return AnyView(settingsMenuView())
         case .ChoosingCharacters:
             return AnyView(choosingCharactersView())
         case .Paused:

@@ -13,7 +13,7 @@ public class PlayersManager: MultipeerHandler, StateObserver {
     public func stateChangedTo(_ state: GameState) {
         if self.state == .StartMenu && state == .ChoosingCharacters {
             MultipeerController.shared().startService()
-        } else if self.state != .Config && state == .StartMenu {
+        } else if self.state != .Settings && state == .StartMenu {
             MultipeerController.shared().endSession()
             MultipeerController.shared().stopService()
         } else if self.state == .ChoosingCharacters && state == .Playing {

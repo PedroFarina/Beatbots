@@ -26,7 +26,7 @@ public extension GameBehaviour {
 
 public enum GameState {
     case StartMenu
-    case Config
+    case Settings
     case ChoosingCharacters
     case Playing
     case Paused

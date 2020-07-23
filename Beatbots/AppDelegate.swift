@@ -62,7 +62,7 @@ class MyHosting: UIHostingController<ContentView> {
             switch stateHolder?.getState() {
             case .StartMenu:
                 exit(EXIT_SUCCESS)
-            case .Config:
+            case .Settings:
                 stateHolder?.setState(to: .StartMenu)
             case .ChoosingCharacters:
                 stateHolder?.setState(to: .StartMenu)

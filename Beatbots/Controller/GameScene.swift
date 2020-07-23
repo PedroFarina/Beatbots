@@ -61,11 +61,15 @@ public class GameScene: SKScene, StateObserver {
         behaviour?.touchUp(at: pos)
     }
 
+    public var stopUpdating: Bool = false
+
     var previousTime: TimeInterval = 0
     public override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
         let deltaTime = currentTime - previousTime
-        behaviour?.update(deltaTime: deltaTime)
+        if !stopUpdating {
+            behaviour?.update(deltaTime: deltaTime)
+        }
         previousTime = currentTime
     }
 

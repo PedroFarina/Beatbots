@@ -11,10 +11,10 @@ import SpriteKit
 public class NoteSpawner {
     private var scene: GameScene
     private let lockQueue = DispatchQueue(label: "NoteSpawnerLocker")
-    let speed: TimeInterval
+    private let speed: TimeInterval
     private var lanes: [Lane] = []
     private var nPlayers: Int
-    let music: Music
+    private let music: Music
     init(scene: GameScene, music: Music) {
         self.scene = scene
         self.music = music
@@ -28,8 +28,12 @@ public class NoteSpawner {
         }
     }
 
-    var waitingNotes: Set<NoteNode> = []
-    var timeElapsed: TimeInterval = 0
+    private var waitingNotes: Set<NoteNode> = []
+    private var timeElapsed: TimeInterval = 0
+
+    public func recalculateTimeWith(_ delay: TimeInterval) {
+        timeElapsed = MusicFilePlayer.players[0].currentTime + delay
+    }
 
     public func recalculatePlayers() {
         nPlayers = PlayersManager.shared().players.count

@@ -15,7 +15,7 @@ public class PausedBehaviour: GameBehaviour {
         self.scene = scene
         self.playingBehaviour = playingBehaviour
         MusicFilePlayer.pause()
-        scene.isPaused = true
+        scene.stopUpdating = true
         scene.children.forEach({$0.action(forKey: "moving")?.speed = 0})
     }
 }

@@ -36,13 +36,25 @@ public class PlayingBehaviour: GameBehaviour {
         MusicFilePlayer.setVolume(1, on: .Rhythm)
         MusicFilePlayer.setVolume(1, on: .Melody)
         PlayersManager.shared().removeDisconnectedPlayers()
+
         spawner.recalculatePlayers()
+        spawner.recalculateTimeWith(music.speed)
+
         lanes.forEach({$0.removeFromParent()})
         charactersNodes.forEach({$0.removeFromParent()})
         makeLanes()
-        MusicFilePlayer.resume()
-        scene.isPaused = false
-        scene.children.forEach({$0.action(forKey: "moving")?.speed = 1})
+        
+        let now = MusicFilePlayer.now()
+        MusicFilePlayer.resume(in: now + 1.5)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.scene.stopUpdating = false
+            self.scene.children.forEach({
+                if let action = $0.action(forKey: "moving") {
+                    action.speed = 1
+                    $0.zPosition = 999
+                }
+            })
+        }
     }
 
     private func makeLanes() {

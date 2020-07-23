@@ -60,11 +60,16 @@ public class MusicFilePlayer {
     }
 
     static func pause() {
-        players.forEach({$0.pause()})
+        let currentTime = players[0].currentTime
+        players.forEach({
+            $0.pause()
+            $0.currentTime = currentTime
+        })
+
     }
 
-    static func resume() {
-        players.forEach({$0.play()})
+    static func resume(in time: TimeInterval) {
+        players.forEach({$0.play(atTime: time)})
     }
 
     static func isBackgroundPlaying() -> Bool {

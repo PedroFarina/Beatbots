@@ -36,6 +36,8 @@ public enum GameState {
         switch self {
         case .StartMenu:
             return StartMenuBehaviour(scene: scene)
+        case .ChoosingCharacters:
+            return ChoosingBehaviour(scene: scene)
         case .Playing:
             return PlayingBehaviour(scene: scene)
         case  .Paused:

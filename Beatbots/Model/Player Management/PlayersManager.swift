@@ -8,7 +8,22 @@
 
 import MultipeerConnectivity
 
+public protocol PlayersObserver: class {
+    func playersChangedTo(_ players: [Player])
+}
+
 public class PlayersManager: MultipeerHandler, StateObserver {
+
+    public var observers: [PlayersObserver] = []
+    public func addObserver(_ observer: PlayersObserver) {
+        observers.append(observer)
+    }
+    public func removeObserver(_ observer: PlayersObserver) {
+        if let index = observers.firstIndex(where: { $0 === observer }) {
+            observers.remove(at: index)
+        }
+    }
+
     private var state: GameState = .StartMenu
     public func stateChangedTo(_ state: GameState) {
         if self.state == .StartMenu && state == .ChoosingCharacters {
@@ -47,7 +62,13 @@ public class PlayersManager: MultipeerHandler, StateObserver {
 
     public var stateHolder: StateHolder?
 
-    public private(set) var players: [Player] = []
+    public private(set) var players: [Player] = [] {
+        didSet {
+            for observer in observers {
+                observer.playersChangedTo(players)
+            }
+        }
+    }
 
     public func getPlayerFrom(_ lane: Int) -> Player? {
         let i = lane - 1
@@ -75,9 +96,9 @@ public class PlayersManager: MultipeerHandler, StateObserver {
         let number: String = numberOfPlayer(player)
         switch number {
         case "1":
-            return #colorLiteral(red: 0.9882352941, green: 0.4549019608, blue: 0.462745098, alpha: 1)
-        case "2":
             return #colorLiteral(red: 0.3803921569, green: 0.8980392157, blue: 0.6941176471, alpha: 1)
+        case "2":
+            return #colorLiteral(red: 0.9882352941, green: 0.4549019608, blue: 0.462745098, alpha: 1)
         case "3":
             return #colorLiteral(red: 0.2941176471, green: 0.9019607843, blue: 0.9215686275, alpha: 1)
         default:
@@ -87,18 +108,22 @@ public class PlayersManager: MultipeerHandler, StateObserver {
 
     public func selectCharacter(character: Character, by id: String) {
         if let player = getPlayerFrom(id) {
-            player.selectedCharacter?.isAvailable = true
-            player.selectedCharacter?.player = nil
-            character.player = player
-            player.selectedCharacter = character
-            character.isAvailable = false
+            DispatchQueue.main.async {
+                player.selectedCharacter?.isAvailable = true
+                player.selectedCharacter?.player = nil
+                character.player = player
+                player.selectedCharacter = character
+                character.isAvailable = false
+            }
         }
     }
 
     public func deselectCharacter(character: Character) {
-        character.player?.selectedCharacter = nil
-        character.player = nil
-        character.isAvailable = true
+        DispatchQueue.main.async {
+            character.player?.selectedCharacter = nil
+            character.player = nil
+            character.isAvailable = true
+        }
     }
 
     public func tvControllerEnabledChanged(to value: Bool) {
@@ -149,8 +174,13 @@ public class PlayersManager: MultipeerHandler, StateObserver {
                 players[index].connected = false
                 stateHolder?.setState(to: .Paused)
             } else {
-                players[index].selectedCharacter?.player = nil
-                players[index].selectedCharacter?.isAvailable = true
+                if let char = players[index].selectedCharacter {
+                    deselectCharacter(character: char)
+                } else if let player = players.first(where: {$0.selectedCharacter != nil}),
+                    let char = player.selectedCharacter {
+                    deselectCharacter(character: char)
+                    selectCharacter(character: char, by: player.id)
+                }
                 players.remove(at: index)
             }
         }

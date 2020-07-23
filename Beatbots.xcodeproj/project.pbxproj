@@ -61,6 +61,8 @@
 		029BDA7124BF7C160039188D /* NoteSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BDA7024BF7C160039188D /* NoteSpawner.swift */; };
 		029BDA7424BF7D0F0039188D /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BDA7324BF7D0F0039188D /* Music.swift */; };
 		029F791F24C6A0A4001D54ED /* GameOverBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F791E24C6A0A4001D54ED /* GameOverBehaviour.swift */; };
+		02B61A5A24C9C5DA00FE12DB /* Backgrounds.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B61A5924C9C5DA00FE12DB /* Backgrounds.xcassets */; };
+		02B61A5C24C9C64600FE12DB /* ChoosingBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B61A5B24C9C64600FE12DB /* ChoosingBehaviour.swift */; };
 		02BE472524B2D29D00A74008 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE472424B2D29D00A74008 /* Player.swift */; };
 		02C9F30624C005FF006F7CBC /* ControllerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C9F30524C005FF006F7CBC /* ControllerScene.swift */; };
 		02C9F30924C00662006F7CBC /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C9F30824C00662006F7CBC /* PlayerState.swift */; };
@@ -127,6 +129,8 @@
 		029BDA7024BF7C160039188D /* NoteSpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSpawner.swift; sourceTree = "<group>"; };
 		029BDA7324BF7D0F0039188D /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		029F791E24C6A0A4001D54ED /* GameOverBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverBehaviour.swift; sourceTree = "<group>"; };
+		02B61A5924C9C5DA00FE12DB /* Backgrounds.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Backgrounds.xcassets; sourceTree = "<group>"; };
+		02B61A5B24C9C64600FE12DB /* ChoosingBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosingBehaviour.swift; sourceTree = "<group>"; };
 		02BE472424B2D29D00A74008 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		02C9F30524C005FF006F7CBC /* ControllerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerScene.swift; sourceTree = "<group>"; };
 		02C9F30824C00662006F7CBC /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
@@ -317,8 +321,9 @@
 			children = (
 				028AF01A24AFAE6900411179 /* GameScene.swift */,
 				024EC7EC24C0D0A10054DCAD /* StartMenuBehaviour.swift */,
-				020B065524C78A13008D7848 /* PausedBehaviour.swift */,
+				02B61A5B24C9C64600FE12DB /* ChoosingBehaviour.swift */,
 				029BDA6E24BE519B0039188D /* PlayingBehaviour.swift */,
+				020B065524C78A13008D7848 /* PausedBehaviour.swift */,
 				029F791E24C6A0A4001D54ED /* GameOverBehaviour.swift */,
 			);
 			path = Controller;
@@ -336,6 +341,7 @@
 		029BDA6B24BE50DA0039188D /* SpriteKit */ = {
 			isa = PBXGroup;
 			children = (
+				02B61A5924C9C5DA00FE12DB /* Backgrounds.xcassets */,
 				029BDA6324BE31320039188D /* Notes.xcassets */,
 				029BDA5D24BE2CF50039188D /* NoteNode.swift */,
 			);
@@ -508,6 +514,7 @@
 				028AF00A24AFA1BD00411179 /* Assets.xcassets in Resources */,
 				020E684D24C1F0A50075CCC8 /* 01rhythm.wav in Resources */,
 				0203C3C324B90BB100CAEDE2 /* Characters.xcassets in Resources */,
+				02B61A5A24C9C5DA00FE12DB /* Backgrounds.xcassets in Resources */,
 				020E684E24C1F0A50075CCC8 /* 01background.wav in Resources */,
 				020E684F24C1F0A50075CCC8 /* 01harmony.wav in Resources */,
 				020E684C24C1F0A50075CCC8 /* 01melody.wav in Resources */,
@@ -579,6 +586,7 @@
 				02CA62AC24B63BA9002F190D /* ROOT.swift in Sources */,
 				0237551324B2CCFA00089A16 /* MultipeerHandler.swift in Sources */,
 				020B065724C88C7B008D7848 /* FrameNode.swift in Sources */,
+				02B61A5C24C9C64600FE12DB /* ChoosingBehaviour.swift in Sources */,
 				029BDA7124BF7C160039188D /* NoteSpawner.swift in Sources */,
 				028AF01E24AFB43C00411179 /* Menu.swift in Sources */,
 				02BE472524B2D29D00A74008 /* Player.swift in Sources */,

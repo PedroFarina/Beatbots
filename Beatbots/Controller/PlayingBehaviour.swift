@@ -14,10 +14,12 @@ public class PlayingBehaviour: GameBehaviour {
     var charactersNodes: [FrameNode] = []
     var lanes: [SKSpriteNode] = []
     let music = Music(name: "01")
-    lazy var spawner = NoteSpawner(scene: scene, music: music)
+    var spawner: NoteSpawner
 
     init(scene: GameScene) {
         self.scene = scene
+        scene.stopUpdating = false
+        spawner = NoteSpawner(scene: scene, music: music)
         scene.backgroundNode.texture = SKTexture(imageNamed: GlobalProperties.curtainClosed ? "playBackground2": "playBackground")
         MusicFilePlayer.stopPlaying()
         DispatchQueue.main.async {
@@ -43,7 +45,7 @@ public class PlayingBehaviour: GameBehaviour {
         lanes.forEach({$0.removeFromParent()})
         charactersNodes.forEach({$0.removeFromParent()})
         makeLanes()
-        
+
         let now = MusicFilePlayer.now()
         MusicFilePlayer.resume(in: now + 1.5)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
@@ -146,5 +148,6 @@ public class PlayingBehaviour: GameBehaviour {
         for node in charactersNodes {
             node.removeFromParent()
         }
+        scene.stopUpdating = false
     }
 }

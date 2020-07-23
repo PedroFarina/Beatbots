@@ -89,7 +89,7 @@ public struct Menu: View {
                     .overlay(Text("\(PlayersManager.shared().numberOfPlayer(character.player))")
                         .fontWeight(.bold)
                         .font(.largeTitle)
-                        .accentColor(.white)
+                        .foregroundColor(.white)
                         .frame(width: 80, height: 80, alignment: .center), alignment: .bottomTrailing))
         if GlobalProperties.tvControllerEnabled {
             return AnyView(Button(action: {
@@ -155,13 +155,25 @@ public struct Menu: View {
 
     private func pausedView() -> some View {
         let disconnected = PlayersManager.shared().getDisconnectedPlayers()
-        let text = disconnected.isEmpty ? "" : "A player has left.Wait for him to reconnect?"
+        let text: String
+        if disconnected.isEmpty {
+            text = ""
+        } else {
+            if disconnected.count == PlayersManager.shared().players.count {
+                text = "Lost connection, waiting reconnection."
+            } else {
+                text = "Lost connection to a player. Waiting to reconnect."
+            }
+        }
+
         return ZStack() {
             Image("pauseFrame")
             VStack(alignment: .center) {
                 Text(text).font(.largeTitle).foregroundColor(Color(#colorLiteral(red: 0.2980392157, green: 0.2980392157, blue: 0.3215686275, alpha: 1))).multilineTextAlignment(.center).padding(.top, 250)
                 Spacer()
-                if !(!GlobalProperties.tvControllerEnabled && PlayersManager.shared().players.count == 1) {
+                if GlobalProperties.tvControllerEnabled ||
+                   !(PlayersManager.shared().players.count == 1 &&
+                    !PlayersManager.shared().players[0].connected) {
                     Button(action: {
                         self.delegate?.setState(to: .Playing)
                     }) {

@@ -137,6 +137,9 @@ public class PlayersManager: MultipeerHandler, StateObserver {
             player.connected = true
             MultipeerController.shared().sendToPeers(
                 "\(GlobalProperties.startKey)\(type(of:character).name)", reliably: false, peers: [id])
+            if players.count == 1 {
+                stateHolder?.setState(to: .Playing)
+            }
         }
     }
 

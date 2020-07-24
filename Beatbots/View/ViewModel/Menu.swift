@@ -77,6 +77,9 @@ public struct Menu: View {
         ChoosingButton(image: Image(type(of: character).imagePath), highLightColor: Color(PlayersManager.shared().colorFor(character.player))) {
             if character.isAvailable {
                 PlayersManager.shared().selectCharacter(character: character, by: GlobalProperties.tvControllerPlayerID)
+            } else if let player = PlayersManager.shared().getPlayerFrom(GlobalProperties.tvControllerPlayerID),
+                character.player === player {
+                PlayersManager.shared().deselectCharacter(character: character)
             }
         }
     }

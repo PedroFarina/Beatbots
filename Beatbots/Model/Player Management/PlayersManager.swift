@@ -35,7 +35,8 @@ public class PlayersManager: MultipeerHandler, StateObserver {
             MultipeerController.shared().sendToAllPeers(GlobalProperties.startKey, reliably: false)
         } else if self.state == .GameOver {
             for player in PlayersManager.shared().players {
-                player.points = 0
+                player.totalNotes = 0
+                player.correctNotes = 0
             }
             if state == .StartMenu, GlobalProperties.menuMusicEnabled {
                 MusicFilePlayer.playInBackground(fileName: "loop", ext: "wav", looped: true)

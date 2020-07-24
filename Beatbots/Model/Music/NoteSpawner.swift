@@ -23,6 +23,7 @@ public class NoteSpawner {
         for player in PlayersManager.shared().players {
             if let char = player.selectedCharacter {
                 let part = type(of: char).part
+                player.totalNotes = music.totalNotes[part.getIndex()]
                 lanes.append(Lane(musicPart: part, player: player, music: music, nextNote: music.getNextNoteFor(part)))
             }
         }
@@ -78,6 +79,7 @@ public class NoteSpawner {
                         MusicFilePlayer.setVolume(0, on: self.lanes[laneIndex].musicPart)
                         _ = self.lockQueue.sync {
                             self.waitingNotes.remove(noteNode)
+                            player?.combo -= 3
                         }
                     }
 
@@ -121,7 +123,7 @@ public class NoteSpawner {
             note.removeAllActions()
             if let part = note.part {
                 MusicFilePlayer.setVolume(1.0, on: part)
-                note.player?.points += Double(1 / music.totalNotes[part.getIndex()])
+                note.player?.correctNotes += 1
             }
             let newActions = [
                 SKAction.resize(toWidth: 0.03, height: 0.03, duration: 0.2),

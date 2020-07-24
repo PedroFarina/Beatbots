@@ -64,6 +64,7 @@
 		029BDA7124BF7C160039188D /* NoteSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BDA7024BF7C160039188D /* NoteSpawner.swift */; };
 		029BDA7424BF7D0F0039188D /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BDA7324BF7D0F0039188D /* Music.swift */; };
 		029F791F24C6A0A4001D54ED /* GameOverBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F791E24C6A0A4001D54ED /* GameOverBehaviour.swift */; };
+		02AE329624CB6541001EBB4C /* Expressions.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02AE329524CB6541001EBB4C /* Expressions.xcassets */; };
 		02B61A5A24C9C5DA00FE12DB /* Backgrounds.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B61A5924C9C5DA00FE12DB /* Backgrounds.xcassets */; };
 		02B61A5C24C9C64600FE12DB /* ChoosingBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B61A5B24C9C64600FE12DB /* ChoosingBehaviour.swift */; };
 		02BE472524B2D29D00A74008 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE472424B2D29D00A74008 /* Player.swift */; };
@@ -135,6 +136,7 @@
 		029BDA7024BF7C160039188D /* NoteSpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSpawner.swift; sourceTree = "<group>"; };
 		029BDA7324BF7D0F0039188D /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		029F791E24C6A0A4001D54ED /* GameOverBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverBehaviour.swift; sourceTree = "<group>"; };
+		02AE329524CB6541001EBB4C /* Expressions.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Expressions.xcassets; sourceTree = "<group>"; };
 		02B61A5924C9C5DA00FE12DB /* Backgrounds.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Backgrounds.xcassets; sourceTree = "<group>"; };
 		02B61A5B24C9C64600FE12DB /* ChoosingBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosingBehaviour.swift; sourceTree = "<group>"; };
 		02BE472424B2D29D00A74008 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 		029BDA6B24BE50DA0039188D /* SpriteKit */ = {
 			isa = PBXGroup;
 			children = (
+				02AE329524CB6541001EBB4C /* Expressions.xcassets */,
 				02B61A5924C9C5DA00FE12DB /* Backgrounds.xcassets */,
 				029BDA6324BE31320039188D /* Notes.xcassets */,
 				029BDA5D24BE2CF50039188D /* NoteNode.swift */,
@@ -527,6 +530,7 @@
 				020E684E24C1F0A50075CCC8 /* 01background.wav in Resources */,
 				020E684F24C1F0A50075CCC8 /* 01harmony.wav in Resources */,
 				020E684C24C1F0A50075CCC8 /* 01melody.wav in Resources */,
+				02AE329624CB6541001EBB4C /* Expressions.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

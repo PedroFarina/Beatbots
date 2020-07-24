@@ -72,6 +72,7 @@ public class PlayingBehaviour: GameBehaviour {
             yValue -= 0.20
             if let charValue = character {
                 let characterNode = FrameNode(character: charValue)
+                charValue.player?.frame = characterNode
                 characterNode.size = CGSize(width: 0.135, height: 0.135)
                 characterNode.position = CGPoint(x: -0.4, y: yValue)
                 charactersNodes.append(characterNode)

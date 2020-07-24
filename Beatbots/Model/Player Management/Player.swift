@@ -7,15 +7,50 @@
 //
 
 import MultipeerConnectivity
+import SpriteKit
 
 public class Player {
 
     public let id: String
     public var connected: Bool = true
     public let controlStyle: ControlStyle
-    public var selectedCharacter: Character?
+    public weak var selectedCharacter: Character?
+    public weak var frame: FrameNode? {
+        didSet {
+            updateFrame()
+        }
+    }
     public var currentCommand: Command?
-    public var points: Double = 0
+    public var totalNotes: Int = 0
+    public var correctNotes: Int = 0 {
+        didSet {
+            if correctNotes > oldValue {
+                combo += 1
+            }
+        }
+    }
+    
+    public var points: Double {
+        get {
+            if totalNotes == 0 || correctNotes == 0 { return 0 }
+            return Double(correctNotes/totalNotes)
+        }
+    }
+    private var _combo: Int = 0 {
+        didSet {
+            updateFrame()
+        }
+    }
+    public var combo: Int {
+        get {
+            return _combo
+        }
+        set {
+            if newValue < 14 && newValue > -14 {
+                _combo = newValue
+            }
+        }
+    }
 
     public let commandTimeOut: TimeInterval
     public private(set) var commandCountdown: TimeInterval
@@ -34,6 +69,12 @@ public class Player {
         commandTimeOut = 0.3
         commandCountdown = commandTimeOut
         controlStyle = .iPhone
+    }
+
+    func updateFrame() {
+        if let character = selectedCharacter {
+            frame?.texture = SKTexture(imageNamed: "\(type(of: character).name)exp\(Int(combo/2))")
+        }
     }
 
     func update(deltaTime: TimeInterval) {

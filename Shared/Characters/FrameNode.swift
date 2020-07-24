@@ -17,7 +17,11 @@ public class FrameNode: SKSpriteNode {
 
     init(character: Character) {
         self.character = character
+        #if os(iOS)
         let texture = SKTexture(imageNamed: type(of: character).framePath)
+        #elseif os(tvOS)
+        let texture = SKTexture(imageNamed: "\(type(of: character).name)exp0")
+        #endif
         super.init(texture: texture, color: .clear, size: CGSize(width: 0.3, height: 0.3))
     }
 

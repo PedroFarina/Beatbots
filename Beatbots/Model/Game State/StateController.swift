@@ -26,6 +26,9 @@ public class StateHolder: ObservableObject, StateController {
     }
 
     public func setState(to state: GameState) {
+        if state != .ChoosingCharacters {
+            GlobalProperties.selectedButton = nil
+        }
         DispatchQueue.main.async {
             self.state = state
             self.notify()

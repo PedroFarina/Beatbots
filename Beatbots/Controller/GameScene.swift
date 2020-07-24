@@ -21,7 +21,13 @@ public class GameScene: SKScene, StateObserver {
             }
         }
     }
-    var behaviour: GameBehaviour?
+    var behaviour: GameBehaviour? {
+        willSet {
+            if let currentBehaviour = behaviour as? ChoosingBehaviour {
+                PlayersManager.shared().removeObserver(currentBehaviour)
+            }
+        }
+    }
     public func stateChangedTo(_ state: GameState) {
         self.state = state
     }

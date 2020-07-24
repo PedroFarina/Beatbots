@@ -96,11 +96,11 @@ public class PlayersManager: MultipeerHandler, StateObserver {
         let number: String = numberOfPlayer(player)
         switch number {
         case "1":
-            return #colorLiteral(red: 0.3803921569, green: 0.8980392157, blue: 0.6941176471, alpha: 1)
+            return #colorLiteral(red: 0.3803921569, green: 0.8980392157, blue: 0.6941176471, alpha: 0.6)
         case "2":
-            return #colorLiteral(red: 0.9882352941, green: 0.4549019608, blue: 0.462745098, alpha: 1)
+            return #colorLiteral(red: 0.9882352941, green: 0.4549019608, blue: 0.462745098, alpha: 0.6)
         case "3":
-            return #colorLiteral(red: 0.2941176471, green: 0.9019607843, blue: 0.9215686275, alpha: 1)
+            return #colorLiteral(red: 0.2941176471, green: 0.9019607843, blue: 0.9215686275, alpha: 0.6)
         default:
             return UIColor.clear
         }

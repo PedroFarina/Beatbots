@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 public class GlobalProperties {
     #if os(tvOS)
@@ -24,6 +25,7 @@ public class GlobalProperties {
     public static let confirmationKey = "ActionOccur"
     public static let startKey = "Start"
     #if os(tvOS)
+    public static var selectedButton: ChoosingButton?
     public static let tvControllerPlayerID = "tvControllerPlayer"
     public static var tvControllerEnabled: Bool {
         get {

@@ -81,8 +81,13 @@ class MyHosting: UIHostingController<ContentView> {
     }
 
     override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        if presses.first?.type != UIPress.PressType.menu {
-            super.pressesBegan(presses, with: event)
+        if let btn = GlobalProperties.selectedButton,
+            let type = presses.first?.type,
+        (type == UIPress.PressType.select || type.rawValue == 2040) {
+            btn.action()
+            super.pressesEnded(presses, with: event)
+        } else if presses.first?.type != UIPress.PressType.menu {
+            super.pressesEnded(presses, with: event)
         }
     }
 }

@@ -53,6 +53,9 @@
 		028AF01E24AFB43C00411179 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF01D24AFB43C00411179 /* Menu.swift */; };
 		028AF02024AFBC6200411179 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF01F24AFBC6200411179 /* StateController.swift */; };
 		028AF02224AFBC8B00411179 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028AF02124AFBC8B00411179 /* GameState.swift */; };
+		0292DA3F24CA577400A321BB /* CharacterButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0292DA3E24CA577400A321BB /* CharacterButtonStyle.swift */; };
+		0292DA4124CA663300A321BB /* ChoosingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0292DA4024CA663300A321BB /* ChoosingButton.swift */; };
+		0292DA4324CA83A200A321BB /* TrapezeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0292DA4224CA83A200A321BB /* TrapezeModifier.swift */; };
 		029BDA5E24BE2CF50039188D /* NoteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BDA5D24BE2CF50039188D /* NoteNode.swift */; };
 		029BDA6024BE2DD70039188D /* NodePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BDA5F24BE2DD70039188D /* NodePool.swift */; };
 		029BDA6224BE2E180039188D /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BDA6124BE2E180039188D /* Pool.swift */; };
@@ -121,6 +124,9 @@
 		028AF01D24AFB43C00411179 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		028AF01F24AFBC6200411179 /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		028AF02124AFBC8B00411179 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		0292DA3E24CA577400A321BB /* CharacterButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterButtonStyle.swift; sourceTree = "<group>"; };
+		0292DA4024CA663300A321BB /* ChoosingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosingButton.swift; sourceTree = "<group>"; };
+		0292DA4224CA83A200A321BB /* TrapezeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrapezeModifier.swift; sourceTree = "<group>"; };
 		029BDA5D24BE2CF50039188D /* NoteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteNode.swift; sourceTree = "<group>"; };
 		029BDA5F24BE2DD70039188D /* NodePool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodePool.swift; sourceTree = "<group>"; };
 		029BDA6124BE2E180039188D /* Pool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pool.swift; sourceTree = "<group>"; };
@@ -364,6 +370,9 @@
 				026C125224AFC7FA0069DF07 /* RoundedCorners.swift */,
 				026C125024AFC1970069DF07 /* SegmentedControl.swift */,
 				0237550624AFD76700089A16 /* Checkbox.swift */,
+				0292DA3E24CA577400A321BB /* CharacterButtonStyle.swift */,
+				0292DA4024CA663300A321BB /* ChoosingButton.swift */,
+				0292DA4224CA83A200A321BB /* TrapezeModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -562,7 +571,9 @@
 				029BDA5E24BE2CF50039188D /* NoteNode.swift in Sources */,
 				02EDE35224C00AEB00CB8059 /* SceneView.swift in Sources */,
 				02514B9924C0D7C000CC058A /* MusicFilePlayer.swift in Sources */,
+				0292DA4124CA663300A321BB /* ChoosingButton.swift in Sources */,
 				02CA62AE24B66083002F190D /* CGPointExtension.swift in Sources */,
+				0292DA3F24CA577400A321BB /* CharacterButtonStyle.swift in Sources */,
 				029BDA6024BE2DD70039188D /* NodePool.swift in Sources */,
 				0237550F24B2CCB300089A16 /* PlayersManager.swift in Sources */,
 				029F791F24C6A0A4001D54ED /* GameOverBehaviour.swift in Sources */,
@@ -570,6 +581,7 @@
 				0237550924B2B60500089A16 /* Character.swift in Sources */,
 				028AF00824AFA1BA00411179 /* ContentView.swift in Sources */,
 				0237550724AFD76700089A16 /* Checkbox.swift in Sources */,
+				0292DA4324CA83A200A321BB /* TrapezeModifier.swift in Sources */,
 				028AF01B24AFAE6900411179 /* GameScene.swift in Sources */,
 				026C125324AFC7FA0069DF07 /* RoundedCorners.swift in Sources */,
 				029BDA6F24BE519B0039188D /* PlayingBehaviour.swift in Sources */,

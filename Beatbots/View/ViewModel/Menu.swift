@@ -71,48 +71,46 @@ public struct Menu: View {
     @ObservedObject private var cid = PlayersManager.shared().cid
     @ObservedObject private var bimo = PlayersManager.shared().bimo
     @ObservedObject private var root = PlayersManager.shared().root
-    fileprivate func createImageOf(_ character: Character) -> some View {
-        let image = Image(type(of: character).imagePath)
-            .resizable()
-            .scaledToFit()
-            .frame(minWidth: 280, idealWidth: 300, maxWidth: 320, minHeight: 280, idealHeight: 300, maxHeight: 320, alignment: .center)
-            .padding()
-            .clipShape(Circle())
-            .overlay(
-                Circle()
-                    .stroke(lineWidth: 3).foregroundColor(.white))
-            .overlay(
-                Circle()
-                    .fill(Color(PlayersManager.shared().colorFor(character.player)))
-                    .frame(width: 80, height: 80)
-                    .padding([.top, .leading], 230)
-                    .overlay(Text("\(PlayersManager.shared().numberOfPlayer(character.player))")
-                        .fontWeight(.bold)
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .frame(width: 80, height: 80, alignment: .center), alignment: .bottomTrailing))
-        if GlobalProperties.tvControllerEnabled {
-            return AnyView(Button(action: {
-                if character.isAvailable {
-                    PlayersManager.shared().selectCharacter(character: character, by: GlobalProperties.tvControllerPlayerID)
-                } else if let player = PlayersManager.shared().getPlayerFrom(GlobalProperties.tvControllerPlayerID),
-                character.player === player {
-                    PlayersManager.shared().deselectCharacter(character: character)
-                }
-            }) {
-                image
-            })
-        } else {
-            return AnyView(image)
+    @State private var selectedCharacter: Character? = nil
+
+    fileprivate func makeButton(for character: Character) -> ChoosingButton {
+        ChoosingButton(image: Image(type(of: character).imagePath), highLightColor: Color(PlayersManager.shared().colorFor(character.player))) {
+            if character.isAvailable {
+                PlayersManager.shared().selectCharacter(character: character, by: GlobalProperties.tvControllerPlayerID)
+            }
         }
     }
-    private func choosingCharactersView() -> some View {
-        return VStack(alignment: .center) {
-            HStack() {
-                createImageOf(bimo)
-                createImageOf(root)
-                createImageOf(cid)
+    fileprivate func addButtonStyleTo(_ button: ChoosingButton, for character: Character) -> some View {
+        let focused = selectedCharacter === character
+        return button.buttonStyle(CharacterButtonStyle(focused: focused)).focusable(true) { value in
+            if value {
+                GlobalProperties.selectedButton = button
+                self.selectedCharacter = character
+            } else if focused {
+                GlobalProperties.selectedButton = nil
+                self.selectedCharacter = nil
             }
+        }
+    }
+    fileprivate func makeButtonWithStyle(for character: Character) -> some View {
+        let button = makeButton(for: character)
+        return addButtonStyleTo(button, for: character)
+    }
+    private func choosingCharactersView() -> some View {
+        let robots: [Character] = [bimo, root, cid]
+        return VStack(alignment: .center) {
+            Spacer()
+            HStack(alignment: .bottom) {
+                if GlobalProperties.tvControllerEnabled {
+                    ForEach((0 ..< robots.count), id: \.self) {
+                        self.makeButtonWithStyle(for: robots[$0])
+                    }
+                } else {
+                    ForEach((0 ..< robots.count), id: \.self) {
+                        Image(type(of: robots[$0]).imagePath).modifier(TrapezeModifier(color: Color( PlayersManager.shared().colorFor(robots[$0].player))))
+                    }
+                }
+            }.frame(width: 1400, height: 700, alignment: .center)
             HStack(spacing: 1170) {
                 Button(action: {
                     self.delegate?.setState(to: .StartMenu)

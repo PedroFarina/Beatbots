@@ -70,6 +70,18 @@ public class PlayersManager: MultipeerHandler, StateObserver {
             }
         }
     }
+    public var humanPlayers: [Player] {
+        return players.filter({$0.isHuman})
+    }
+
+    public func createBot() {
+        let bot = Player(chanceOfSuccess: Int.random(in: 60...70))
+        let robots: [Character] = [cid, bimo, root]
+        if let first = robots.filter({$0.isAvailable}).randomElement() {
+            players.append(bot)
+            selectCharacter(character: first, by: bot.id)
+        }
+    }
 
     public func getPlayerFrom(_ lane: Int) -> Player? {
         let i = lane - 1

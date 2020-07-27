@@ -69,6 +69,10 @@ public class NoteSpawner {
                 SKAction.moveTo(x: -0.248, duration: speed),
                 SKAction.run {
                     noteNode.isWaiting = true
+                    if let success = player?.chanceOfSuccess,
+                    !(player?.isHuman ?? true) {
+                        player?.currentCommand = Int.random(in: 1...100) < success ? noteNode.command : nil
+                    }
                     _ = self.lockQueue.sync {
                         self.waitingNotes.insert(noteNode)
                     }

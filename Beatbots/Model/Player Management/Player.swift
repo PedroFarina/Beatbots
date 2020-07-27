@@ -12,6 +12,8 @@ import SpriteKit
 public class Player {
 
     public let id: String
+    public let isHuman: Bool
+    public let chanceOfSuccess: Int?
     public var connected: Bool = true
     public let controlStyle: ControlStyle
     public weak var selectedCharacter: Character?
@@ -63,12 +65,24 @@ public class Player {
         commandTimeOut = 0.25
         commandCountdown = commandTimeOut
         controlStyle = .tvController
+        isHuman = true
+        chanceOfSuccess = nil
     }
     init(id: MCPeerID) {
         self.id = id.displayName
         commandTimeOut = 0.3
         commandCountdown = commandTimeOut
         controlStyle = .iPhone
+        isHuman = true
+        chanceOfSuccess = nil
+    }
+    init(chanceOfSuccess: Int) {
+        id = UUID().uuidString
+        commandTimeOut = .infinity
+        commandCountdown = commandTimeOut
+        controlStyle = .tvController
+        isHuman = false
+        self.chanceOfSuccess = chanceOfSuccess
     }
 
     func updateFrame() {

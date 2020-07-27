@@ -121,14 +121,17 @@ public struct Menu: View {
                     Text("Back").foregroundColor(.white)
                 }
                 Button(action: {
-                    if let player = PlayersManager.shared()
-                        .getPlayerFrom(GlobalProperties.tvControllerPlayerID)
-                    {
-                        if player.selectedCharacter != nil {
-                            self.delegate?.setState(to: .Playing)
+                    let startGame: Bool
+                    let tvPlayer = PlayersManager.shared().getPlayerFrom(GlobalProperties.tvControllerPlayerID)
+                    if let tvPlayer = tvPlayer {
+                        startGame = tvPlayer.selectedCharacter != nil
+                    } else {
+                        startGame = PlayersManager.shared().players.first(where: {$0.selectedCharacter != nil}) != nil
+                    }
+                    if startGame {
+                        if PlayersManager.shared().players.count == 1 {
+                            PlayersManager.shared().createBot()
                         }
-                    } else if let _ = PlayersManager.shared()
-                        .players.first(where: {$0.selectedCharacter != nil}) {
                         self.delegate?.setState(to: .Playing)
                     }
                 }) {
@@ -160,7 +163,7 @@ public struct Menu: View {
         if disconnected.isEmpty {
             text = ""
         } else {
-            if disconnected.count == PlayersManager.shared().players.count {
+            if disconnected.count == PlayersManager.shared().humanPlayers.count {
                 text = "Lost connection, waiting reconnection."
             } else {
                 text = "Lost connection to a player. Waiting to reconnect."

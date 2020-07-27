@@ -43,12 +43,16 @@ public class ControllerScene: SKScene, StateObserver {
     public let characters: [Character] = [BiMO(), ROOT(), CID()]
     lazy var manager: MultipeerManager = {
         let manager = MultipeerManager()
-        manager.subscribe(self)
+        manager.addObserver(self)
         manager.scene = self
         self.connectionState = manager.connectionState
         self.playerState = manager.playerState
         return manager
     }()
+
+    deinit {
+        manager.removeObserver(self)
+    }
 
     var connectionState: ConnectionStatus?
     var playerState: PlayerState? {
@@ -66,6 +70,17 @@ public class ControllerScene: SKScene, StateObserver {
             behaviour?.setup()
         }
     }
+
+    public func received(message: String) {
+        let node = SKSpriteNode(texture: SKTexture(imageNamed: message))
+        childNode(withName: "light")?.removeFromParent()
+        node.name = "light"
+        node.size = CGSize(width: 0.32, height: 0.32)
+        node.zPosition = 999
+        node.position = CGPoint(x: 0.0835, y: 0.119)
+        ThreadSafeController.add(node, to: self)
+    }
+
     public func connectionStateChanged(to state: ConnectionStatus) {
         switch state {
         case .Disconnected(_):

@@ -167,6 +167,7 @@ public class PlayersManager: MultipeerHandler, StateObserver {
                 stateHolder?.setState(to: .Playing)
             }
         }
+        MultipeerController.shared().sendToPeers("\(players.firstIndex(where: {$0.id == id.displayName}) ?? -1)Light", reliably: true, peers: [id])
     }
 
     public func peerLeft(_ id: MCPeerID) {
@@ -183,6 +184,11 @@ public class PlayersManager: MultipeerHandler, StateObserver {
                     selectCharacter(character: char, by: player.id)
                 }
                 players.remove(at: index)
+                for player in players {
+                    if let id = MultipeerController.shared().connectedPeers.first(where: {$0.displayName == player.id}) {
+                        MultipeerController.shared().sendToPeers("\(players.firstIndex(where: {$0.id == id.displayName}) ?? -1)Light", reliably: true, peers: [id])
+                    }
+                }
             }
         }
     }

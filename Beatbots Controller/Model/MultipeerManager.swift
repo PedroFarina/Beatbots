@@ -12,15 +12,16 @@ import SwiftUI
 public protocol StateObserver: class {
     func connectionStateChanged(to state: ConnectionStatus)
     func playerStateChanged(to state: PlayerState)
+    func received(message: String)
 }
 
 public class MultipeerManager: MultipeerHandler {
     private var observers: [StateObserver] = []
     public weak var scene:ControllerScene?
-    public func subscribe(_ observer: StateObserver) {
+    public func addObserver(_ observer: StateObserver) {
         observers.append(observer)
     }
-    public func unsubscribe(_ observer: StateObserver) {
+    public func removeObserver(_ observer: StateObserver) {
         if let index = observers.firstIndex(where: {$0 === observer}) {
             observers.remove(at: index)
         }
@@ -102,6 +103,10 @@ public class MultipeerManager: MultipeerHandler {
                     }
                 } else if str == GlobalProperties.confirmationKey {
                     self.playerState.toggle()
+                } else {
+                    for observer in self.observers {
+                        observer.received(message: str)
+                    }
                 }
             }
         }

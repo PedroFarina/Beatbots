@@ -12,9 +12,9 @@ public class ThreadSafeController {
     fileprivate init(){
     }
     private static let lockQueue = DispatchQueue(label: "ThreadSafe")
-    public static func resetScene(_ scene: SKScene) {
+    public static func resetScene(_ scene: SKScene, exceptions: [String] = ["light"]) {
         lockQueue.sync {
-            for child in scene.children where child.name != "background" {
+            for child in scene.children where (child.name != "background" && !exceptions.contains(where: {child.name == $0})) {
                 child.removeAllActions()
                 child.removeFromParent()
             }

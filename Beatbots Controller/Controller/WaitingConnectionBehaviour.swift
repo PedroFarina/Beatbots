@@ -18,7 +18,7 @@ public class WaitingConnectionBehaviour: PlayerStateBehaviour {
     }
 
     public func setup() {
-        ThreadSafeController.resetScene(scene)
+        ThreadSafeController.resetScene(scene, exceptions: [])
 
         rocketNode.size = CGSize(width: 0.3, height: 0.3)
         ThreadSafeController.add(rocketNode, to: scene)

@@ -75,7 +75,7 @@ public class PlayersManager: MultipeerHandler, StateObserver {
     }
 
     public func createBot() {
-        let bot = Player(chanceOfSuccess: Int.random(in: 60...70))
+        let bot = Player(chanceOfSuccess: 75...90)
         let robots: [Character] = [cid, bimo, root]
         if let first = robots.filter({$0.isAvailable}).randomElement() {
             players.append(bot)

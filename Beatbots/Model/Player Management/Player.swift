@@ -13,7 +13,7 @@ public class Player {
 
     public let id: String
     public let isHuman: Bool
-    public let chanceOfSuccess: Int?
+    public let chanceOfSuccess: ClosedRange<Int>?
     public var connected: Bool = true
     public let controlStyle: ControlStyle
     public weak var selectedCharacter: Character?
@@ -76,7 +76,7 @@ public class Player {
         isHuman = true
         chanceOfSuccess = nil
     }
-    init(chanceOfSuccess: Int) {
+    init(chanceOfSuccess: ClosedRange<Int>) {
         id = UUID().uuidString
         commandTimeOut = .infinity
         commandCountdown = commandTimeOut

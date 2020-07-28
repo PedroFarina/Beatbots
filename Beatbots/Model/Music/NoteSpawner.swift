@@ -71,7 +71,7 @@ public class NoteSpawner {
                     noteNode.isWaiting = true
                     if let success = player?.chanceOfSuccess,
                     !(player?.isHuman ?? true) {
-                        player?.currentCommand = Int.random(in: 1...100) < success ? noteNode.command : nil
+                        player?.currentCommand = Int.random(in: 1...100) < Int.random(in: success) ? noteNode.command : nil
                     }
                     _ = self.lockQueue.sync {
                         self.waitingNotes.insert(noteNode)

@@ -166,7 +166,7 @@ public struct Menu: View {
             if disconnected.count == PlayersManager.shared().humanPlayers.count {
                 text = "Lost connection, waiting reconnection."
             } else {
-                text = "Lost connection to a player. Waiting to reconnect."
+                text = "Lost connection to a player. Waiting reconnection."
             }
         }
 

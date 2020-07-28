@@ -93,7 +93,7 @@ public class MultipeerManager: MultipeerHandler {
                         {
                             self.playerState = .Playing
                             let frameNode = FrameNode(character: character)
-                            frameNode.position = CGPoint(x: 0, y: 0.2)
+                            frameNode.position = CGPoint(x: 0, y: 0.25)
                             scene.addChild(frameNode)
                             scene.behaviour = PlayingBehaviour(scene: scene, frameNode: frameNode)
                         }

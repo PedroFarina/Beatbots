@@ -77,7 +77,7 @@ public class ControllerScene: SKScene, StateObserver {
         node.name = "light"
         node.size = CGSize(width: 0.32, height: 0.32)
         node.zPosition = 999
-        node.position = CGPoint(x: 0.0835, y: 0.119)
+        node.position = CGPoint(x: 0.0835, y: 0.169)
         ThreadSafeController.add(node, to: self)
     }
 

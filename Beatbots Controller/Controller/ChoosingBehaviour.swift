@@ -16,18 +16,22 @@ public class ChoosingBehaviour: PlayerStateBehaviour {
     private var frameNode: FrameNode
     private var confirmNode: SKSpriteNode
     private var gesturesNode: SKSpriteNode
+    private static let phraseTexture = SKTexture(imageNamed: "choosingPhrase")
+    private static let confirmTexture = SKTexture(imageNamed: "btnChoose")
+    private static let selectTexture = SKTexture(imageNamed: "selectGestures")
+    private var phraseNode = SKSpriteNode(texture: ChoosingBehaviour.phraseTexture)
 
     convenience init(scene:ControllerScene) {
-        let confirmNode = SKSpriteNode(texture: SKTexture(imageNamed: "btnChoose"))
+        let confirmNode = SKSpriteNode(texture: ChoosingBehaviour.confirmTexture)
         confirmNode.size = CGSize(width: 0.25, height: 0.09)
         confirmNode.position = CGPoint(x: 0, y: -0.3)
         let frameNode = FrameNode()
-        frameNode.position = CGPoint(x: 0, y: 0.2)
+        frameNode.position = CGPoint(x: 0, y: 0.25)
         self.init(scene: scene, frameNode: frameNode, confirmNode: confirmNode)
     }
 
     convenience init(scene: ControllerScene, frameNode: FrameNode) {
-        let confirmNode = SKSpriteNode(texture: SKTexture(imageNamed: "btnChoose"))
+        let confirmNode = SKSpriteNode(texture: ChoosingBehaviour.confirmTexture)
         confirmNode.size = CGSize(width: 0.25, height: 0.09)
         confirmNode.position = CGPoint(x: 0, y: -0.3)
         self.init(scene: scene, frameNode: frameNode, confirmNode: confirmNode)
@@ -37,7 +41,7 @@ public class ChoosingBehaviour: PlayerStateBehaviour {
         self.scene = scene
         self.frameNode = frameNode
         self.confirmNode = confirmNode
-        self.gesturesNode = SKSpriteNode(texture: SKTexture(imageNamed: "selectGestures"))
+        self.gesturesNode = SKSpriteNode(texture: ChoosingBehaviour.selectTexture)
         for i in 0 ..< scene.characters.count {
             if scene.characters[i] === frameNode.character {
                 _selectedIndex = i
@@ -46,14 +50,17 @@ public class ChoosingBehaviour: PlayerStateBehaviour {
         }
         gesturesNode.size = CGSize(width: 0.45, height: 0.15)
         gesturesNode.position.y = -0.1
+        phraseNode.position.y = 0.06
+        phraseNode.size = CGSize(width: 0.2, height: 0.025)
     }
 
     public func setup() {
         ThreadSafeController.resetScene(scene)
-        confirmNode.texture = SKTexture(imageNamed: "btnChoose")
+        confirmNode.texture = ChoosingBehaviour.confirmTexture
         ThreadSafeController.add(confirmNode, to: scene)
         ThreadSafeController.add(gesturesNode, to: scene)
         ThreadSafeController.add(frameNode, to: scene)
+        ThreadSafeController.add(phraseNode, to: scene)
     }
 
     private var _selectedIndex: Int = 0 {

@@ -14,19 +14,25 @@ public class PlayingBehaviour: PlayerStateBehaviour {
 
     private var frameNode: FrameNode
     let gesturesNode: SKSpriteNode
+    private static let phraseTexture = SKTexture(imageNamed: "playingPhrase")
+    private static let gestureTexture = SKTexture(imageNamed: "playGestures")
+    var phraseNode = SKSpriteNode(texture: PlayingBehaviour.phraseTexture)
 
     init(scene: ControllerScene, frameNode: FrameNode) {
         self.scene = scene
         self.frameNode = frameNode
-        gesturesNode = SKSpriteNode(texture: SKTexture(imageNamed: "playGestures"))
+        gesturesNode = SKSpriteNode(texture: PlayingBehaviour.gestureTexture)
         gesturesNode.size = CGSize(width: 0.45, height: 0.45)
         gesturesNode.position.y = -0.23
+        phraseNode.position.y = 0.06
+        phraseNode.size = CGSize(width: 0.25, height: 0.025)
     }
 
     public func setup() {
         ThreadSafeController.resetScene(scene)
         ThreadSafeController.add(frameNode, to: scene)
         ThreadSafeController.add(gesturesNode, to: scene)
+        ThreadSafeController.add(phraseNode, to: scene)
     }
 
     let threshold: CGFloat = 0.1

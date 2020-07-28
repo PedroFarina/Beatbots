@@ -11,6 +11,7 @@ import SpriteKit
 public class ConfirmedBehaviour: PlayerStateBehaviour {
     public var nextBehaviour: PlayerStateBehaviour?
     public var scene: ControllerScene
+    private static let changeTexture = SKTexture(imageNamed: "btnChange")
 
     var frameNode: FrameNode
     var confirmNode: SKSpriteNode
@@ -25,7 +26,7 @@ public class ConfirmedBehaviour: PlayerStateBehaviour {
 
     public func setup() {
         ThreadSafeController.resetScene(scene)
-        confirmNode.texture = SKTexture(imageNamed: "btnChange")
+        confirmNode.texture = ConfirmedBehaviour.changeTexture
         ThreadSafeController.add(frameNode, to: scene)
         ThreadSafeController.add(confirmNode, to: scene)
     }

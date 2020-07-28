@@ -130,7 +130,7 @@ public class NoteSpawner {
                 note.player?.correctNotes += 1
             }
             let newActions = [
-                SKAction.resize(toWidth: 0.03, height: 0.03, duration: 0.2),
+                SKAction.resize(toWidth: 0.01, height: 0.01, duration: 0.2),
                 SKAction.run({
                     NodePool.release(note: note)
                 })

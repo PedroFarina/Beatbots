@@ -24,6 +24,8 @@ public class GlobalProperties {
     public static let deselectKey = "Deselect"
     public static let confirmationKey = "ActionOccur"
     public static let startKey = "Start"
+    public static let successKey = "Success"
+    public static let failureKey = "Fail"
     #if os(tvOS)
     public static var selectedButton: ChoosingButton?
     public static let tvControllerPlayerID = "tvControllerPlayer"

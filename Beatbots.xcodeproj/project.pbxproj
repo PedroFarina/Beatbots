@@ -27,6 +27,7 @@
 		024EC7ED24C0D0A10054DCAD /* StartMenuBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024EC7EC24C0D0A10054DCAD /* StartMenuBehaviour.swift */; };
 		02514B9724C0D5F400CC058A /* loop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 02514B9624C0D5F400CC058A /* loop.wav */; };
 		02514B9924C0D7C000CC058A /* MusicFilePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02514B9824C0D7C000CC058A /* MusicFilePlayer.swift */; };
+		0268DE6C24D1E7CF00DAF8E0 /* HapticController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268DE6B24D1E7CF00DAF8E0 /* HapticController.swift */; };
 		026C125124AFC1970069DF07 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C125024AFC1970069DF07 /* SegmentedControl.swift */; };
 		026C125324AFC7FA0069DF07 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C125224AFC7FA0069DF07 /* RoundedCorners.swift */; };
 		027BD91024B790EA000CCC35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027BD90F24B790EA000CCC35 /* AppDelegate.swift */; };
@@ -105,6 +106,7 @@
 		024EC7EC24C0D0A10054DCAD /* StartMenuBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuBehaviour.swift; sourceTree = "<group>"; };
 		02514B9624C0D5F400CC058A /* loop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = loop.wav; sourceTree = "<group>"; };
 		02514B9824C0D7C000CC058A /* MusicFilePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFilePlayer.swift; sourceTree = "<group>"; };
+		0268DE6B24D1E7CF00DAF8E0 /* HapticController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticController.swift; sourceTree = "<group>"; };
 		026C125024AFC1970069DF07 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		026C125224AFC7FA0069DF07 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		027BD90D24B790EA000CCC35 /* Beatbots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatbots.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -398,6 +400,7 @@
 			children = (
 				02C9F30D24C00914006F7CBC /* States */,
 				027BD92824B796E9000CCC35 /* MultipeerManager.swift */,
+				0268DE6B24D1E7CF00DAF8E0 /* HapticController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				02C9F30924C00662006F7CBC /* PlayerState.swift in Sources */,
 				027BD91024B790EA000CCC35 /* AppDelegate.swift in Sources */,
 				02EDE35324C00AF500CB8059 /* SceneView.swift in Sources */,
+				0268DE6C24D1E7CF00DAF8E0 /* HapticController.swift in Sources */,
 				02C9F30624C005FF006F7CBC /* ControllerScene.swift in Sources */,
 				027BD91224B790EA000CCC35 /* SceneDelegate.swift in Sources */,
 				02EDE35924C00D0A00CB8059 /* PlayingBehaviour.swift in Sources */,

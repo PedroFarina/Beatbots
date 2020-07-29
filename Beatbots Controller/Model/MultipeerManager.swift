@@ -80,10 +80,15 @@ public class MultipeerManager: MultipeerHandler {
         self.connectionState = .Lost(id: id.displayName)
     }
 
+    private let hapticController = HapticController()
     public func receivedData(_ data: Data, from peerID: MCPeerID) {
         if let str = String(bytes: data, encoding: .utf8) {
             DispatchQueue.main.async {
-                if str.starts(with: GlobalProperties.startKey) {
+                if str == GlobalProperties.successKey {
+                    self.hapticController?.success()
+                } else if str == GlobalProperties.failureKey {
+                    self.hapticController?.failure()
+                } else if str.starts(with: GlobalProperties.startKey) {
                     if self.playerState == .Confirmed {
                         self.playerState = .Playing
                     } else if str.count > GlobalProperties.startKey.count {

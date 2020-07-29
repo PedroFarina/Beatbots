@@ -94,6 +94,9 @@ public class NoteSpawner {
                             SKAction.fadeOut(withDuration: 0.2)]),
                         //release
                         SKAction.run {
+                            if let peer = MultipeerController.shared().connectedPeers.first(where: {$0.displayName == player?.id}) {
+                                MultipeerController.shared().sendToPeers(GlobalProperties.failureKey, reliably: false, peers: [peer])
+                            }
                             NodePool.release(note: noteNode)
                         }
                     ]
@@ -135,6 +138,9 @@ public class NoteSpawner {
                     NodePool.release(note: note)
                 })
             ]
+            if let peer = MultipeerController.shared().connectedPeers.first(where: {$0.displayName == note.player?.id}) {
+                MultipeerController.shared().sendToPeers(GlobalProperties.successKey, reliably: false, peers: [peer])
+            }
             note.run(SKAction.sequence(newActions))
         }
     }

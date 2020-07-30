@@ -132,7 +132,11 @@ public struct Menu: View {
                         if PlayersManager.shared().players.count == 1 {
                             PlayersManager.shared().createBot()
                         }
-                        self.delegate?.setState(to: .Playing)
+                        if GlobalProperties.isFirstTime {
+                            self.delegate?.setState(to: .Tutorial)
+                        } else {
+                            self.delegate?.setState(to: .Playing)
+                        }
                     }
                 }) {
                     Text("Confirm").foregroundColor(.white)
@@ -193,6 +197,17 @@ public struct Menu: View {
         }
     }
 
+    private func tutorialView() -> some View {
+        VStack {
+            Button(action: {
+                GlobalProperties.isFirstTime = false
+                self.delegate?.setState(to: .Playing)
+            }) {
+                Text("Got it!")
+            }.padding(.top, 875)
+        }
+    }
+
     public var body: some View {
         switch currentState {
         case .StartMenu:
@@ -201,6 +216,8 @@ public struct Menu: View {
             return AnyView(settingsMenuView())
         case .ChoosingCharacters:
             return AnyView(choosingCharactersView())
+        case .Tutorial:
+            return AnyView(tutorialView())
         case .Paused:
             return AnyView(pausedView())
         case .GameOver:

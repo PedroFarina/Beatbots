@@ -28,6 +28,7 @@
 		02514B9724C0D5F400CC058A /* loop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 02514B9624C0D5F400CC058A /* loop.wav */; };
 		02514B9924C0D7C000CC058A /* MusicFilePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02514B9824C0D7C000CC058A /* MusicFilePlayer.swift */; };
 		0268DE6C24D1E7CF00DAF8E0 /* HapticController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268DE6B24D1E7CF00DAF8E0 /* HapticController.swift */; };
+		0268DE6E24D34C1300DAF8E0 /* TutorialBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268DE6D24D34C1300DAF8E0 /* TutorialBehaviour.swift */; };
 		026C125124AFC1970069DF07 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C125024AFC1970069DF07 /* SegmentedControl.swift */; };
 		026C125324AFC7FA0069DF07 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C125224AFC7FA0069DF07 /* RoundedCorners.swift */; };
 		027BD91024B790EA000CCC35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027BD90F24B790EA000CCC35 /* AppDelegate.swift */; };
@@ -107,6 +108,7 @@
 		02514B9624C0D5F400CC058A /* loop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = loop.wav; sourceTree = "<group>"; };
 		02514B9824C0D7C000CC058A /* MusicFilePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFilePlayer.swift; sourceTree = "<group>"; };
 		0268DE6B24D1E7CF00DAF8E0 /* HapticController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticController.swift; sourceTree = "<group>"; };
+		0268DE6D24D34C1300DAF8E0 /* TutorialBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialBehaviour.swift; sourceTree = "<group>"; };
 		026C125024AFC1970069DF07 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		026C125224AFC7FA0069DF07 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		027BD90D24B790EA000CCC35 /* Beatbots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatbots.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,6 +337,7 @@
 				028AF01A24AFAE6900411179 /* GameScene.swift */,
 				024EC7EC24C0D0A10054DCAD /* StartMenuBehaviour.swift */,
 				02B61A5B24C9C64600FE12DB /* ChoosingBehaviour.swift */,
+				0268DE6D24D34C1300DAF8E0 /* TutorialBehaviour.swift */,
 				029BDA6E24BE519B0039188D /* PlayingBehaviour.swift */,
 				020B065524C78A13008D7848 /* PausedBehaviour.swift */,
 				029F791E24C6A0A4001D54ED /* GameOverBehaviour.swift */,
@@ -591,6 +594,7 @@
 				029BDA6024BE2DD70039188D /* NodePool.swift in Sources */,
 				0237550F24B2CCB300089A16 /* PlayersManager.swift in Sources */,
 				029F791F24C6A0A4001D54ED /* GameOverBehaviour.swift in Sources */,
+				0268DE6E24D34C1300DAF8E0 /* TutorialBehaviour.swift in Sources */,
 				028AF02024AFBC6200411179 /* StateController.swift in Sources */,
 				0237550924B2B60500089A16 /* Character.swift in Sources */,
 				028AF00824AFA1BA00411179 /* ContentView.swift in Sources */,

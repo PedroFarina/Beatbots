@@ -15,6 +15,7 @@ public class GlobalProperties {
     fileprivate static let curtainClosedKey = "curtainClosed"
     fileprivate static let perfectNotesKey = "perfectNotes"
     fileprivate static let menuMusicDisabledKey = "menuMusicDisabled"
+    fileprivate static let notFirstTime = "notFirstTime"
     fileprivate static let userDefaults = UserDefaults.standard
     #endif
     private init() {
@@ -65,6 +66,14 @@ public class GlobalProperties {
         } else {
         MusicFilePlayer.stopPlaying()
         }
+        }
+    }
+    public static var isFirstTime: Bool {
+        get {
+        return !userDefaults.bool(forKey: notFirstTime)
+        }
+        set {
+        userDefaults.set(!newValue, forKey: notFirstTime)
         }
     }
     #endif

@@ -28,6 +28,7 @@ public enum GameState {
     case StartMenu
     case Settings
     case ChoosingCharacters
+    case Tutorial
     case Playing
     case Paused
     case GameOver
@@ -38,6 +39,8 @@ public enum GameState {
             return StartMenuBehaviour(scene: scene)
         case .ChoosingCharacters:
             return ChoosingBehaviour(scene: scene)
+        case  .Tutorial:
+            return TutorialBehaviour(scene: scene)
         case .Playing:
             return PlayingBehaviour(scene: scene)
         case  .Paused:

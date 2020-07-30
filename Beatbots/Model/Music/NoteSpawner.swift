@@ -62,9 +62,6 @@ public class NoteSpawner {
             noteNode.part = self.lanes[laneIndex].musicPart
             
             noteNode.position.y = 0.4 - (0.2 * CGFloat(nLane))
-            if PlayersManager.shared().players.count == 1 {
-                noteNode.position.y -= 0.2
-            }
             let actions = SKAction.sequence([
                 SKAction.moveTo(x: -0.248, duration: speed),
                 SKAction.run {

@@ -23,8 +23,8 @@ public class Player {
         }
     }
     public var currentCommand: Command?
-    public var totalNotes: Int = 0
-    public var correctNotes: Int = 0 {
+    public var totalNotes: Double = 0
+    public var correctNotes: Double = 0 {
         didSet {
             if correctNotes > oldValue {
                 combo += 1
@@ -35,7 +35,7 @@ public class Player {
     public var points: Double {
         get {
             if totalNotes == 0 || correctNotes == 0 { return 0 }
-            return Double(correctNotes/totalNotes)
+            return correctNotes/totalNotes
         }
     }
     private var _combo: Int = 0 {

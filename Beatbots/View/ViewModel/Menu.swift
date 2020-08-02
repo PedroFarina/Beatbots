@@ -145,7 +145,16 @@ public struct Menu: View {
         }
     }
     private func gameOverView() -> some View {
+        let robots: [Character] = [bimo, cid, root]
+        var players: [Player] = []
+        robots.forEach({ if let player = $0.player { players.append(player)}})
+        players.sort(by: {$0.points > $1.points})
         return VStack(alignment: .center) {
+            Spacer().frame(width: 1, height: 325)
+            ForEach((0 ..< players.count), id: \.self) { i in
+                Text("\(type(of:players[i].selectedCharacter ?? self.bimo).name) \(Int(players[i].totalNotes)) (\(  String(format: "%.2f", players[i].points * 100))%)").modifier(PlayerTextModifier(place: i))
+            }
+            Spacer()
             HStack {
                 Button(action: {
                     self.delegate?.setState(to: .Playing)
@@ -155,9 +164,9 @@ public struct Menu: View {
                 Button(action: {
                     self.delegate?.setState(to: .StartMenu)
                 }) {
-                    Text("Exit").foregroundColor(.white)
+                    Text("Main Menu").foregroundColor(.white)
                 }
-            }.padding(.top, 750)
+            }.padding(.bottom, 50)
         }
     }
 

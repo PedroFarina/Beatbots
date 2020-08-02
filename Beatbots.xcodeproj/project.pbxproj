@@ -79,6 +79,8 @@
 		02CA62AC24B63BA9002F190D /* ROOT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA62AB24B63BA9002F190D /* ROOT.swift */; };
 		02CA62AE24B66083002F190D /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA62AD24B66083002F190D /* CGPointExtension.swift */; };
 		02CA62B024B671C1002F190D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA62AF24B671C1002F190D /* Command.swift */; };
+		02D60E7024D745BB00A755D3 /* PlayerTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D60E6F24D745BB00A755D3 /* PlayerTextModifier.swift */; };
+		02D60E7324D755EE00A755D3 /* Staatliches-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02D60E7224D755E900A755D3 /* Staatliches-Regular.ttf */; };
 		02EDE35224C00AEB00CB8059 /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EDE35124C00AEB00CB8059 /* SceneView.swift */; };
 		02EDE35324C00AF500CB8059 /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EDE35124C00AEB00CB8059 /* SceneView.swift */; };
 		02EDE35524C00CF200CB8059 /* ChoosingBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EDE35424C00CF200CB8059 /* ChoosingBehaviour.swift */; };
@@ -154,6 +156,8 @@
 		02CA62AB24B63BA9002F190D /* ROOT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROOT.swift; sourceTree = "<group>"; };
 		02CA62AD24B66083002F190D /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
 		02CA62AF24B671C1002F190D /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		02D60E6F24D745BB00A755D3 /* PlayerTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTextModifier.swift; sourceTree = "<group>"; };
+		02D60E7224D755E900A755D3 /* Staatliches-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Staatliches-Regular.ttf"; sourceTree = "<group>"; };
 		02EDE35124C00AEB00CB8059 /* SceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneView.swift; sourceTree = "<group>"; };
 		02EDE35424C00CF200CB8059 /* ChoosingBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosingBehaviour.swift; sourceTree = "<group>"; };
 		02EDE35624C00D0000CB8059 /* ConfirmedBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedBehaviour.swift; sourceTree = "<group>"; };
@@ -296,6 +300,7 @@
 		029BDA6524BE4F9B0039188D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				02D60E7124D755DD00A755D3 /* Fonts */,
 				029BDA6624BE50670039188D /* Game State */,
 				029BDA6824BE508E0039188D /* Player Management */,
 				029BDA6724BE50760039188D /* Pool */,
@@ -384,6 +389,7 @@
 				0292DA3E24CA577400A321BB /* CharacterButtonStyle.swift */,
 				0292DA4024CA663300A321BB /* ChoosingButton.swift */,
 				0292DA4224CA83A200A321BB /* TrapezeModifier.swift */,
+				02D60E6F24D745BB00A755D3 /* PlayerTextModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -437,6 +443,14 @@
 				027BD91324B790EA000CCC35 /* ContentView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		02D60E7124D755DD00A755D3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				02D60E7224D755E900A755D3 /* Staatliches-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,6 +547,7 @@
 				02514B9724C0D5F400CC058A /* loop.wav in Resources */,
 				029BDA6424BE31320039188D /* Notes.xcassets in Resources */,
 				028AF01024AFA1BD00411179 /* LaunchScreen.storyboard in Resources */,
+				02D60E7324D755EE00A755D3 /* Staatliches-Regular.ttf in Resources */,
 				028AF00D24AFA1BD00411179 /* Preview Assets.xcassets in Resources */,
 				028AF00A24AFA1BD00411179 /* Assets.xcassets in Resources */,
 				020E684D24C1F0A50075CCC8 /* 01rhythm.wav in Resources */,
@@ -602,6 +617,7 @@
 				0292DA4324CA83A200A321BB /* TrapezeModifier.swift in Sources */,
 				028AF01B24AFAE6900411179 /* GameScene.swift in Sources */,
 				026C125324AFC7FA0069DF07 /* RoundedCorners.swift in Sources */,
+				02D60E7024D745BB00A755D3 /* PlayerTextModifier.swift in Sources */,
 				029BDA6F24BE519B0039188D /* PlayingBehaviour.swift in Sources */,
 				024EC7ED24C0D0A10054DCAD /* StartMenuBehaviour.swift in Sources */,
 				0237550D24B2B78900089A16 /* CID.swift in Sources */,

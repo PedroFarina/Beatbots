@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 public class GlobalProperties {
     #if os(tvOS)

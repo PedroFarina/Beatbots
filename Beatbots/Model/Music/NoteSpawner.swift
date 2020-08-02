@@ -23,7 +23,7 @@ public class NoteSpawner {
         for player in PlayersManager.shared().players {
             if let char = player.selectedCharacter {
                 let part = type(of: char).part
-                player.totalNotes = music.totalNotes[part.getIndex()]
+                player.totalNotes = Double(music.totalNotes[part.getIndex()])
                 lanes.append(Lane(musicPart: part, player: player, music: music, nextNote: music.getNextNoteFor(part)))
             }
         }

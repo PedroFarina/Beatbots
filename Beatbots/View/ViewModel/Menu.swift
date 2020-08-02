@@ -129,6 +129,10 @@ public struct Menu: View {
                         startGame = PlayersManager.shared().players.first(where: {$0.selectedCharacter != nil}) != nil
                     }
                     if startGame {
+                        for player in PlayersManager.shared().players where player.selectedCharacter == nil {
+                            player.connected = false
+                        }
+                        PlayersManager.shared().removeDisconnectedPlayers()
                         if PlayersManager.shared().players.count == 1 {
                             PlayersManager.shared().createBot()
                         }

@@ -18,10 +18,6 @@ public class PlayingBehaviour: GameBehaviour {
 
     init(scene: GameScene) {
         self.scene = scene
-        for player in PlayersManager.shared().players where player.selectedCharacter == nil {
-            player.connected = false
-        }
-        PlayersManager.shared().removeDisconnectedPlayers()
         scene.stopUpdating = false
         spawner = NoteSpawner(scene: scene, music: music)
         scene.backgroundNode.texture = SKTexture(imageNamed: GlobalProperties.curtainClosed ? "playBackground2": "playBackground")

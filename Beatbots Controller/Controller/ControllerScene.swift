@@ -34,7 +34,15 @@ public class ControllerScene: SKScene, StateObserver {
 
     var backgroundNode = SKSpriteNode(color: UIColor(red: 0.8, green: 0.8, blue: 1, alpha: 1), size: CGSize(width: 0.6, height: 1))
     public override func sceneDidLoad() {
-        let texture =  SKTexture(imageNamed: "iOSBackground")
+        let texture: SKTexture
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            texture = SKTexture(imageNamed: "iPadOSBackground")
+            backgroundNode.size = CGSize(width: 1.125, height: 1.5)
+        default:
+            texture = SKTexture(imageNamed: "iOSBackground")
+        }
+
         backgroundNode.texture = texture
         backgroundNode.name = "background"
         addChild(backgroundNode)

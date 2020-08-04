@@ -18,7 +18,7 @@ public struct Menu: View {
                 self.delegate?.setState(to: .ChoosingCharacters)
             }) {
                 Text("Play").foregroundColor(.white).padding([.leading, .trailing], 20)
-            }.padding(.top, 800)
+            }.padding(.top, 780)
             Button(action: {
                 self.delegate?.setState(to: .Settings)
             }) {
@@ -58,6 +58,7 @@ public struct Menu: View {
                         GlobalProperties.curtainClosed = value
                     }
                 }.frame(width: 1000, height: 130, alignment: .center)
+                Text("Music made by: Felipe Pillis Panelli").foregroundColor(.white)
             }.padding(.all, 30).background(RoundedRectangle(cornerRadius: 30).foregroundColor(Color(.sRGB, red: 0.3, green: 0.3, blue: 0.5, opacity: 0.9)))
             Button(action: {
                 self.delegate?.setState(to: .StartMenu)
